@@ -9,7 +9,21 @@
 @section('content')
 
 <section class="container h-lvh">
-    <h1>ANASAYFA</h1>
+
+
+
+    @auth
+    <h1>ANASAYFA -giriş yapıldı</h1>
+
+        
+    @endauth    
+
+    @guest
+
+    <h1>ANASAYFA -giriş yapılmadı</h1>
+
+    @endguest
+  
 
 </section>
 

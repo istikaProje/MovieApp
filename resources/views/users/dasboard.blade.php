@@ -9,7 +9,11 @@
 @section('content')
 
 <section class="container h-lvh">
-    <h1>ANASAYFA</h1>
+
+
+
+<h1>hello {{auth()->user()->name}}</h1>
+  
 
 </section>
 
