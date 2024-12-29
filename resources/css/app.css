@@ -22,5 +22,7 @@
     .error {
       @apply text-xs text-red-500 mt-1;
   }
+
+  
    
     }
