@@ -13,6 +13,7 @@
     @include('layouts.sections._slideSecond')
 
 
+
     @push('styles')
         @vite(['resources/css/swiper.css']) <!-- Swiper CSS dosyanızı ekleyin -->
     @endpush
