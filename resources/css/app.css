@@ -23,6 +23,32 @@
       @apply text-xs text-red-500 mt-1;
   }
 
+  .custom-prev{
+
+
+    color: #fff !important; /* Change to your desired icon color */
+    top: 14px !important;
+    right: 30px !important;
+    left: auto !important;
+   
+    
+}
+
+ .custom-next{
+  color: #fff !important; /* Change to your desired icon color */
+  top: 14px !important;
+  right: 0px !important;
+  left: auto !important;
+
+ }
+
+.swiper-button-next:after, .swiper-button-prev:after{
+    font-size: 24px !important; /* Change to your desired icon size */
+  
+
+}
+
+
   
    
     }

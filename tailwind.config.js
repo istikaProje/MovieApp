@@ -17,6 +17,7 @@ export default {
             colors: {
                 primary: '#00202b', // Primary renginiz
                 secondary: '#ff5757', // İsterseniz başka renkler de ekleyin
+                third: '#13323c',
               
               },
         },
