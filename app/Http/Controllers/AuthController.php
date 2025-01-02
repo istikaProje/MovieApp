@@ -65,4 +65,8 @@ public function logout(Request $request){
     return redirect('/');
 }
 
+public function index(){
+    return view('layouts.payment');
+}
+
 }

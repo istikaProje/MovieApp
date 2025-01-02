@@ -31,7 +31,7 @@
         </a>
        </li>
        <li>
-        <a href="javascript:void(0)" class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
+        <a href="{{route('payment')}}" class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
          Payment
         </a>
        </li>
