@@ -21,12 +21,12 @@
     position: relative;
     overflow: hidden;
   }
+
   .video {
     width: 100%;
   }
+
   .controls__button {
-    background: none;
-    border: 0;
     line-height: 1;
     color: white;
     text-align: center;
@@ -121,21 +121,21 @@
 
     .time
     {
-    margin-top: 5px;
+    margin-top: 3px;
     flex: 0 0 20px;
     }
 
     .time2
     {
-    margin-top: 5px;
+    margin-top: 3px;
     flex: 0 0 20px;
 
     }
 
     .toggleButton{
-        position: absolute;
+    position: absolute;
     top: 43%;
-    left: 46%;
+    left: 48%;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     padding: 1em;
@@ -149,7 +149,58 @@
     height: 3em;
     white-space: nowrap;
     line-height: 0;
+    visibility: hidden;
     }
+
+    .time_skipL{
+    position: absolute;
+    top: 43%;
+    left: 15%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 400;
+    width: 3em;
+    height: 3em;
+    white-space: nowrap;
+    line-height: 0;
+    visibility: hidden;
+    }
+    .time_skipR{
+    position: absolute;
+    top: 43%;
+    right: 15%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 400;
+    width: 3em;
+    height: 3em;
+    white-space: nowrap;
+    line-height: 0;
+    visibility: hidden;
+    }
+
+    .video-player:hover > .toggleButton{
+    visibility: visible;
+  }
+  .video-player:hover > .time_skipL{
+    visibility: visible;
+  }
+  .video-player:hover > .time_skipR{
+    visibility: visible;
+  }
+
 
 </style>
 
@@ -166,12 +217,13 @@
                   />
                   <p>Your browser doesn't support HTML5 video.</p>
                 </video>
+                <button class="controls__button toggleButton" title="Toggle Play"> ► </button>
+                <button class="controls__button time_skipL" data-skip="-10">« 10s</button>
+                <button class="controls__button time_skipR" data-skip="25">10s »</button>
                 <div class="controls">
                   <div class="progress">
                     <div class="progress__filled"></div>
                   </div>
-
-                  <button class="controls__button toggleButton" title="Toggle Play"> ► </button>
 
                   <label class="time" style="color: white;" width="10px">0:00</label>
 
@@ -195,9 +247,6 @@
                   />
 
                   <label class="time2" style="color: white;">0:00</label>
-
-                  <button class="controls__button" data-skip="-10">« 10s</button>
-                  <button class="controls__button" data-skip="25">10s »</button>
 
                   <img src="{{asset('images/Fullscreen.png')}}" onclick="openFullscreen();" style="max-width: 30px; cursor: pointer;" />
 
@@ -253,7 +302,6 @@
                 const remainingSeconds = Math.floor(remainingTime % 60);
                 time2.innerHTML = `${remainingMinutes}:${remainingSeconds.toString().padStart(2, '0')}`;
             }
-
             video.addEventListener("timeupdate", timeUpdate);
 
 
@@ -304,13 +352,28 @@
             if (e.code === "Space") togglePlay();
             });
 
-            function openFullscreen() {
+            function openFullscreen()
+            {
             if (video_player.requestFullscreen) {
+                if (document.fullscreenElement) {
+                document.exitFullscreen();
+                } else {
                 video_player.requestFullscreen();
-            } else if (video_player.webkitRequestFullscreen) { /* Safari */
+                }
+            }
+            else if (video_player.webkitRequestFullscreen) { /* Safari */
+                if (document.webkitFullscreenElement) {
+                document.webkitExitFullscreen();
+                } else {
                 video_player.webkitRequestFullscreen();
-            } else if (video_player.msRequestFullscreen) { /* IE11 */
+                }
+            }
+            else if (video_player.msRequestFullscreen) { /* IE11 */
+                if (document.msFullscreenElement) {
+                document.msExitFullscreen();
+                } else {
                 video_player.msRequestFullscreen();
+                }
             }
             }
 
