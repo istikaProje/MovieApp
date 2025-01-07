@@ -1,4 +1,8 @@
-@extends('layouts.master') @section('title', 'Anasayfa') @section('description', 'test.') @section('keywords', 'test, test, test') @section('content')
+@extends('layouts.master')
+@section('title', 'Anasayfa')
+@section('description', 'test.')
+@section('keywords', 'test, test, test')
+@section('content')
 <section class="relative z-10 py-20">
  <div class="bg-primary absolute left-0 top-0 z-[-1] h-full w-1/4"></div>
  <div class="container mx-auto">
