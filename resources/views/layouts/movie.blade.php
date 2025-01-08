@@ -36,9 +36,14 @@
     max-width: 50px;
   }
   .controls__slider {
-    width: 10px;
+    width: 10px ;
     height: 30px;
   }
+
+  .sounds{
+    max-width: 120px;
+  }
+
   .controls {
     display: flex;
     position: absolute;
@@ -69,12 +74,22 @@
     flex-basis: 0%;
   }
 
+    /*
   input[type=range] {
     -webkit-appearance: none;
     background: transparent;
     width: 100%;
     margin: 0 5px;
   }
+    */
+
+    input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+    width: auto;
+    margin: 0 5px;
+  }
+
   input[type=range]:focus {
     outline: none;
   }
@@ -113,10 +128,6 @@
 
   .controls{
     visibility: hidden;
-  }
-
-  .video-player:hover > .controls{
-    visibility: visible;
   }
 
     .time
@@ -191,14 +202,15 @@
     visibility: hidden;
     }
 
-    .video-player:hover > .toggleButton{
-    visibility: visible;
+  .playbackRate{
+    max-width: 100px;
   }
-  .video-player:hover > .time_skipL{
-    visibility: visible;
+
+  select.playbackRate {
+    color: rgb(172, 16, 16);
   }
-  .video-player:hover > .time_skipR{
-    visibility: visible;
+  select.playbackRate option {
+    color: rgb(172, 16, 16);
   }
 
 
@@ -210,7 +222,7 @@
           <div class="flex flex-wrap items-stretch">
 
             <div class="video-player" style=" display: block; margin-left: auto; margin-right: auto;" oncontextmenu="return false;">
-                <video class="video" id="myVideo">
+                <video class="video" id="myVideo" ondblclick="openFullscreen()">
                   <source
                     src="{{asset('videos/videom2.mp4')}}"
                     type="video/mp4"
@@ -227,15 +239,29 @@
 
                   <label class="time" style="color: white;" width="10px">0:00</label>
 
+                  <img src="{{asset('images/Sound.png')}}"  style="max-width: 25px; max-height: 20px; margin-top: 5px; margin-left: 5px; cursor: pointer;" />
                   <input
                     type="range"
                     name="volume"
-                    class="controls__slider"
+                    class="controls__slider sounds"
                     min="0"
                     max="1"
                     step="0.05"
                     value="1"
+                    width="10px"
                   />
+                  <div class="flex items-center justify-end space-x-2 ml-auto" style="margin-left: auto;">
+
+                  <img src="{{asset('images/Speed.png')}}"  style="max-width: 25px; max-height: 25px; margin-top: 3px; margin-left: 5px; cursor: pointer;" />
+                  <select onchange="document.querySelector('video').playbackRate = this.value"
+                  class="playbackRate text-center form-select h-9 w-full rounded-lg border-0 bg-transparent p-0 pr-[1.875rem] pl-3.5 font-medium focus:shadow-none focus-visible:ring-2 focus-visible:ring-sky-500 sm:text-sm">
+                  <option class="bg-transparent" value="2">2</option>
+                  <option class="bg-transparent" value="1.5">1.5</option>
+                  <option class="bg-transparent" value="1" selected>1</option>
+                  <option class="bg-transparent" value="0.5">0.5</option>
+                  <option class="bg-transparent" value="0.25">0.25</option>
+                  </select>
+                    <!--
                   <input
                     type="range"
                     name="playbackRate"
@@ -245,18 +271,18 @@
                     step="0.1"
                     value="1"
                   />
-
+                    !-->
                   <label class="time2" style="color: white;">0:00</label>
 
                   <img src="{{asset('images/Fullscreen.png')}}" onclick="openFullscreen();" style="max-width: 30px; cursor: pointer;" />
+
+                 </div>
 
                 </div>
               </div>
 
           </div>
         </div>
-
-
 
     </section>
 
@@ -271,14 +297,64 @@
             const time2 = document.querySelector(".time2");
             const video_player = document.querySelector(".video-player");
 
+            let isPaused = true;
+            let isMouseOver = false;
+            let hideControlsTimeout;
 
-            function togglePlay() {
-            if (video.paused || video.ended) {
-                video.play();
-            } else {
-                video.pause();
+            function showControls()
+            {
+                clearTimeout(hideControlsTimeout);
+
+                document.querySelector(".controls").style.visibility = "visible";
+                document.querySelector(".toggleButton").style.visibility = "visible";
+                document.querySelector(".time_skipL").style.visibility = "visible";
+                document.querySelector(".time_skipR").style.visibility = "visible";
             }
+            function hideControls()
+            {
+                if (!isPaused && !isMouseOver) {
+                document.querySelector(".controls").style.visibility = "hidden";
+                document.querySelector(".toggleButton").style.visibility = "hidden";
+                document.querySelector(".time_skipL").style.visibility = "hidden";
+                document.querySelector(".time_skipR").style.visibility = "hidden";
+                }
             }
+
+            function togglePlay()
+            {
+                if (video.paused || video.ended)
+                {
+                    video.play();
+                    isPaused = false;
+                    hideControls();
+                }
+                else
+                {
+                    video.pause();
+                    isPaused = true;
+                    showControls();
+                }
+            }
+
+            video.addEventListener("play", () => {
+            isPaused = false;
+            hideControls();
+            });
+
+            video.addEventListener("pause", () => {
+            isPaused = true;
+            showControls();
+            });
+
+            video_player.addEventListener("mouseover", () => {
+            isMouseOver = true;
+            showControls();
+            });
+
+            video_player.addEventListener("mouseout", () => {
+            isMouseOver = false;
+            hideControls();
+            });
 
             // Blob URL
             let xhr = new XMLHttpRequest();
@@ -361,14 +437,14 @@
                 video_player.requestFullscreen();
                 }
             }
-            else if (video_player.webkitRequestFullscreen) { /* Safari */
+            else if (video_player.webkitRequestFullscreen) { /* Safari için*/
                 if (document.webkitFullscreenElement) {
                 document.webkitExitFullscreen();
                 } else {
                 video_player.webkitRequestFullscreen();
                 }
             }
-            else if (video_player.msRequestFullscreen) { /* IE11 */
+            else if (video_player.msRequestFullscreen) { /* IE11 için*/
                 if (document.msFullscreenElement) {
                 document.msExitFullscreen();
                 } else {
