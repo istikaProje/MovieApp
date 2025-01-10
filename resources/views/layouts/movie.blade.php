@@ -213,6 +213,50 @@
     color: rgb(172, 16, 16);
   }
 
+    /* Dropdown Menu */
+    .hidden {
+    display: none;
+    }
+
+    .dropdown-menu {
+    /* Dropdown menu default styling */
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100px;
+    /* Menu width */
+    display: none;
+    /* Hidden by default */
+    bottom: 100%;
+    /* Make it open upwards */
+    margin-bottom: 8px;
+    /* Add some space above the dropdown */
+    z-index: 10;
+    }
+
+    .dropdown-item {
+    /* Styling for dropdown items */
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    }
+
+    .dropdown-item:hover {
+    background-color: #f0f0f0;
+    }
+
+    .selected {
+    font-weight: bold;
+    color: #1D4ED8;
+    /* Blue color for the selected item */
+    }
+
+    .dropdown.open .dropdown-menu {
+    display: block;
+    /* Show the dropdown when open */
+    }
 
 </style>
 
@@ -229,7 +273,7 @@
                   />
                   <p>Your browser doesn't support HTML5 video.</p>
                 </video>
-                <button class="controls__button toggleButton" title="Toggle Play"> ► </button>
+                <button class="controls__button toggleButton" title="Toggle Play"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg> </button>
                 <button class="controls__button time_skipL" data-skip="-10">« 10s</button>
                 <button class="controls__button time_skipR" data-skip="25">10s »</button>
                 <div class="controls">
@@ -252,15 +296,19 @@
                   />
                   <div class="flex items-center justify-end space-x-2 ml-auto" style="margin-left: auto;">
 
-                  <img src="{{asset('images/Speed.png')}}"  style="max-width: 25px; max-height: 25px; margin-top: 3px; margin-left: 5px; cursor: pointer;" />
-                  <select onchange="document.querySelector('video').playbackRate = this.value"
-                  class="playbackRate text-center form-select h-9 w-full rounded-lg border-0 bg-transparent p-0 pr-[1.875rem] pl-3.5 font-medium focus:shadow-none focus-visible:ring-2 focus-visible:ring-sky-500 sm:text-sm">
-                  <option class="bg-transparent" value="2">2</option>
-                  <option class="bg-transparent" value="1.5">1.5</option>
-                  <option class="bg-transparent" value="1" selected>1</option>
-                  <option class="bg-transparent" value="0.5">0.5</option>
-                  <option class="bg-transparent" value="0.25">0.25</option>
-                  </select>
+                    <div class="dropdown relative">
+                        <button onclick="toggleDropdown()" class="dropdown-toggle cursor-pointer bg-transparent-200 p-2 rounded">
+                            <img src="{{ asset('images/Speed.png') }}" alt="Dropdown Icon" class="w-6 h-6" />
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" onclick="setSpeed(2)">2x</div>
+                            <div class="dropdown-item" onclick="setSpeed(1.5)">1.5x</div>
+                            <div class="dropdown-item selected" onclick="setSpeed(1)">1x</div>
+                            <div class="dropdown-item" onclick="setSpeed(0.5)">0.5x</div>
+                            <div class="dropdown-item" onclick="setSpeed(0.25)">0.25x</div>
+                        </div>
+                    </div>
+
                     <!--
                   <input
                     type="range"
@@ -272,6 +320,7 @@
                     value="1"
                   />
                     !-->
+
                   <label class="time2" style="color: white;">0:00</label>
 
                   <img src="{{asset('images/Fullscreen.png')}}" onclick="openFullscreen();" style="max-width: 30px; cursor: pointer;" />
@@ -296,6 +345,8 @@
             const time = document.querySelector(".time");
             const time2 = document.querySelector(".time2");
             const video_player = document.querySelector(".video-player");
+            const speedDropdown = document.getElementById("speedDropdown");
+            const dropdownItems = document.querySelectorAll(".dropdown-item");
 
             let isPaused = true;
             let isMouseOver = false;
@@ -382,7 +433,8 @@
 
 
             function updateToggleButton() {
-            toggleButton.innerHTML = video.paused ? "►" : "❚ ❚";
+            toggleButton.innerHTML = video.paused ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>'
+            : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg>';
             }
 
             function handleProgress() {
@@ -452,6 +504,48 @@
                 }
             }
             }
+
+                    // Handle Speed Selection
+        dropdownItems.forEach(item =>
+        {
+        item.addEventListener('click', (e) =>
+        {
+        const newSpeed = e.target.getAttribute('data-speed');
+        video.playbackRate = parseFloat(newSpeed);
+        // Hide the dropdown after selection
+        speedDropdown.classList.add('hidden');
+
+        // Highlight the selected option
+        dropdownItems.forEach(i => i.classList.remove('selected'));
+        e.target.classList.add('selected');
+        });
+        });
+
+        // Close dropdown if clicking outside of it
+        document.addEventListener('click', (e) => {
+            if (!speedDropdown.contains(e.target) && e.target !== speedIcon) {
+                speedDropdown.classList.add('hidden');
+            }
+        });
+
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('open');
+        }
+
+        function setSpeed(speed) {
+            const video = document.querySelector('video');
+            video.playbackRate = speed;
+
+            // Update the selected item
+            const items = document.querySelectorAll('.dropdown-item');
+            items.forEach(item => item.classList.remove('selected'));
+            event.target.classList.add('selected');
+
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.remove('open');
+
+        }
 
 
         </script>
