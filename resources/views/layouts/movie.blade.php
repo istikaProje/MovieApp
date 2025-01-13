@@ -260,6 +260,8 @@
 
 </style>
 
+<link rel="stylesheet" href="{{ asset('Icons/style.css') }}">
+
     <section class="relative z-10 py-20">
 
         <div class="container mx-auto">
@@ -273,7 +275,7 @@
                   />
                   <p>Your browser doesn't support HTML5 video.</p>
                 </video>
-                <button class="controls__button toggleButton" title="Toggle Play"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg> </button>
+                <button class="controls__button toggleButton" title="Toggle Play"> <i class="icon-Play"></i> </button>
                 <button class="controls__button time_skipL" data-skip="-10">« 10s</button>
                 <button class="controls__button time_skipR" data-skip="25">10s »</button>
                 <div class="controls">
@@ -281,9 +283,9 @@
                     <div class="progress__filled"></div>
                   </div>
 
-                  <label class="time" style="color: white;" width="10px">0:00</label>
+                  <label class="time" style="color: white; margin-top: 8px" width="10px">0:00</label>
 
-                  <img src="{{asset('images/Sound.png')}}"  style="max-width: 25px; max-height: 20px; margin-top: 5px; margin-left: 5px; cursor: pointer;" />
+                  <img src="{{asset('images/Sound.png')}}"  style="max-width: 25px; max-height: 20px; margin-top: 10px; margin-left: 5px; cursor: pointer;" />
                   <input
                     type="range"
                     name="volume"
@@ -293,6 +295,7 @@
                     step="0.05"
                     value="1"
                     width="10px"
+                    style="margin-top: 5px"
                   />
                   <div class="flex items-center justify-end space-x-2 ml-auto" style="margin-left: auto;">
 
@@ -433,8 +436,8 @@
 
 
             function updateToggleButton() {
-            toggleButton.innerHTML = video.paused ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>'
-            : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg>';
+            toggleButton.innerHTML = video.paused ? '<i class="icon-Play"></i>'
+            : '<i class="icon-Pause"></i>';
             }
 
             function handleProgress() {
