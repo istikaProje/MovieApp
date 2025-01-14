@@ -266,6 +266,9 @@
         <div class="container mx-auto">
           <div class="flex flex-wrap items-stretch">
 
+            <i class="icon-Dot" style="color: red"> </i>
+
+
             <div class="video-player" style=" display: block; margin-left: auto; margin-right: auto;" oncontextmenu="return false;">
                 <video class="video" id="myVideo" ondblclick="openFullscreen()">
                   <source
