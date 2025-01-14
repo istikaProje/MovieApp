@@ -1,0 +1,1 @@
+<?php /**PATH C:\wamp64\www\MovieApp\resources\views/users/dashboard.blade.php ENDPATH**/ ?>
