@@ -18,7 +18,7 @@
                   We create digital experiences for brands and companies by using
                   technology.
                 </p>
-                <div class="-mx-3 flex items-center">
+                <div class="flex items-center">
                   <a
                     href="javascript:void(0)"
                     class="px-3 text-[#dddddd] hover:opacity-30"
@@ -132,14 +132,14 @@
         </div>
   
         <div
-          class="mt-12 border-t border-white border-opacity-40 py-8 lg:mt-[60px]"
+          class="mt-12 border-t border-white border-opacity-40  py-8 lg:mt-[60px]"
         >
           <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap">
+            <div class=" flex flex-wrap">
               <div class="w-full px-4 md:w-2/3 lg:w-1/2">
                 <div class="my-1">
                   <div
-                    class="-mx-3 flex flex-wrap items-center justify-center md:justify-start"
+                    class=" flex flex-wrap items-center justify-center md:justify-start"
                   >
                     <a
                       href="javascript:void(0)"

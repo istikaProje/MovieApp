@@ -268,9 +268,7 @@
                 }
             </script>
 
-
-    @endguest
-
-</section>
+      @endguest
+   </section>
 
 @endsection
