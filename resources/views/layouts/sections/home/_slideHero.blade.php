@@ -14,10 +14,10 @@
            <!-- Content -->
            <div class="absolute bottom-10 left-10 z-20">
                <div x-data="{ show: false }" class="max-w-[400px]" @mouseenter="show = true" @mouseleave="show = false">
-                   {{--
+                   
                    <h1 class="text-4xl text-white cursor-pointer font-bold">Kaçık Astronot</h1>
-                   --}}
-                   <img src="{{asset('images/freelance.webp')}}" alt="freelance tetikci" />
+                   
+                  
 
                    <p
                        x-show="show"

@@ -9,6 +9,16 @@
         @csrf
         @method('PUT')
         <div class="mb-4">
+            <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+            <select name="type" id="type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                <option value="movie" {{ old('type', $movie->type) == 'movie' ? 'selected' : '' }}>Movie</option>
+                <option value="series" {{ old('type', $movie->type) == 'series' ? 'selected' : '' }}>Series</option>
+            </select>
+            @error('type')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
             <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
             @error('title')
@@ -38,9 +48,9 @@
         </div>
         <div class="mb-4">
             <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-            <input type="file" name="image" id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewImage(event)">
+            <input type="file" name="image" id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewImage(event, 'image-preview')">
             @if($movie->image)
-                <img src="{{ asset('storage/' . $movie->image) }}" alt="Current Image" class="mt-2 max-w-xs" id="image-preview">
+                <img src="{{ asset('storage/uploads/images/' . $movie->image) }}" alt="Current Image" class="mt-2 max-w-xs" id="image-preview">
             @endif
             @error('image')
             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -48,9 +58,9 @@
         </div>
         <div class="mb-4">
             <label for="video" class="block text-sm font-medium text-gray-700">Video</label>
-            <input type="file" name="video" id="video" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+            <input type="file" name="video" id="video" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewVideo(event, 'video-preview')">
             @if($movie->video)
-                <video width="320" height="240" controls class="mt-2">
+                <video width="320" height="240" controls class="mt-2" id="video-preview">
                     <source src="{{ asset('storage/' . $movie->video) }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -78,10 +88,19 @@
     </form>
 </div>
 <script>
-    function previewImage(event) {
+    function previewImage(event, previewId) {
         var reader = new FileReader();
         reader.onload = function(){
-            var output = document.getElementById('image-preview');
+            var output = document.getElementById(previewId);
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function previewVideo(event, previewId) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById(previewId);
             output.src = reader.result;
         };
         reader.readAsDataURL(event.target.files[0]);

@@ -11,20 +11,25 @@ class CreateMoviesTable extends Migration
      *
      * @return void
      */
+
+
     public function up()
-    {
-        Schema::create('movies', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->float('vote_average')->nullable();
-            $table->string('youtube_link')->nullable();
-            $table->string('image')->nullable(); // Image alanını ekliyoruz
-            $table->string('video')->nullable(); // Video alanını ekliyoruz
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Category ID alanını ekliyoruz
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('movies', function (Blueprint $table) {
+        $table->id();
+        $table->string('title');
+        $table->decimal('vote_average', 2, 1);
+        $table->string('youtube_link');
+        $table->text('description');
+        $table->string('image');
+        $table->string('video');
+        $table->string('type'); // type alanını ekleyin
+        $table->timestamps();
+        $table->unsignedBigInteger('category_id')->nullable(); // category_id alanını nullable yapın
+        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+    });
+}
+
 
     /**
      * Reverse the migrations.

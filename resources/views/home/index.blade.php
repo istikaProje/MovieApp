@@ -6,11 +6,10 @@
 
 <section class="container mx-auto">
     @auth
-    @include('layouts.sections._slideHero')
+    @include('layouts.sections.home._slideHero')
 
-
-    @include('layouts.sections._slideFirst')
-    @include('layouts.sections._slideSecond')
+    @include('layouts.sections.home._slideFirst')
+    @include('layouts.sections.home._slideSecond')
 
 
 

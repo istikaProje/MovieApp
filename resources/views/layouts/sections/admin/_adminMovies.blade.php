@@ -27,6 +27,7 @@
                   <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">YouTube Link</th>
                   <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Image</th>
                   <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Video</th>
+                  <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Release Date</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Actions</th>
               </tr>
           </thead>
@@ -49,8 +50,6 @@
                     @if($movie->image)
                       <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}" class="w-16 h-16 object-cover">
                     @endif
-
-          
                   </td>
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                     @if($movie->video)
@@ -59,6 +58,9 @@
                           Your browser does not support the video tag.
                       </video>
                     @endif
+                  </td>
+                  <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                      {{ $movie->release_date }}
                   </td>
                   <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-500 sm:pl-6">
                       <a href="{{ route('admin.movies.edit', $movie->id) }}" class="text-indigo-600 mr-2 hover:text-indigo-900">Edit</a>
@@ -71,7 +73,7 @@
               </tr>
               @empty
               <tr>
-                  <td colspan="7" class="py-4 pl-4 pr-3 text-sm font-medium text-gray-500 text-center">No movies found.</td>
+                  <td colspan="8" class="py-4 pl-4 pr-3 text-sm font-medium text-gray-500 text-center">No movies found.</td>
               </tr>
               @endforelse
           </tbody>
