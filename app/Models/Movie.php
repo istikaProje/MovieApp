@@ -15,10 +15,12 @@ class Movie extends Model
         'youtube_link',
         'image',
         'video',
+        'category_id', // category_id alanını ekleyin
+        'type', // type alanını ekleyin
     ];
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'category_movie');
     }
 }

@@ -1,6 +1,3 @@
-
-
-
 <!-- ====== Movie Section Start -->
 <section class="flex w-full mt-4 items-start">
     <div class="w-full px-4">
@@ -9,7 +6,7 @@
                 Movie Add
             </h2>
         </div>
-        <form  action="{{ route('admin.movies.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.movies.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="flex w-full md:space-x-4 flex-col md:flex-row">
                 <div class="mb-8 rounded-lg border border-stroke bg-white w-full">
@@ -20,11 +17,27 @@
                         <div class="flex flex-wrap">
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
+                                    <label for="type" class="mb-[10px] block text-base font-medium text-black">
+                                        Type
+                                    </label>
+                                    <div class="relative">
+                                        <select name="type" id="type" class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-12 pr-5 text-base text-black outline-none focus:border-primary">
+                                            <option value="movie" {{ old('type') == 'movie' ? 'selected' : '' }}>Movie</option>
+                                            <option value="series" {{ old('type') == 'series' ? 'selected' : '' }}>Series</option>
+                                        </select>
+                                        @error('type')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full px-3 md:w-1/2">
+                                <div class="mb-[30px]">
                                     <label for="title" class="mb-[10px] block text-base font-medium text-black">
                                         Movie Title
                                     </label>
                                     <div class="relative">
-                                        <input type="text" type="text" name="title" id="title" value="{{ old('title') }}"  placeholder="Movie Title"
+                                        <input type="text" name="title" id="title" value="{{ old('title') }}"  placeholder="Movie Title"
                                             class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-12 pr-5 text-base text-black outline-none focus:border-primary" />
 
                                             @error('title')
@@ -108,6 +121,9 @@
                                     </label>
                                     <input type="file" name="image" id="image"
                                         class="w-full rounded-md border border-[#E0E0E0] p-3 text-base text-black outline-none focus:border-primary" />
+                                    @if(old('image'))
+                                        <p class="text-green-500 text-xs mt-1">Image selected: {{ old('image') }}</p>
+                                    @endif
                                     @error('movie_image')
                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                     @enderror
@@ -120,6 +136,9 @@
                                     </label>
                                     <input type="file" name="video" id="video"
                                         class="w-full rounded-md border border-[#E0E0E0] p-3 text-base text-black outline-none focus:border-primary" />
+                                    @if(old('video'))
+                                        <p class="text-green-500 text-xs mt-1">Video selected: {{ old('video') }}</p>
+                                    @endif
                                     @error('movie_video')
                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                     @enderror
@@ -152,5 +171,20 @@
     </div>
 </section>
 <!-- ====== Movie Section End -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const imageInput = document.getElementById('image');
+        const videoInput = document.getElementById('video');
+
+        imageInput.addEventListener('change', function() {
+            localStorage.setItem('image', imageInput.value);
+        });
+
+        videoInput.addEventListener('change', function() {
+            localStorage.setItem('video', videoInput.value);
+        });
+    });
+</script>
 
 

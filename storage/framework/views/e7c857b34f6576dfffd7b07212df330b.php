@@ -1,19 +1,18 @@
-@extends('layouts.adminMaster')
+<?php $__env->startSection('title', 'Movies'); ?>
+<?php $__env->startSection('description', 'Movies page.'); ?>
+<?php $__env->startSection('keywords', 'movies, admin, dashboard'); ?>
 
-@section('title', 'Movies')
-@section('description', 'Movies page.')
-@section('keywords', 'movies, admin, dashboard')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="container h-screen mx-auto">
-    @if(session('success'))
+    <?php if(session('success')): ?>
     <div class="bg-green-500 text-white p-4 rounded mb-4">
-        {{ session('success') }}
+        <?php echo e(session('success')); ?>
+
     </div>
-    @endif
+    <?php endif; ?>
     <div class="flex justify-end mb-4">
-        <a href="{{ route('admin.movies.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="<?php echo e(route('admin.movies.create')); ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Add Movie
         </a>
     </div>
@@ -32,52 +31,57 @@
               </tr>
           </thead>
           <tbody>
-              @forelse($movies as $movie)
+              <?php $__empty_1 = true; $__currentLoopData = $movies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
               <tr class="odd:bg-white even:bg-slate-50">
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                      {{ $movie->title }}
+                      <?php echo e($movie->title); ?>
+
                   </td>
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                      {{ $movie->description }}
+                      <?php echo e($movie->description); ?>
+
                   </td>
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                      {{ $movie->vote_average }}
+                      <?php echo e($movie->vote_average); ?>
+
                   </td>
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                      <a href="{{ $movie->youtube_link }}" target="_blank" class="text-blue-600 hover:text-blue-900">{{ $movie->youtube_link }}</a>
+                      <a href="<?php echo e($movie->youtube_link); ?>" target="_blank" class="text-blue-600 hover:text-blue-900"><?php echo e($movie->youtube_link); ?></a>
                   </td>
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                    @if($movie->image)
-                      <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}" class="w-16 h-16 object-cover">
-                    @endif
+                    <?php if($movie->image): ?>
+                      <img src="<?php echo e(asset('storage/' . $movie->image)); ?>" alt="<?php echo e($movie->title); ?>" class="w-16 h-16 object-cover">
+                    <?php endif; ?>
                   </td>
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                    @if($movie->video)
+                    <?php if($movie->video): ?>
                       <video width="320" height="240" controls>
-                          <source src="{{ asset('storage/' . $movie->video) }}" type="video/mp4">
+                          <source src="<?php echo e(asset('storage/' . $movie->video)); ?>" type="video/mp4">
                           Your browser does not support the video tag.
                       </video>
-                    @endif
+                    <?php endif; ?>
                   </td>
                   <td class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                      {{ $movie->release_date }}
+                      <?php echo e($movie->release_date); ?>
+
                   </td>
                   <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-500 sm:pl-6">
-                      <a href="{{ route('admin.movies.edit', $movie->id) }}" class="text-indigo-600 mr-2 hover:text-indigo-900">Edit</a>
-                      <form action="{{ route('admin.movies.destroy', $movie->id) }}" method="POST" class="inline-block">
-                          @csrf
-                          @method('DELETE')
+                      <a href="<?php echo e(route('admin.movies.edit', $movie->id)); ?>" class="text-indigo-600 mr-2 hover:text-indigo-900">Edit</a>
+                      <form action="<?php echo e(route('admin.movies.destroy', $movie->id)); ?>" method="POST" class="inline-block">
+                          <?php echo csrf_field(); ?>
+                          <?php echo method_field('DELETE'); ?>
                           <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
                       </form>
                   </td>
               </tr>
-              @empty
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
               <tr>
                   <td colspan="8" class="py-4 pl-4 pr-3 text-sm font-medium text-gray-500 text-center">No movies found.</td>
               </tr>
-              @endforelse
+              <?php endif; ?>
           </tbody>
       </table>
   </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminMaster', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/MovieApp/resources/views/layouts/sections/admin/_adminMovies.blade.php ENDPATH**/ ?>

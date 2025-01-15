@@ -111,4 +111,4 @@
 
         </div>
       </footer>
-      <!-- ====== Footer Section End -->
+      <!-- ====== Footer Section End --><?php /**PATH /var/www/MovieApp/resources/views/layouts/adminFooter.blade.php ENDPATH**/ ?>
