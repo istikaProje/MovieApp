@@ -48,7 +48,7 @@
                                        fill-rule="evenodd"
                                    ></path>
                                </svg>
-                           </svg>
+                           </svg> <!-- Play SVG -->
                        </div>
                        Şimdi İzle
                    </button>
@@ -65,7 +65,7 @@
                                        fill-rule="evenodd"
                                    ></path>
                                </svg>
-                           </svg>
+                           </svg> <!-- Plus SVG -->
                        </button>
                        <div class="absolute bottom-full left-1/2 z-20 mb-3 -translate-x-1/2 whitespace-nowrap rounded bg-third py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100">
                            <span class="absolute bottom-[-3px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm bg-third"></span>
@@ -124,7 +124,7 @@
                                      fill-rule="evenodd"
                                  ></path>
                              </svg>
-                         </svg>
+                         </svg> <!-- Play SVG -->
                      </div>
                      Şimdi İzle
                  </button>
@@ -141,7 +141,7 @@
                                      fill-rule="evenodd"
                                  ></path>
                              </svg>
-                         </svg>
+                         </svg> <!-- Plus SVG -->
                      </button>
                      <div class="absolute bottom-full left-1/2 z-20 mb-3 -translate-x-1/2 whitespace-nowrap rounded bg-third py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100">
                          <span class="absolute bottom-[-3px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm bg-third"></span>
@@ -152,7 +152,7 @@
          </div>
      </div>
 
-      
+
    </div>
 
    <div class="swiper-button-next !text-white hover:scale-125"></div>

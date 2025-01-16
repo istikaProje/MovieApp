@@ -17,7 +17,7 @@
         <li>
             <a href="{{ route('admin.movies.index') }}" class="text-white hover:text-secondary transition-colors duration-300">Movies</a>
         </li>
-  
+
         <li>
             <a href="{{ route('admin.users') }}" class="text-white hover:text-secondary transition-colors duration-300">Users</a>
         </li>
@@ -37,7 +37,7 @@
             <button type="submit" class="flex items-center px-4 py-2 text-white bg-secondary hover:bg-red-700 rounded-lg shadow-md transition duration-300">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
+                </svg> <!-- Logout SVG -->
                 Logout
             </button>
         </form>
@@ -64,7 +64,7 @@
     <li>
         <a href="{{ route('admin.movies.index') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Movies</a>
     </li>
-  
+
     <li>
         <a href="{{ route('admin.users') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Users</a>
     </li>
@@ -79,5 +79,5 @@
     @endauth
 </ul>
 </div>
-       
+
 </header>

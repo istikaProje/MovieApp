@@ -51,7 +51,7 @@
                                     viewBox="0 0 20 20">
                                     <path
                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                 </svg>
+                                 </svg> <!-- Arrow Svg -->
                               </span>
                            </button>
                            <!-- End Dropdown Toggle Button -->
@@ -68,7 +68,7 @@
                               @foreach($categories as $category)
                               <a href="{{ route('category.show', $category->id) }}" class="block px-4 py-1 hover:text-third hover:bg-white rounded">{{ $category->name }}</a>
                               @endforeach
-                           
+
                            </div>
                            <!-- End Dropdown Menu -->
                         </div>
@@ -108,9 +108,9 @@
                   class="shadow-card absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-third text-white p-2">
 
                   @if (Auth::user()->role === 'admin')
-              
+
                         <a class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-                  
+
                @endif
 
                   <a href="{{ route('dashboard') }}"
@@ -137,7 +137,7 @@
                            class="transition-transform  ml-2 duration-500 transform inline-block">
                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                               <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                           </svg>
+                           </svg> <!-- Arrow Svg -->
                         </span>
                      </a>
                      <div x-show="open" @click.away="open = false"

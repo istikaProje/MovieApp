@@ -36,7 +36,7 @@
                                                 <path fill="#637381"
                                                     d="M19,2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V5A3,3,0,0,0,19,2ZM16.09,4l-4,4H7.91l4-4ZM4,5A1,1,0,0,1,5,4H9.09l-4,4H4ZM20,19a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V10H20ZM20,8H14.91l4-4H19a1,1,0,0,1,1,1Z">
                                                 </path>
-                                            </svg>
+                                            </svg> <!-- Movie SVG -->
                                         </span>
                                         @error('movie_title')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -59,7 +59,7 @@
                                                 <path fill="#637381"
                                                     d="m15.397 4.687 2.579 5.225a1 1 0 0 0 .753.547l5.766.838a1 1 0 0 1 .554 1.706l-4.173 4.067c-.236.23-.343.561-.288.885l.985 5.743a1 1 0 0 1-1.451 1.054l-5.158-2.712a1.002 1.002 0 0 0-.931 0l-5.158 2.712a1 1 0 0 1-1.451-1.054l.985-5.743a.999.999 0 0 0-.288-.885l-4.173-4.067a1 1 0 0 1 .554-1.706l5.766-.838a1 1 0 0 0 .753-.547L13.6 4.687c.37-.743 1.43-.743 1.797 0z">
                                                 </path>
-                                            </svg>
+                                            </svg> <!-- Star SVG -->
                                         </span>
                                         @error('vote_average')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -81,7 +81,7 @@
                                                 <path fill="#637381"
                                                     d="M19.615,3.184c-0.203-0.76-0.797-1.354-1.557-1.557C16.5,1.25,12,1.25,12,1.25s-4.5,0-6.058,0.377c-0.76,0.203-1.354,0.797-1.557,1.557C4,4.742,4,8.5,4,8.5s0,3.758,0.385,5.316c0.203,0.76,0.797,1.354,1.557,1.557C7.5,15.75,12,15.75,12,15.75s4.5,0,6.058-0.377c0.76-0.203,1.354-0.797,1.557-1.557C20,12.258,20,8.5,20,8.5S20,4.742,19.615,3.184z M9.75,11.5V5.5l5.25,3L9.75,11.5z">
                                                 </path>
-                                            </svg>
+                                            </svg> <!-- Youtube SVG -->
                                         </span>
                                         @error('youtube_link')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -130,7 +130,7 @@
                                     <label class="mb-[10px] block text-base font-medium text-black">
                                         Categories
                                     </label>
-                                    
+
                                     @foreach($categories as $category)
                                         <div class="flex items-center mb-2">
                                             <input type="checkbox" id="category_{{ $category->id }}" name="categories[]" value="{{ $category->id }}"
