@@ -63,8 +63,7 @@
                 </ul>
              </div>
 
-             <button class="w-full mt-auto bg-white text-primary py-2 rounded-lg hover:bg-gray-200 transition">Hemen
-                Başla</button>
+             <button class="w-full mt-auto bg-white text-primary py-2 rounded-lg hover:bg-gray-200 transition">Hemen Başla</button>
           </div>
        </div>
     </div>

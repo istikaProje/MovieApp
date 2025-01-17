@@ -16,6 +16,9 @@
         @stack('styles')
 
     </head>
+    <link rel="stylesheet" href="{{ asset('Icons/style.css') }}">
+
+
     <body class="bg-gradient-to-b from-gray-800 to-gray-900  ">
 
         {{-- Navbar --}}
