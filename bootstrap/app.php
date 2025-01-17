@@ -16,9 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin.guest' => App\Http\Middleware\AdminRedirect::class,
 
        ]);
-       
+
         $middleware->redirectTo(
-            guests: '/auth/login',
+            guests: '/login',
             users: '/users/dashboard',
         );
     })

@@ -2,6 +2,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateCategoriesTable extends Migration
 {
@@ -26,6 +27,16 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        if (Schema::hasTable('category_movie')) {
+            Schema::table('category_movie', function (Blueprint $table) {
+                // Check if the foreign key exists before attempting to drop it
+                $foreignKeys = DB::select(DB::raw('SHOW KEYS FROM category_movie WHERE Key_name="category_movie_category_id_foreign"'));
+                if (!empty($foreignKeys)) {
+                    $table->dropForeign(['category_id']);
+                }
+            });
+        }
+
         Schema::dropIfExists('categories');
     }
 }

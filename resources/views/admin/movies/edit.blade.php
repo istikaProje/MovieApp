@@ -38,7 +38,7 @@
         </div>
         <div class="mb-4">
             <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-            <input type="file" name="image" id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewImage(event)">
+            <input type="file" name="image" id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewImage(event, 'image-preview')">
             @if($movie->image)
                 <img src="{{ asset('storage/' . $movie->image) }}" alt="Current Image" class="mt-2 max-w-xs" id="image-preview">
             @endif
@@ -48,9 +48,9 @@
         </div>
         <div class="mb-4">
             <label for="video" class="block text-sm font-medium text-gray-700">Video</label>
-            <input type="file" name="video" id="video" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+            <input type="file" name="video" id="video" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewVideo(event, 'video-preview')">
             @if($movie->video)
-                <video width="320" height="240" controls class="mt-2">
+                <video width="320" height="240" controls class="mt-2" id="video-preview">
                     <source src="{{ asset('storage/' . $movie->video) }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -59,6 +59,34 @@
             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
         </div>
+        <div class="mb-4">
+            <label for="poster" class="block text-sm font-medium text-gray-700">Poster</label>
+            <input type="file" name="poster" id="poster" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewImage(event, 'poster-preview')">
+            @if($movie->poster)
+                <img src="{{ asset('storage/' . $movie->poster) }}" alt="Current Poster" class="mt-2 max-w-xs" id="poster-preview">
+            @endif
+            @error('poster')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+        <!-- Series-specific fields -->
+        <div id="series-fields" class="mb-4 {{ old('type', $movie->type) == 'series' ? '' : 'hidden' }}">
+            <div class="mb-4">
+                <label for="seasons" class="block text-sm font-medium text-gray-700">Number of Seasons</label>
+                <input type="number" name="seasons" id="seasons" value="{{ old('seasons', $movie->seasons) }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                @error('seasons')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <label for="episodes" class="block text-sm font-medium text-gray-700">Number of Episodes per Season</label>
+                <input type="number" name="episodes" id="episodes" value="{{ old('episodes', $movie->episodes) }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                @error('episodes')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+        </div>
+        <!-- End of Series-specific fields -->
         <div class="mb-4">
             <label for="categories" class="block text-sm font-medium text-gray-700">Categories</label>
             <select name="categories[]" id="categories" multiple class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
@@ -78,13 +106,38 @@
     </form>
 </div>
 <script>
-    function previewImage(event) {
+    function previewImage(event, previewId) {
         var reader = new FileReader();
         reader.onload = function(){
-            var output = document.getElementById('image-preview');
+            var output = document.getElementById(previewId);
             output.src = reader.result;
         };
         reader.readAsDataURL(event.target.files[0]);
     }
+
+    function previewVideo(event, previewId) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById(previewId);
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const typeSelect = document.getElementById('type');
+        const seriesFields = document.getElementById('series-fields');
+
+        typeSelect.addEventListener('change', function() {
+            if (typeSelect.value === 'series') {
+                seriesFields.classList.remove('hidden');
+            } else {
+                seriesFields.classList.add('hidden');
+            }
+        });
+
+        // Trigger change event to show/hide fields on page load based on old input
+        typeSelect.dispatchEvent(new Event('change'));
+    });
 </script>
 @endsection

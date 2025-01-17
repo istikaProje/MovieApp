@@ -8,7 +8,6 @@
     @auth
     @include('layouts.sections.home._slideHero')
 
-
     @include('layouts.sections.home._slideFirst')
     @include('layouts.sections.home._slideSecond')
 
