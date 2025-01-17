@@ -18,7 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
        ]);
        
         $middleware->redirectTo(
-            guests: '/auth/login',
+            guests: '/login',
             users: '/users/dashboard',
         );
     })

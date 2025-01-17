@@ -10,7 +10,7 @@
             </a>
          </div>
          <div class="flex w-full items-center justify-between px-4">
-            <div>
+        
 
 
 
@@ -24,57 +24,17 @@
                         </a>
                      </li>
                      <li>
-                        <a href="javascript:void(0)"
+                        <a href="{{ route('movies.index') }}"
                            class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
                            Movies
                         </a>
                      </li>
-                     <li>
-                        <a href="javascript:void(0)"
-                           class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
-                           Series
-                        </a>
-                     </li>
+                 
+         
 
 
-                     <li>
-                        <!-- Dropdown 1 -->
-                        <div x-data="{ open: false }" @mouseleave="open = false" class="relative inline-block"
-                           :class="{ 'text-gray-900': open, 'text-gray-600': !open }">
-                           <!-- Dropdown Toggle Button -->
-                           <button @mouseover="open = true"
-                              class="flex py-2 items-center font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
-                              <span class="mr-4">Categories</span>
-                              <span :class="open = !open ? '' : '-rotate-180'"
-                                 class="transition-transform duration-500 transform">
-                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path
-                                       d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                 </svg>
-                              </span>
-                           </button>
-                           <!-- End Dropdown Toggle Button -->
-
-                           <!-- Dropdown Menu -->
-                           <div x-show="open" x-transition:enter="transition ease-out duration-300"
-                              x-transition:enter-start="opacity-0 transform scale-90"
-                              x-transition:enter-end="opacity-100 transform scale-100"
-                              x-transition:leave="transition ease-in duration-300"
-                              x-transition:leave-start="opacity-100 transform scale-100"
-                              x-transition:leave-end="opacity-0 transform scale-90"
-                              class="absolute right-0  text-white bg-third rounded-lg p-2 shadow-xl min-w-max">
-
-                              @foreach($categories as $category)
-                              <a href="{{ route('category.show', $category->id) }}" class="block px-4 py-1 hover:text-third hover:bg-white rounded">{{ $category->name }}</a>
-                              @endforeach
-                           
-                           </div>
-                           <!-- End Dropdown Menu -->
-                        </div>
-                        <!-- End Dropdown 1 -->
-            </div>
-            </li>
+                    
+       
             </ul>
             </nav>
          </div>
@@ -121,32 +81,13 @@
                      class="hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
                      Home
                   </a>
-                  <a href="{{ route('dashboard') }}"
+                  <a href="{{ route('movies.index') }}"
                      class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
                      Movies
                   </a>
-                  <a href="{{ route('dashboard') }}"
-                     class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm ">
-                     Series
-                  </a>
-                  <div x-data="{ open: false }" class="relative">
-                     <a href="javascript:void(0)" @click="open = !open"
-                        class="hover:bg-white hover:text-third  w-full flex items-center rounded py-2 px-3 text-left text-sm">
-                        Categories
-                        <span :class="open ? '-rotate-180' : ''"
-                           class="transition-transform  ml-2 duration-500 transform inline-block">
-                           <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                           </svg>
-                        </span>
-                     </a>
-                     <div x-show="open" @click.away="open = false"
-                        class="absolute left-0 mt-2 w-48 bg-third text-white p-2 rounded shadow-lg">
-                        @foreach($categories as $category)
-                        <a href="{{ route('category.show', $category->id) }}" class="block px-4 py-1 hover:text-third hover:bg-white rounded">{{ $category->name }}</a>
-                        @endforeach
-                     </div>
-                  </div>
+           
+         
+   
 
 
 

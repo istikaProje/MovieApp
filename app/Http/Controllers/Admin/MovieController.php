@@ -25,19 +25,18 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'type' => 'required|string|in:movie,series',
             'title' => 'required|string|max:255',
-            'vote_average' => 'required|numeric|min:1|max:5',
+            'vote_average' => 'required|numeric|min:1|max:10',
             'youtube_link' => 'nullable|url',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:categories,id',
+            'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         $movie = new Movie();
-        $movie->type = $request->type;
         $movie->title = $request->title;
         $movie->vote_average = $request->vote_average;
         $movie->youtube_link = $request->youtube_link;
@@ -51,6 +50,11 @@ class MovieController extends Controller
         if ($request->hasFile('video')) {
             $videoPath = $request->file('video')->store('videos', 'public');
             $movie->video = $videoPath;
+        }
+
+        if ($request->hasFile('poster')) {
+            $posterPath = $request->file('poster')->store('posters', 'public');
+            $movie->poster = $posterPath;
         }
 
         $movie->save();
@@ -72,15 +76,15 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'type' => 'required|string|in:movie,series', // type doğrulama
             'title' => 'required',
             'description' => 'nullable',
             'vote_average' => 'nullable|numeric|min:0|max:10',
             'youtube_link' => 'nullable|url',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000', // Video doğrulama
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000',
             'categories' => 'required|array',
-            'categories.*' => 'exists:categories,id', // Category doğrulama
+            'categories.*' => 'exists:categories,id',
+            'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         $movie = Movie::findOrFail($id);
@@ -103,14 +107,23 @@ class MovieController extends Controller
             $movie->video = $videoPath;
         }
 
+        if ($request->hasFile('poster')) {
+            if ($movie->poster) {
+                Storage::disk('public')->delete($movie->poster);
+            }
+            $posterPath = $request->file('poster')->store('uploads/posters', 'public');
+            chmod(storage_path('app/public/' . $posterPath), 0644);
+            $movie->poster = $posterPath;
+        }
+
         $movie->update([
-            'type' => $request->type, // type alanını güncelle
             'title' => $request->title,
             'description' => $request->description,
             'vote_average' => $request->vote_average,
             'youtube_link' => $request->youtube_link,
             'image' => $movie->image,
             'video' => $movie->video,
+            'poster' => $movie->poster,
         ]);
 
         $movie->categories()->sync($request->categories);

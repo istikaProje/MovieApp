@@ -8,16 +8,7 @@
     <form action="{{ route('admin.movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="mb-4">
-            <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
-            <select name="type" id="type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
-                <option value="movie" {{ old('type', $movie->type) == 'movie' ? 'selected' : '' }}>Movie</option>
-                <option value="series" {{ old('type', $movie->type) == 'series' ? 'selected' : '' }}>Series</option>
-            </select>
-            @error('type')
-            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-        </div>
+
         <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
             <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
@@ -50,7 +41,7 @@
             <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
             <input type="file" name="image" id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewImage(event, 'image-preview')">
             @if($movie->image)
-                <img src="{{ asset('storage/uploads/images/' . $movie->image) }}" alt="Current Image" class="mt-2 max-w-xs" id="image-preview">
+                <img src="{{ asset('storage/' . $movie->image) }}" alt="Current Image" class="mt-2 max-w-xs" id="image-preview">
             @endif
             @error('image')
             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -69,6 +60,34 @@
             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
         </div>
+        <div class="mb-4">
+            <label for="poster" class="block text-sm font-medium text-gray-700">Poster</label>
+            <input type="file" name="poster" id="poster" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" onchange="previewImage(event, 'poster-preview')">
+            @if($movie->poster)
+                <img src="{{ asset('storage/' . $movie->poster) }}" alt="Current Poster" class="mt-2 max-w-xs" id="poster-preview">
+            @endif
+            @error('poster')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+        <!-- Series-specific fields -->
+        <div id="series-fields" class="mb-4 {{ old('type', $movie->type) == 'series' ? '' : 'hidden' }}">
+            <div class="mb-4">
+                <label for="seasons" class="block text-sm font-medium text-gray-700">Number of Seasons</label>
+                <input type="number" name="seasons" id="seasons" value="{{ old('seasons', $movie->seasons) }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                @error('seasons')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <label for="episodes" class="block text-sm font-medium text-gray-700">Number of Episodes per Season</label>
+                <input type="number" name="episodes" id="episodes" value="{{ old('episodes', $movie->episodes) }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                @error('episodes')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+        </div>
+        <!-- End of Series-specific fields -->
         <div class="mb-4">
             <label for="categories" class="block text-sm font-medium text-gray-700">Categories</label>
             <select name="categories[]" id="categories" multiple class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
@@ -105,5 +124,21 @@
         };
         reader.readAsDataURL(event.target.files[0]);
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const typeSelect = document.getElementById('type');
+        const seriesFields = document.getElementById('series-fields');
+
+        typeSelect.addEventListener('change', function() {
+            if (typeSelect.value === 'series') {
+                seriesFields.classList.remove('hidden');
+            } else {
+                seriesFields.classList.add('hidden');
+            }
+        });
+
+        // Trigger change event to show/hide fields on page load based on old input
+        typeSelect.dispatchEvent(new Event('change'));
+    });
 </script>
 @endsection

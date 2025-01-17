@@ -16,7 +16,7 @@ class Movie extends Model
         'image',
         'video',
         'category_id', // category_id alanını ekleyin
-        'type', // type alanını ekleyin
+        'poster', // poster alanını ekleyin
     ];
 
     public function categories()

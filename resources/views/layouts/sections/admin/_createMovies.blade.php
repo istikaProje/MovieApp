@@ -3,7 +3,7 @@
     <div class="w-full px-4">
         <div class="flex flex-wrap px- items-end justify-between sm:flex-nowrap sm:space-x-4">
             <h2 class="mb-4 text-2xl font-semibold text-white">
-                Movie Add
+                Add Movie
             </h2>
         </div>
         <form action="{{ route('admin.movies.store') }}" method="POST" enctype="multipart/form-data" novalidate>
@@ -11,35 +11,18 @@
             <div class="flex w-full md:space-x-4 flex-col md:flex-row">
                 <div class="mb-8 rounded-lg border border-stroke bg-white w-full">
                     <h3 class="border-b border-stroke py-4 px-7 text-base font-medium text-black">
-                        Movie Information
+                        Information
                     </h3>
                     <div class="p-7">
                         <div class="flex flex-wrap">
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
-                                    <label for="type" class="mb-[10px] block text-base font-medium text-black">
-                                        Type
-                                    </label>
-                                    <div class="relative">
-                                        <select name="type" id="type" class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-12 pr-5 text-base text-black outline-none focus:border-primary">
-                                            <option value="movie" {{ old('type') == 'movie' ? 'selected' : '' }}>Movie</option>
-                                            <option value="series" {{ old('type') == 'series' ? 'selected' : '' }}>Series</option>
-                                        </select>
-                                        @error('type')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full px-3 md:w-1/2">
-                                <div class="mb-[30px]">
                                     <label for="title" class="mb-[10px] block text-base font-medium text-black">
-                                        Movie Title
+                                        Title
                                     </label>
                                     <div class="relative">
-                                        <input type="text" name="title" id="title" value="{{ old('title') }}"  placeholder="Movie Title"
+                                        <input type="text" name="title" id="title" value="{{ old('title') }}"  placeholder="Title"
                                             class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-12 pr-5 text-base text-black outline-none focus:border-primary" />
-
                                             @error('title')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                         @enderror
@@ -51,9 +34,6 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        @error('movie_title')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +43,7 @@
                                         Vote Average
                                     </label>
                                     <div class="relative">
-                                        <input type="number" name="vote_average" id="vote_average" min="1" max="5"
+                                        <input type="number" name="vote_average" id="vote_average" min="1" max="10" step="0.1"
                                             class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-12 pr-5 text-base text-black outline-none focus:border-primary" />
                                         <span class="absolute left-[18px] top-1/2 -translate-y-1/2">
                                             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +63,7 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
                                     <label for="youtube_link" class="mb-[10px] block text-base font-medium text-black">
-                                        YouTube Fragman Link
+                                        YouTube Trailer Link
                                     </label>
                                     <div class="relative">
                                         <input type="url" name="youtube_link" id="youtube_link" placeholder="https://www.youtube.com/watch?v=example"
@@ -117,14 +97,14 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
                                     <label for="image" class="mb-[10px] block text-base font-medium text-black">
-                                        Movie Image
+                                        Image
                                     </label>
-                                    <input type="file" name="image" id="image"
+                                    <input type="file" name="image" id="image" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg,image/webp"
                                         class="w-full rounded-md border border-[#E0E0E0] p-3 text-base text-black outline-none focus:border-primary" />
                                     @if(old('image'))
                                         <p class="text-green-500 text-xs mt-1">Image selected: {{ old('image') }}</p>
                                     @endif
-                                    @error('movie_image')
+                                    @error('image')
                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
@@ -132,14 +112,29 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
                                     <label for="video" class="mb-[10px] block text-base font-medium text-black">
-                                        Movie Video
+                                        Video
                                     </label>
-                                    <input type="file" name="video" id="video"
+                                    <input type="file" name="video" id="video" accept="video/mp4,video/mov,video/ogg,video/qt"
                                         class="w-full rounded-md border border-[#E0E0E0] p-3 text-base text-black outline-none focus:border-primary" />
                                     @if(old('video'))
                                         <p class="text-green-500 text-xs mt-1">Video selected: {{ old('video') }}</p>
                                     @endif
-                                    @error('movie_video')
+                                    @error('video')
+                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="w-full px-3 md:w-1/2">
+                                <div class="mb-[30px]">
+                                    <label for="poster" class="mb-[10px] block text-base font-medium text-black">
+                                        Poster
+                                    </label>
+                                    <input type="file" name="poster" id="poster" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg,image/webp"
+                                        class="w-full rounded-md border border-[#E0E0E0] p-3 text-base text-black outline-none focus:border-primary" />
+                                    @if(old('poster'))
+                                        <p class="text-green-500 text-xs mt-1">Poster selected: {{ old('poster') }}</p>
+                                    @endif
+                                    @error('poster')
                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
@@ -162,29 +157,15 @@
                                     @enderror
                                 </div>
                             </div>
+                   
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Add Movie</button>
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Add</button>
         </form>
     </div>
 </section>
-<!-- ====== Movie Section End -->
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const imageInput = document.getElementById('image');
-        const videoInput = document.getElementById('video');
-
-        imageInput.addEventListener('change', function() {
-            localStorage.setItem('image', imageInput.value);
-        });
-
-        videoInput.addEventListener('change', function() {
-            localStorage.setItem('video', videoInput.value);
-        });
-    });
-</script>
 
 

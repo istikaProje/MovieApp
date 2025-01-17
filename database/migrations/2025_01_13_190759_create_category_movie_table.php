@@ -13,18 +13,30 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('movies', function (Blueprint $table) {
-            // Foreign key kısıtlamasını geçici olarak kaldırın
-            $table->unsignedBigInteger('category_id')->nullable()->change();
+            if (!Schema::hasColumn('movies', 'category_id')) {
+                $table->unsignedBigInteger('category_id')->nullable();
+            }
         });
 
-        // Veritabanındaki geçersiz category_id değerlerini NULL yapın
-        DB::table('movies')->whereNotIn('category_id', function ($query) {
-            $query->select('id')->from('categories');
-        })->update(['category_id' => null]);
+        if (Schema::hasColumn('movies', 'category_id')) {
+            // Veritabanındaki geçersiz category_id değerlerini NULL yapın
+            DB::table('movies')->whereNotIn('category_id', function ($query) {
+                $query->select('id')->from('categories');
+            })->update(['category_id' => null]);
+        }
 
-        // Foreign key kısıtlamasını ekleyin
+        // Foreign key kısıtlamasını eklemeden önce mevcut olup olmadığını kontrol edin
         Schema::table('movies', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            if (!Schema::hasColumn('movies', 'category_id')) {
+                $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            }
+        });
+
+        Schema::create('category_movie', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -34,8 +46,19 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
-            $table->dropColumn('category_id');
+            if (Schema::hasColumn('movies', 'category_id')) {
+                if (Schema::hasColumn('movies', 'movies_category_id_foreign')) {
+                    $table->dropForeign(['category_id']);
+                }
+                $table->dropColumn('category_id');
+            }
         });
+
+        Schema::table('category_movie', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropForeign(['movie_id']);
+        });
+
+        Schema::dropIfExists('category_movie');
     }
 };
