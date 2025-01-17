@@ -264,9 +264,9 @@
     <section class="relative z-10 py-20">
 
         <div class="container mx-auto">
-          <div class="flex flex-wrap items-stretch">
-
-            <div class="video-player" style=" display: block; margin-left: auto; margin-right: auto;" oncontextmenu="return false;">
+            <div class="flex flex-wrap items-stretch">
+         <!-- Video Player -->
+            <div class="video-player" style=" display: block; margin-left: auto; margin-right: auto;" oncontextmenu="return false;"> <!-- div video player için div oncontextmenu="return false;" sağ tık'ı kapatıyor  -->
                 <video class="video" id="myVideo" ondblclick="openFullscreen()">
                   <source
                     src="<?php echo e(asset('videos/videom2.mp4')); ?>"
@@ -276,7 +276,7 @@
                 </video>
                 <button class="controls__button toggleButton" title="Toggle Play"> <i class="icon-Play"></i> </button>
                 <button class="controls__button time_skipL" data-skip="-10">« 10s</button>
-                <button class="controls__button time_skipR" data-skip="25">10s »</button>
+                <button class="controls__button time_skipR" data-skip="10">10s »</button>
                 <div class="controls">
                   <div class="progress">
                     <div class="progress__filled"></div>
@@ -434,9 +434,9 @@
             video.addEventListener("timeupdate", timeUpdate);
 
 
-            function updateToggleButton() {
-            toggleButton.innerHTML = video.paused ? '<i class="icon-Play"></i>'
-            : '<i class="icon-Pause"></i>';
+            function updateToggleButton()
+            {
+            toggleButton.innerHTML = video.paused ? '<i class="icon-Play"></i>' : '<i class="icon-Pause"></i>';
             }
 
             function handleProgress() {
@@ -484,30 +484,35 @@
 
             function openFullscreen()
             {
-            if (video_player.requestFullscreen) {
-                if (document.fullscreenElement) {
-                document.exitFullscreen();
-                } else {
-                video_player.requestFullscreen();
+                if (video_player.requestFullscreen)
+                {
+                    if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                    } else {
+                    video_player.requestFullscreen();
+                    }
                 }
-            }
-            else if (video_player.webkitRequestFullscreen) { /* Safari için*/
-                if (document.webkitFullscreenElement) {
-                document.webkitExitFullscreen();
-                } else {
-                video_player.webkitRequestFullscreen();
+
+                else if (video_player.webkitRequestFullscreen)
+                { /* Safari için*/
+                    if (document.webkitFullscreenElement) {
+                    document.webkitExitFullscreen();
+                    } else {
+                    video_player.webkitRequestFullscreen();
+                    }
                 }
-            }
-            else if (video_player.msRequestFullscreen) { /* IE11 için*/
-                if (document.msFullscreenElement) {
-                document.msExitFullscreen();
-                } else {
-                video_player.msRequestFullscreen();
+
+                else if (video_player.msRequestFullscreen)
+                { /* IE11 için*/
+                    if (document.msFullscreenElement) {
+                    document.msExitFullscreen();
+                    } else {
+                    video_player.msRequestFullscreen();
+                    }
                 }
-            }
             }
 
-                    // Handle Speed Selection
+         // Handle Speed Selection
         dropdownItems.forEach(item =>
         {
         item.addEventListener('click', (e) =>
@@ -523,7 +528,7 @@
         });
         });
 
-        // Close dropdown if clicking outside of it
+        // Close dropdown if clicking outside of it (çalışmıyor silinebilir)
         document.addEventListener('click', (e) => {
             if (!speedDropdown.contains(e.target) && e.target !== speedIcon) {
                 speedDropdown.classList.add('hidden');
@@ -536,14 +541,12 @@
         }
 
         function setSpeed(speed) {
-            const video = document.querySelector('video');
+            const video = document.querySelector('video'); //gereksiz bir kod daha
             video.playbackRate = speed;
-
             // Update the selected item
             const items = document.querySelectorAll('.dropdown-item');
             items.forEach(item => item.classList.remove('selected'));
             event.target.classList.add('selected');
-
             const dropdown = document.querySelector('.dropdown');
             dropdown.classList.remove('open');
 

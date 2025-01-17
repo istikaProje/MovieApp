@@ -18,6 +18,8 @@
         @stack('styles')
 
     </head>
+    <link rel="stylesheet" href="{{ asset('Icons/style.css') }}">
+
     <body class="bg-primary  ">
 
         {{-- Navbar --}}

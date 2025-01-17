@@ -13,7 +13,6 @@
             <div>
 
 
-
                <nav :class="!navbarOpen && 'hidden'" id="navbarCollapse"
                   class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:shadow-none">
                   <ul class="block lg:flex">
@@ -47,11 +46,7 @@
                               <span class="mr-4">Categories</span>
                               <span :class="open = !open ? '' : '-rotate-180'"
                                  class="transition-transform duration-500 transform">
-                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path
-                                       d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                 </svg> <!-- Arrow Svg -->
+                                 <i class="icon-Arrow"></i> <!-- Arrow Svg -->
                               </span>
                            </button>
                            <!-- End Dropdown Toggle Button -->
@@ -95,7 +90,6 @@
 
          <?php if(auth()->guard()->check()): ?>
 
-
             <div x-data="{ openDropDown: false }" class=" block mr-5">
                <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                   <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
@@ -135,9 +129,7 @@
                         Categories
                         <span :class="open ? '-rotate-180' : ''"
                            class="transition-transform  ml-2 duration-500 transform inline-block">
-                           <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                           </svg> <!-- Arrow Svg -->
+                           <i class="icon-Arrow"></i> <!-- Arrow Svg -->
                         </span>
                      </a>
                      <div x-show="open" @click.away="open = false"

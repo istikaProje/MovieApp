@@ -18,6 +18,8 @@
         <?php echo $__env->yieldPushContent('styles'); ?>
 
     </head>
+    <link rel="stylesheet" href="<?php echo e(asset('Icons/style.css')); ?>">
+
     <body class="bg-primary  ">
 
         
