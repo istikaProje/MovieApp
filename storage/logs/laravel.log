@@ -18523,3 +18523,20 @@ Did you mean one of these?
 #58 /var/www/MovieApp/public/index.php(17): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
 #59 {main}
 "} 
+[2025-01-15 16:48:45] local.ERROR: Command "view:cahce" is not defined.
+
+Did you mean one of these?
+    view:cache
+    view:clear {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"view:cahce\" is not defined.
+
+Did you mean one of these?
+    view:cache
+    view:clear at /Users/ahmetseker/Desktop/movieproject/MovieApp/vendor/symfony/console/Application.php:726)
+[stacktrace]
+#0 /Users/ahmetseker/Desktop/movieproject/MovieApp/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find('view:cahce')
+#1 /Users/ahmetseker/Desktop/movieproject/MovieApp/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Users/ahmetseker/Desktop/movieproject/MovieApp/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/ahmetseker/Desktop/movieproject/MovieApp/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Users/ahmetseker/Desktop/movieproject/MovieApp/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
