@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
@@ -27,7 +30,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
     Route::get('/movies/{id}', [FrontMoviesController::class, 'show'])->name('movies.show');
     Route::get('/movies/{movie}/watch', [FrontMoviesController::class, 'watch'])->name('movies.watch');
-    Route::post('/movies/{movie}/comment', [FrontMoviesController::class, 'addComment'])->name('movies.comment');
+    Route::get('/movies/{id}', [MoviesController::class, 'show'])->name('movies.show');
+Route::post('/movies/{id}/comments', [MoviesController::class, 'addComment'])->middleware('auth')->name('movies.comment');
+
+  Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
 
 });
 
@@ -61,6 +68,9 @@ Route::middleware('admin.auth')->group(function(){
     Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
     Route::put('/admin.categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/admin.categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+
+
+
 });
 
 

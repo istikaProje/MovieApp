@@ -70,7 +70,7 @@
                            </h3>
                         </div>
                         <div class="bg-gray-900  p-4 w-full">
-                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="https://www.youtube.com/embed/{{$movie->youtube_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
+                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="{{$movie->youtube_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
                      </div>
                   </div>
                </div>
@@ -97,44 +97,49 @@
 
             </div>
 
+              Yorum Satırı gelecek
 
-            <div class="relative">
-                <!-- Film İçeriği -->
-                {{-- <div>
-                    <h1 class="text-4xl font-bold">{{ $movie->title }}</h1>
-                    <p>{{ $movie->description }}</p>
-                </div> --}}
 
-                <!-- Yorumlar -->
-                <div class="mt-8">
-                    <h2 class="text-2xl font-semibold">Yorumlar</h2>
-
-                    @auth
-                        <!-- Yorum Formu -->
-                        <form action="{{ route('movies.comment', $movie->id) }}" method="POST" class="mt-4">
-                            @csrf
-                            <textarea name="content" rows="4" class="w-full border-gray-300 rounded-lg" placeholder="Yorumunuzu yazın..." required></textarea>
-                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-2 rounded">Gönder</button>
-                        </form>
-                    {{-- @else
-                        <p class="mt-4">Yorum yapmak için <a href="{{ route('login') }}" class="text-blue-500">giriş yapın</a>.</p> --}}
-                    @endauth
-
-                    <!-- Yorum Listesi -->
-                    <div class="mt-6">
-                        @forelse ($movie->comments as $comment)
-                            <div class="border-b border-gray-300 py-4">
-                                <p class="text-sm text-gray-600">{{ $comment->user->name }} - {{ $comment->created_at->format('d M Y, H:i') }}</p>
-                                <p>{{ $comment->content }}</p>
-                            </div>
-                        @empty
-                            <p>Henüz yorum yapılmamış.</p>
-                        @endforelse
-                    </div>
-                </div>
-            </div>
          </div>
+
       </div>
+<div class="comments-section">
+    <h3>Yorumlar</h3>
+
+    <!-- Mevcut Yorumlar -->
+    @foreach($movie->comments as $comment)
+        <div class="comment" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+            <p><strong>{{ $comment->user->name }}</strong>:</p>
+            <p>{{ $comment->content }}</p>
+
+            <!-- Yorum Silme Butonu -->
+            @auth
+                @if (auth()->user()->id === $comment->user_id || auth()->user()->isAdmin())
+                    <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                            Sil
+                        </button>
+                    </form>
+                @endif
+            @endauth
+        </div>
+    @endforeach
+
+    <!-- Yorum Ekleme Formu -->
+    @auth
+        <form action="{{ route('movies.comment', $movie->id) }}" method="POST" style="margin-top: 20px;">
+            @csrf
+            <textarea name="content" rows="3" placeholder="Yorumunuzu yazın..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+            <button type="submit" style="margin-top: 10px; background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                Yorum Ekle
+            </button>
+        </form>
+    @endauth
+</div>
+
+
    </div>
 @endsection
 
