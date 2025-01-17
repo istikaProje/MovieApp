@@ -23,4 +23,10 @@ class Movie extends Model
     {
         return $this->belongsToMany(Category::class, 'category_movie');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

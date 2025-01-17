@@ -8,7 +8,7 @@
             <video class="object-contain w-full" src="{{ asset('storage/' . $movie->video) }}"
                poster="{{ asset('storage/' . $movie->poster) }}"></video>
 
-               
+
          </div>
       </div>
 
@@ -70,11 +70,11 @@
                            </h3>
                         </div>
                         <div class="bg-gray-900  p-4 w-full">
-                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="{{$movie->youtube_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
+                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="https://www.youtube.com/embed/{{$movie->youtube_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
                      </div>
                   </div>
                </div>
-  
+
                <div class="group relative ">
                   <button class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex p-3 rounded-full">
                      <svg viewBox="0 0 24 24" height="24" width="24" role="img" aria-hidden="true">
@@ -94,6 +94,44 @@
                  </div>
 
                </div>
+
+            </div>
+
+
+            <div class="relative">
+                <!-- Film İçeriği -->
+                {{-- <div>
+                    <h1 class="text-4xl font-bold">{{ $movie->title }}</h1>
+                    <p>{{ $movie->description }}</p>
+                </div> --}}
+
+                <!-- Yorumlar -->
+                <div class="mt-8">
+                    <h2 class="text-2xl font-semibold">Yorumlar</h2>
+
+                    @auth
+                        <!-- Yorum Formu -->
+                        <form action="{{ route('movies.comment', $movie->id) }}" method="POST" class="mt-4">
+                            @csrf
+                            <textarea name="content" rows="4" class="w-full border-gray-300 rounded-lg" placeholder="Yorumunuzu yazın..." required></textarea>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-2 rounded">Gönder</button>
+                        </form>
+                    {{-- @else
+                        <p class="mt-4">Yorum yapmak için <a href="{{ route('login') }}" class="text-blue-500">giriş yapın</a>.</p> --}}
+                    @endauth
+
+                    <!-- Yorum Listesi -->
+                    <div class="mt-6">
+                        @forelse ($movie->comments as $comment)
+                            <div class="border-b border-gray-300 py-4">
+                                <p class="text-sm text-gray-600">{{ $comment->user->name }} - {{ $comment->created_at->format('d M Y, H:i') }}</p>
+                                <p>{{ $comment->content }}</p>
+                            </div>
+                        @empty
+                            <p>Henüz yorum yapılmamış.</p>
+                        @endforelse
+                    </div>
+                </div>
             </div>
          </div>
       </div>
