@@ -17,6 +17,8 @@
         {{-- Sayfaya Özel Style --}}
         @stack('styles')
 
+        <link rel="stylesheet" href="{{ asset('Icons/style.css') }}">
+
     </head>
     <body class="bg-primary  ">
 
