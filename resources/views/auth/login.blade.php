@@ -20,63 +20,59 @@
        We make it easy for everyone to <br class="hidden sm:block" />
        access their account
       </p>
-      <form action="{{route('login')}}" method="post">
-       @csrf
 
-       <div class="mb-4">
+      <form action="{{ route('login') }}" method="post">
+    @csrf
+    <div class="mb-4">
         <input
-         type="email"
-         name="email"
-         value="{{old('email')}}"
-         placeholder="Enter your email"
-         class="@error('email') !ring-red-500 @enderror focus:border-primary h-12 w-full rounded-lg border border-transparent bg-[#F6F6F6] px-5 outline-none focus-visible:shadow-none"
+            type="email"
+            name="email"
+            value="{{ old('email') }}"
+            placeholder="Enter your email"
+            class="@error('email') !ring-red-500 @enderror focus:border-primary h-12 w-full rounded-lg border border-transparent bg-[#F6F6F6] px-5 outline-none focus-visible:shadow-none"
         />
         @error('email')
-        <p class="error">{{$message}}</p>
+        <p class="error">{{ $message }}</p>
         @enderror
-       </div>
-       <div class="mb-4">
+    </div>
+    <div class="mb-4">
         <input
-         type="password"
-         name="password"
-         placeholder="Enter your Password"
-         class="@error('password') !ring-red-500 @enderror focus:border-primary h-12 w-full rounded-lg border border-transparent bg-[#F6F6F6] px-5 outline-none focus-visible:shadow-none"
+            type="password"
+            name="password"
+            placeholder="Enter your Password"
+            class="@error('password') !ring-red-500 @enderror focus:border-primary h-12 w-full rounded-lg border border-transparent bg-[#F6F6F6] px-5 outline-none focus-visible:shadow-none"
         />
         @error('password')
-        <p class="error">{{$message}}</p>
+        <p class="error">{{ $message }}</p>
         @enderror
-       </div>
-
-       <div class="mb-8 flex flex-wrap justify-between">
+    </div>
+    <div class="mb-8 flex flex-wrap justify-between">
         <div class="inline-flex items-center">
-         <label class="flex items-center cursor-pointer relative" for="check-with-link">
-          <input type="checkbox" checked class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 checked:bg-slate-800 checked:border-slate-800" id="check-with-link" />
-          <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-           <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-           </svg>
-          </span>
-         </label>
-         <label class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link">
-          <p>
-           Remember me
-          </p>
-         </label>
+            <label class="flex items-center cursor-pointer relative" for="check-with-link">
+                <input type="checkbox" name="remember" class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 checked:bg-slate-800 checked:border-slate-800" id="check-with-link" />
+                <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </span>
+            </label>
+            <label class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link">
+                <p>Remember me</p>
+            </label>
         </div>
-
         <a href="javascript:void(0)" class="text-primary mb-2 text-base hover:underline">
-         Forget Password?
+            Forget Password?
         </a>
-       </div>
-
-       <div class="flex flex-wrap">
+    </div>
+    <div class="flex flex-wrap">
         <div class="w-full">
-         <button type="submit" class="bg-primary mb-3 rounded-lg py-4 w-full cursor-pointer px-5 text-white transition hover:bg-opacity-90">
-          Login
-         </button>
+            <button type="submit" class="bg-primary mb-3 rounded-lg py-4 w-full cursor-pointer px-5 text-white transition hover:bg-opacity-90">
+                Login
+            </button>
         </div>
-       </div>
-      </form>
+    </div>
+</form>
+
      </div>
     </div>
    </div>
