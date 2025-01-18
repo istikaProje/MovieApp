@@ -10,7 +10,8 @@
             </a>
          </div>
          <div class="flex w-full items-center justify-between px-4">
-            <div>
+        
+
 
 
                <nav :class="!navbarOpen && 'hidden'" id="navbarCollapse"
@@ -23,53 +24,17 @@
                         </a>
                      </li>
                      <li>
-                        <a href="javascript:void(0)"
+                        <a href="<?php echo e(route('movies.index')); ?>"
                            class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
                            Movies
                         </a>
                      </li>
-                     <li>
-                        <a href="javascript:void(0)"
-                           class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
-                           Series
-                        </a>
-                     </li>
+                 
+         
 
 
-                     <li>
-                        <!-- Dropdown 1 -->
-                        <div x-data="{ open: false }" @mouseleave="open = false" class="relative inline-block"
-                           :class="{ 'text-gray-900': open, 'text-gray-600': !open }">
-                           <!-- Dropdown Toggle Button -->
-                           <button @mouseover="open = true"
-                              class="flex py-2 items-center font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
-                              <span class="mr-4">Categories</span>
-                              <span :class="open = !open ? '' : '-rotate-180'"
-                                 class="transition-transform duration-500 transform">
-                                 <i class="icon-Arrow"></i> <!-- Arrow Svg -->
-                              </span>
-                           </button>
-                           <!-- End Dropdown Toggle Button -->
-
-                           <!-- Dropdown Menu -->
-                           <div x-show="open" x-transition:enter="transition ease-out duration-300"
-                              x-transition:enter-start="opacity-0 transform scale-90"
-                              x-transition:enter-end="opacity-100 transform scale-100"
-                              x-transition:leave="transition ease-in duration-300"
-                              x-transition:leave-start="opacity-100 transform scale-100"
-                              x-transition:leave-end="opacity-0 transform scale-90"
-                              class="absolute right-0  text-white bg-third rounded-lg p-2 shadow-xl min-w-max">
-
-                              <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                              <a href="<?php echo e(route('category.show', $category->id)); ?>" class="block px-4 py-1 hover:text-third hover:bg-white rounded"><?php echo e($category->name); ?></a>
-                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                           </div>
-                           <!-- End Dropdown Menu -->
-                        </div>
-                        <!-- End Dropdown 1 -->
-            </div>
-            </li>
+                    
+       
             </ul>
             </nav>
          </div>
@@ -90,6 +55,7 @@
 
          <?php if(auth()->guard()->check()): ?>
 
+
             <div x-data="{ openDropDown: false }" class=" block mr-5">
                <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                   <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
@@ -102,9 +68,9 @@
                   class="shadow-card absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-third text-white p-2">
 
                   <?php if(Auth::user()->role === 'admin'): ?>
-
+              
                         <a class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm" href="<?php echo e(route('admin.dashboard')); ?>">Admin Dashboard</a>
-
+                  
                <?php endif; ?>
 
                   <a href="<?php echo e(route('dashboard')); ?>"
@@ -115,30 +81,13 @@
                      class="hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
                      Home
                   </a>
-                  <a href="<?php echo e(route('dashboard')); ?>"
+                  <a href="<?php echo e(route('movies.index')); ?>"
                      class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
                      Movies
                   </a>
-                  <a href="<?php echo e(route('dashboard')); ?>"
-                     class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm ">
-                     Series
-                  </a>
-                  <div x-data="{ open: false }" class="relative">
-                     <a href="javascript:void(0)" @click="open = !open"
-                        class="hover:bg-white hover:text-third  w-full flex items-center rounded py-2 px-3 text-left text-sm">
-                        Categories
-                        <span :class="open ? '-rotate-180' : ''"
-                           class="transition-transform  ml-2 duration-500 transform inline-block">
-                           <i class="icon-Arrow"></i> <!-- Arrow Svg -->
-                        </span>
-                     </a>
-                     <div x-show="open" @click.away="open = false"
-                        class="absolute left-0 mt-2 w-48 bg-third text-white p-2 rounded shadow-lg">
-                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <a href="<?php echo e(route('category.show', $category->id)); ?>" class="block px-4 py-1 hover:text-third hover:bg-white rounded"><?php echo e($category->name); ?></a>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                     </div>
-                  </div>
+           
+         
+   
 
 
 

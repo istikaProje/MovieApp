@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Comment;
 
 class MoviesController extends Controller
 {
@@ -128,12 +129,29 @@ class MoviesController extends Controller
 
     public function show($id)
     {
-        $movie = Movie::findOrFail($id);
-        return view('movies.show', compact('movie'));
+            $movie = Movie::with('comments.user')->findOrFail($id);
+            return view('movies.show', compact('movie'));
     }
 
     public function watch(Movie $movie)
     {
         return view('movies.watch', compact('movie'));
     }
+
+public function addComment(Request $request, $movieId)
+{
+    $request->validate([
+        'content' => 'required|string|max:1000',
+    ]);
+
+    Comment::create([
+        'content' => $request->content,
+        'movie_id' => $movieId,
+        'user_id' => auth()->id(), // Kullanıcıyı al
+    ]);
+
+    return redirect()->back()->with('success', 'Yorum başarıyla eklendi!');
+}
+
+
 }

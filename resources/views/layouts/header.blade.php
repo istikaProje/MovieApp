@@ -10,7 +10,8 @@
             </a>
          </div>
          <div class="flex w-full items-center justify-between px-4">
-            <div>
+        
+
 
 
                <nav :class="!navbarOpen && 'hidden'" id="navbarCollapse"
@@ -28,12 +29,12 @@
                            Movies
                         </a>
                      </li>
+                 
+         
 
 
-
-
-
-
+                    
+       
             </ul>
             </nav>
          </div>
@@ -54,6 +55,7 @@
 
          @auth
 
+
             <div x-data="{ openDropDown: false }" class=" block mr-5">
                <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                   <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
@@ -66,9 +68,9 @@
                   class="shadow-card absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-third text-white p-2">
 
                   @if (Auth::user()->role === 'admin')
-
+              
                         <a class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-
+                  
                @endif
 
                   <a href="{{ route('dashboard') }}"
@@ -83,6 +85,10 @@
                      class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
                      Movies
                   </a>
+           
+         
+   
+
 
 
 

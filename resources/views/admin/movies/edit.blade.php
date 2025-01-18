@@ -8,6 +8,7 @@
     <form action="{{ route('admin.movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+
         <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
             <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">

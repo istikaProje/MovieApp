@@ -25,10 +25,10 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
-            'title' => 'required',
-            'description' => 'nullable',
-            'vote_average' => 'nullable|numeric|min:0|max:10',
+            'title' => 'required|string|max:255',
+            'vote_average' => 'required|numeric|min:1|max:10',
+            'youtube_link' => 'nullable|url',
+            'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000',
             'categories' => 'nullable|array',
@@ -64,7 +64,6 @@ class MovieController extends Controller
         }
 
         return redirect()->route('admin.movies.index')->with('success', 'Movie created successfully.');
-
     }
 
     public function edit($id)
