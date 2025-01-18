@@ -70,7 +70,7 @@
                            </h3>
                         </div>
                         <div class="bg-gray-900  p-4 w-full">
-                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="{{$movie->youtube_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
+                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="https://www.youtube.com/embed/{{ str_replace('https://www.youtube.com/watch?v=', '', $movie->youtube_link) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
                      </div>
                   </div>
                </div>
