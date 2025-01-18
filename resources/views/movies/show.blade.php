@@ -70,11 +70,11 @@
                            </h3>
                         </div>
                         <div class="bg-gray-900  p-4 w-full">
+                            
                             <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="https://www.youtube.com/embed/{{ str_replace('https://www.youtube.com/watch?v=', '', $movie->youtube_link) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
                      </div>
                   </div>
                </div>
-
                <div class="group relative ">
                   <button class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex p-3 rounded-full">
                      <svg viewBox="0 0 24 24" height="24" width="24" role="img" aria-hidden="true">
