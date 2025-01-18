@@ -14,6 +14,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('user_id'); // Kullanıcı ID'si
             $table->text('content'); // Yorum içeriği
             $table->timestamps();
+            $table->timestamp('created_at')->useCurrent()->useCurrentOnUpdate(); // Yorum oluşturulma zamanı
 
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

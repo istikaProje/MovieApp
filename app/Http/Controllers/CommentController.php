@@ -8,18 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-  public function destroy(Comment $comment)
-{
-    $user = auth()->user();
+    public function destroy(Comment $comment)
+    {
+        $user = auth()->user();
 
-    // Kullanıcı kendi yorumunu silebilir veya admin tüm yorumları silebilir
-    if ($user->id === $comment->user_id || $user->isAdmin()) {
-        $comment->delete();
-        return redirect()->back()->with('success', 'Yorum başarıyla silindi.');
+        // Kullanıcı kendi yorumunu silebilir veya admin tüm yorumları silebilir
+        if ($user->id === $comment->user_id || $user->isAdmin()) {
+            $comment->delete();
+            return redirect()->back()->with('success', 'Yorum başarıyla silindi.');
+        }
+
+        return redirect()->back()->with('error', 'Bu yorumu silme yetkiniz yok.');
     }
-
-    return redirect()->back()->with('error', 'Bu yorumu silme yetkiniz yok.');
-}
-
-
 }

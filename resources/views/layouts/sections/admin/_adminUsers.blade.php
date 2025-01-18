@@ -75,8 +75,14 @@
         <p class="mt-1 truncate text-sm text-900">aktif</p>
         <p class="mt-1 truncate text-sm text-900">{{ $user->email }}</p>
       </div>
-      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-    </div>
+      <td class="px-3 py-4 text-sm text-gray-500">
+        <a href="{{ route('admin.users.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+        </form>
+      </td>    </div>
     @endforeach    
   </div>  
 
