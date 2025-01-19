@@ -23,11 +23,12 @@
 
             <h1 class="text-4xl text-white cursor-pointer font-bold">{{ $movie->title }}</h1>
             <p class="mt-2 text-lg text-white max-w-[500px]">
-                {{ $movie->description }}
+               {{ $movie->description }}
             </p>
 
             <div class="flex gap-4 mt-4">
-               <a href="{{ route('movies.watch', ['movie' => $movie->id]) }}" class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex px-6 py-3 rounded">
+               <a href="{{ route('movies.watch', ['movie' => $movie->id]) }}"
+                  class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex px-6 py-3 rounded">
                   <div>
                      <svg viewBox="0 0 24 24" height="24" width="24" role="img" aria-hidden="true">
                         <title>Play</title>
@@ -42,7 +43,8 @@
                </a>
 
                <div x-data="{ open: false }" class="group relative">
-                  <button @click="open = true" class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex p-3 rounded-full">
+                  <button @click="open = true"
+                     class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex p-3 rounded-full">
                      <svg class="fbl-icon _30dE3d _1a_Ljt" viewBox="0 0 24 24" height="24" width="24" role="img"
                         aria-hidden="true">
                         <title>Trailer</title><svg width="24" height="24" fill="none"
@@ -54,14 +56,16 @@
                      </svg>
                   </button>
 
-                  <div class="absolute bottom-full left-1/2 z-20 mb-3 -translate-x-1/2 whitespace-nowrap rounded bg-third py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100">
-                    <span
-                       class="absolute bottom-[-3px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm bg-third"></span>
-                    Fragman İzle
-                 </div>
+                  <div
+                     class="absolute bottom-full left-1/2 z-20 mb-3 -translate-x-1/2 whitespace-nowrap rounded bg-third py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100">
+                     <span
+                        class="absolute bottom-[-3px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm bg-third"></span>
+                     Fragman İzle
+                  </div>
 
                   <!-- Modal -->
-                  <div x-show="open" @click.away="open = false" @click="open = false" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75">
+                  <div x-show="open" @click.away="open = false" @click="open = false"
+                     class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75">
                      <div @click.stop class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all ">
                         <div class="bg-gray-900 p-4">
                            <button @click="open = false" class="text-white float-right">&times;</button>
@@ -70,7 +74,7 @@
                            </h3>
                         </div>
                         <div class="bg-gray-900  p-4 w-full">
-                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="{{$movie->youtube_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
+                            <iframe class=" w-[560px] h-100 lg:w-[560px] lg:h-[315px]" src="https://www.youtube.com/embed/{{ str_replace('https://www.youtube.com/watch?v=', '', $movie->youtube_link) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                        </div>
                      </div>
                   </div>
                </div>
@@ -87,11 +91,72 @@
                      </svg>
                   </button>
 
-                  <div class="absolute bottom-full left-1/2 z-20 mb-3 -translate-x-1/2 whitespace-nowrap rounded bg-third py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100">
-                    <span
-                       class="absolute bottom-[-3px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm bg-third"></span>
+                  <div
+                     class="absolute bottom-full left-1/2 z-20 mb-3 -translate-x-1/2 whitespace-nowrap rounded bg-third py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100">
+                     <span
+                        class="absolute bottom-[-3px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm bg-third"></span>
                      İzleme Listesi
-                 </div>
+                  </div>
+
+               </div>
+
+            </div>
+
+
+
+
+         </div>
+
+      </div>
+
+   </div>
+
+
+
+   <div class="container mx-auto mt-10">
+
+      <h3 class="mb-4 text-lg font-semibold text-white ">Comments</h3>
+
+
+      <div class="h-96 overflow-y-auto">
+         @foreach ($movie->comments as $comment)
+            {{-- mevcut yorumlar --}}
+
+            <div class="flex w-1/2 space-y-4 ">
+               <div class="flex-shrink-0 mr-3">
+                  <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
+                     src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80"
+                     alt="">
+               </div>
+               <div class="flex-1 border bg-white text-gray-900 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+
+                  <div class="flex justify-between">
+                     {{-- Yorum Yapan: --}}
+                     <div>
+                        <strong>{{ $comment->user->name }}</strong> <span class="text-xs text-gray-400">3:34 PM</span>
+
+                     </div>
+                     <!-- Yorum Silme Butonu -->
+                     @auth
+                        @if (auth()->user()->id === $comment->user_id || auth()->user()->isAdmin())
+                           <form action="{{ route('comments.destroy', $comment->id) }}" method="POST"
+                              style="display: inline;">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit"
+                                 class="flex  rounded-md px-4 py-2 text-sm  hover:bg-red-100 active:bg-red-200 cursor-pointer text-red-700">
+                                 Sil
+                              </button>
+                           </form>
+                        @endif
+                     @endauth
+                  </div>
+
+                  {{-- Yorum içerik --}}
+
+                  <p class="text-sm">
+                     {{ $comment->content }}
+                  </p>
 
                </div>
 
@@ -142,5 +207,3 @@
 
    </div>
 @endsection
-
-
