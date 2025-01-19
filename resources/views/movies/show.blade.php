@@ -161,48 +161,29 @@
                </div>
 
             </div>
+         @endforeach
 
-              Yorum Satırı gelecek
 
-
-         </div>
 
       </div>
-<div class="comments-section">
-    <h3>Yorumlar</h3>
 
-    <!-- Mevcut Yorumlar -->
-    @foreach($movie->comments as $comment)
-        <div class="comment" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
-            <p><strong>{{ $comment->user->name }}</strong>:</p>
-            <p>{{ $comment->content }}</p>
+      <div class="w-1/2 mt-10">
+         <!-- Yorum Ekleme Formu -->
+         @auth
+            <form action="{{ route('movies.comment', $movie->id) }}" method="POST" style="margin-top: 20px;">
+               @csrf
+               <textarea name="content" rows="3" placeholder="Yorumunuzu yazın..." required
+                  style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+               <button type="submit"
+                  class="px-4 py-2 bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex  rounded">
+                  Yorum Ekle
+               </button>
+            </form>
+         @endauth
 
-            <!-- Yorum Silme Butonu -->
-            @auth
-                @if (auth()->user()->id === $comment->user_id || auth()->user()->isAdmin())
-                    <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
-                            Sil
-                        </button>
-                    </form>
-                @endif
-            @endauth
-        </div>
-    @endforeach
 
-    <!-- Yorum Ekleme Formu -->
-    @auth
-        <form action="{{ route('movies.comment', $movie->id) }}" method="POST" style="margin-top: 20px;">
-            @csrf
-            <textarea name="content" rows="3" placeholder="Yorumunuzu yazın..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
-            <button type="submit" style="margin-top: 10px; background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-                Yorum Ekle
-            </button>
-        </form>
-    @endauth
-</div>
+
+      </div>
 
 
    </div>
