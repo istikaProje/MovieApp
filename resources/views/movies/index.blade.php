@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
+
+<x-hero-section title="Movies" subtitle="You can select a category and watch the movie you want." backgroundImage="{{ asset('images/loginBg.jpg') }}" />
+
+
    <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold text-white mb-6">Movies</h1>
 

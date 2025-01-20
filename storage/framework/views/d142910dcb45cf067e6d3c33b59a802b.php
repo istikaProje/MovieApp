@@ -1,4 +1,27 @@
 <?php $__env->startSection('content'); ?>
+
+<?php if (isset($component)) { $__componentOriginal7148f0f889bac4df853ac91166bfc9ae = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7148f0f889bac4df853ac91166bfc9ae = $attributes; } ?>
+<?php $component = App\View\Components\HeroSection::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('hero-section'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\HeroSection::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Movies','subtitle' => 'You can select a category and watch the movie you want.','backgroundImage' => ''.e(asset('images/loginBg.jpg')).'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7148f0f889bac4df853ac91166bfc9ae)): ?>
+<?php $attributes = $__attributesOriginal7148f0f889bac4df853ac91166bfc9ae; ?>
+<?php unset($__attributesOriginal7148f0f889bac4df853ac91166bfc9ae); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7148f0f889bac4df853ac91166bfc9ae)): ?>
+<?php $component = $__componentOriginal7148f0f889bac4df853ac91166bfc9ae; ?>
+<?php unset($__componentOriginal7148f0f889bac4df853ac91166bfc9ae); ?>
+<?php endif; ?>
+
+
    <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold text-white mb-6">Movies</h1>
 
