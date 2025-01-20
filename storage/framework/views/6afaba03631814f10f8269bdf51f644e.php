@@ -18,6 +18,7 @@
         <?php echo $__env->yieldPushContent('styles'); ?>
 
         <link rel="stylesheet" href="<?php echo e(asset('Icons/style.css')); ?>">
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     </head>
     <body class="bg-primary  ">

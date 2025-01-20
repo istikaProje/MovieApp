@@ -16,6 +16,8 @@ use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 
 Route::view('/','home.index')->name('home');
 
+Route::view('/about_us', 'layouts.about_us')->name('about_us');
+
 Route::middleware('guest')->group(function(){
     Route::view('/register','auth.register')->name('register');
     Route::post('/register',[AuthController::class,'register']);

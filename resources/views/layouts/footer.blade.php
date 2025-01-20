@@ -1,5 +1,5 @@
     <!-- ====== Footer Section Start -->
-    <footer class="bg-primary relative z-10 overflow-hidden mt-16 pt-10">
+    <footer class="bg-primary relative z-5 overflow-hidden mt-16 pt-10">
         <div class="container mx-auto">
           <div class=" flex flex-wrap">
             <div class="w-full px-4 sm:w-2/3 lg:w-4/12 xl:w-3/12">
@@ -130,7 +130,7 @@
         </div>
 
         <div>
-          <span class="absolute left-0 top-0 z-[-1]">
+          <span class="absolute left-0 top-0 z-[1]">
             <svg
               width="419"
               height="492"
@@ -162,7 +162,7 @@
             </svg>
           </span>
 
-          <span class="absolute bottom-0 right-0 z-[-1]">
+          <span class="absolute bottom-0 right-0 z-[1]">
             <svg
               width="327"
               height="220"
@@ -194,7 +194,7 @@
             </svg>
           </span>
 
-          <span class="absolute top-0 right-0 z-[-1]">
+          <span class="absolute top-0 right-0 z-[1]">
             <i class="icon-Dot text-[102px] text-gray-500 leading-none"></i>
           </span>
         </div>

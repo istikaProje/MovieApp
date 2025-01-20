@@ -10,7 +10,7 @@
             </a>
          </div>
          <div class="flex w-full items-center justify-between px-4">
-        
+
 
 
 
@@ -29,12 +29,18 @@
                            Movies
                         </a>
                      </li>
-                 
-         
+                     <li>
+                        <a href="<?php echo e(route('about_us')); ?>"
+                           class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
+                           About Us
+                        </a>
+                     </li>
 
 
-                    
-       
+
+
+
+
             </ul>
             </nav>
          </div>
@@ -68,9 +74,9 @@
                   class="shadow-card absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-third text-white p-2">
 
                   <?php if(Auth::user()->role === 'admin'): ?>
-              
+
                         <a class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm" href="<?php echo e(route('admin.dashboard')); ?>">Admin Dashboard</a>
-                  
+
                <?php endif; ?>
 
                   <a href="<?php echo e(route('dashboard')); ?>"
@@ -85,9 +91,9 @@
                      class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
                      Movies
                   </a>
-           
-         
-   
+
+
+
 
 
 
