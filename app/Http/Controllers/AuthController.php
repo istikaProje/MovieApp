@@ -47,7 +47,7 @@ class AuthController extends Controller
             return redirect()->intended();
         }else{
             return back()->withErrors([
-                'faulire' => 'The provided credentials do not match our records.',
+                'failure' => 'The provided credentials do not match our records.',
                 ]);
             }
 }
