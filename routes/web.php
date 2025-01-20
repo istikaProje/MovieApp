@@ -14,7 +14,8 @@ use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 
-Route::view('/','home.index')->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::middleware('guest')->group(function(){
     Route::view('/register','auth.register')->name('register');

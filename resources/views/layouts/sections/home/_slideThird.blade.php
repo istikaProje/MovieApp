@@ -1,4 +1,4 @@
-<div class="bg-third p-5 rounded-md mb-5 mt-5">
+<div class="rounded-md mb-5 mt-5">
     @foreach($categories as $category)
         <h2 class="bold mb-2 text-xl text-white">
             <!-- Kategori başlığına tıklanabilir bağlantı ekledik -->
@@ -6,12 +6,12 @@
                 {{ $category->name }}
             </a>
         </h2>
-        <div class="swiper slider1">
+        <div class="swiper slider1 ">
             <div class="pb-1">
                 <div class="swiper-button-prev custom-prev"></div>
                 <div class="swiper-button-next custom-next"></div>
             </div>
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper bg-third p-5  ">
                 @foreach($category->movies as $movie)
                     <div class="swiper-slide">
                         <!-- Filme tıklanabilir bağlantı -->
