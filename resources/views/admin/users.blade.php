@@ -6,7 +6,7 @@
 
 
                 <div class="container mx-auto">
-                  
+
                         <div class="h-screen">
                             @include('layouts.sections.admin._adminUsers')
                         </div>

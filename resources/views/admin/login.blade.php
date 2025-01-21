@@ -1,6 +1,6 @@
 @extends('layouts.adminMaster')
 @section('title', 'Anasayfa')
- @section('description', 'test.') 
+ @section('description', 'test.')
  @section('keywords', 'test, test, test')
   @section('content')
 <section class="relative z-10 py-20">
@@ -26,7 +26,7 @@
       </p>
       <form action="{{ route('admin.authenticate') }}" method="post">
         @csrf
-    
+
         <div class="mb-4">
             <input
                 type="email"
@@ -50,11 +50,11 @@
             <p class="error">{{ $message }}</p>
             @enderror
         </div>
-    
+
         @if ($errors->has('failure'))
             <p class="error">{{ $errors->first('failure') }}</p>
         @endif
-    
+
         <div class="mb-8 flex flex-wrap justify-between">
             <div class="inline-flex items-center">
                 <label class="flex items-center cursor-pointer relative" for="check-with-link">
@@ -69,12 +69,12 @@
                     Remember me
                 </label>
             </div>
-    
+
             <a href="javascript:void(0)" class="text-primary mb-2 text-base hover:underline">
                 Forget Password?
             </a>
         </div>
-    
+
         <button type="submit" class="h-12 w-full rounded-lg bg-primary text-white">Login</button>
     </form>
      </div>

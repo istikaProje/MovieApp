@@ -1,7 +1,7 @@
 
     <div class="bg-third p-5 rounded-md mb-5 mt-5">
-        
-       
+
+
         <div class="swiper slider1">
 
             <div class="pb-1">
@@ -11,10 +11,10 @@
               <div class="swiper-button-next custom-next"></div>
 
             </div>
-            
+
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-        
+
                     <div class="relative group overflow-hidden rounded-md cursor-pointer">
                         <img src="{{asset('./images/poster4.jpg')}}" alt="poster1" class="w-full h-full transition-transform duration-500 group-hover:scale-105" />
                         <div class="absolute bottom-0 bg-gradient-to-t from-secondary via-secondary/75 opacity-0 group-hover:opacity-100 to-transparent transition-opacity duration-500 p-5">
@@ -35,7 +35,7 @@
                         </a>
                         </div>
                         </div>
-                  </div> 
+                  </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="relative group overflow-hidden rounded-md cursor-pointer ">
@@ -105,7 +105,7 @@
                         </div>
                         </div>
                       </div>
-        
+
                 </div>
                 <div class="swiper-slide">
                     <div class="relative group overflow-hidden rounded-md cursor-pointer">
@@ -129,7 +129,7 @@
                         </div>
                         </div>
                       </div>
-        
+
                 </div>
                 <div class="swiper-slide">
                     <div class="relative group overflow-hidden rounded-md cursor-pointer">
@@ -153,7 +153,7 @@
                         </div>
                         </div>
                       </div>
-        
+
                 </div>
                 <div class="swiper-slide">
                     <div class="relative group overflow-hidden rounded-md cursor-pointer">
@@ -177,13 +177,13 @@
                         </div>
                         </div>
                       </div>
-        
+
                 </div>
             </div>
-      
 
-         
-      
+
+
+
 
         </div>
 

@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?mvz7wc');
+  src:  url('fonts/icomoon.eot?mvz7wc#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?mvz7wc') format('truetype'),
+    url('fonts/icomoon.woff?mvz7wc') format('woff'),
+    url('fonts/icomoon.svg?mvz7wc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Youtube:before {
+  content: "\e902";
+}
+.icon-Users1:before {
+  content: "\e905";
+}
+.icon-LeftArrow:before {
+  content: "\e910";
+}
+.icon-Logout1:before {
+  content: "\e919";
+}
+.icon-Logout2:before {
+  content: "\e91a";
+}
+.icon-BookmarkOn:before {
+  content: "\e917";
+}
+.icon-BookmarkOff:before {
+  content: "\e918";
+}
+.icon-Check:before {
+  content: "\e904";
+}
+.icon-Users:before {
+  content: "\e906";
+}
+.icon-Squares:before {
+  content: "\e907";
+}
+.icon-Ratio:before {
+  content: "\e908";
+}
+.icon-LeftP:before {
+  content: "\e909";
+  color: #fff;
+}
+.icon-Star:before {
+  content: "\e90b";
+  color: #637381;
+}
+.icon-Movie:before {
+  content: "\e90c";
+
+}
+.icon-Plus:before {
+  content: "\e90d";
+}
+.icon-Play2:before {
+  content: "\e90e";
+}
+.icon-GreenTick:before {
+  content: "\e90f";
+}
+.icon-Arrow-2:before {
+  content: "\e911";
+}
+.icon-Arrow:before {
+  content: "\e912";
+}
+.icon-Twitter:before {
+  content: "\e913";
+}
+.icon-Facebook:before {
+  content: "\e914";
+}
+.icon-Instagram:before {
+  content: "\e915";
+}
+.icon-LinkedIn:before {
+  content: "\e916";
+}
+.icon-Dot:before {
+  content: "\e903";
+}
+.icon-Pause:before {
+  content: "\e900";
+}
+.icon-Play:before {
+  content: "\e901";
+}

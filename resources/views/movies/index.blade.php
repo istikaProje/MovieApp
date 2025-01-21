@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-   <div class="container mx-auto  py-8">
+
+@include('layouts.sections._heroSection', ['title' => 'Movies' , 'subtitle'=> 'Explore our extensive collection of movies' , 'backgroundImage' => asset('images/loginBg.jpg') ])
+
+
+   <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold text-white mb-6">Movies</h1>
 
       <div class="flex flex-col md:flex-row">
