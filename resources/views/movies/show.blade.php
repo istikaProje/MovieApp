@@ -173,30 +173,29 @@
 
                         </div>
                      </div>
-                     <!-- Yorum Silme Butonu -->
-                     @auth
-                        @if (auth()->user()->id === $comment->user_id || auth()->user()->isAdmin())
-                           <form action="{{ route('comments.destroy', $comment->id) }}" method="POST"
-                              style="display: inline;">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit"
-                                 class="flex  rounded-md px-4 py-2 text-sm  hover:bg-red-100 active:bg-red-200 cursor-pointer text-red-700">
-                                 Sil
-                              </button>
-                           </form>
-                        @endif
-                     @endauth
-                  </div>
+                  @endforeach
+               @endif
+            </div>
 
-                  {{-- Yorum içerik --}}
+            <div class="mt-10">
+               <!-- Yorum Ekleme Formu -->
+               @auth
+                  <form action="{{ route('movies.comment', $movie->id) }}" method="POST" style="margin-top: 20px;">
+                     @csrf
+                     <textarea name="content" rows="3" placeholder="Yorumunuzu yazın..." required
+                        class="w-100 border rounded-md mb-4 w-full p-3"></textarea>
+                     <button type="submit"
+                        class="px-4 py-2 bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex  rounded">
+                        Yorum Ekle
+                     </button>
+                  </form>
+               @endauth
 
-                  <p class="text-sm">
-                     {{ $comment->content }}
-                  </p>
+            </div>
 
-               </div>
+            <div>
 
+        
             </div>
 
 
