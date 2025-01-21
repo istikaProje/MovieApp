@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class MovieController extends Controller
 {
     public function index()
     {
-        $movies = Movie::all();
+        $movies = Movie::paginate(5);
         return view('admin.movies.index', compact('movies'));
     }
 
@@ -42,8 +44,16 @@ class MovieController extends Controller
         $movie->youtube_link = $request->youtube_link;
         $movie->description = $request->description;
 
+        // Resmi otomatik olarak 300x450 boyutlarına dönüştür
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
+            $image = $request->file('image');
+            $imagePath = $image->store('images', 'public');
+            
+            $manager = new ImageManager(new Driver());
+            $manager->read(storage_path('app/public/' . $imagePath))
+                ->cover(300, 450)
+                ->save(storage_path('app/public/' . $imagePath));
+                
             $movie->image = $imagePath;
         }
 
@@ -54,6 +64,13 @@ class MovieController extends Controller
 
         if ($request->hasFile('poster')) {
             $posterPath = $request->file('poster')->store('posters', 'public');
+            
+            // Poster'ı 16:9 oranında yeniden boyutlandır (1280x720)
+            $manager = new ImageManager(new Driver());
+            $manager->read(storage_path('app/public/' . $posterPath))
+                ->cover(1280, 720)
+                ->save(storage_path('app/public/' . $posterPath));
+                
             $movie->poster = $posterPath;
         }
 
@@ -81,7 +98,7 @@ class MovieController extends Controller
             'vote_average' => 'nullable|numeric|min:0|max:10',
             'youtube_link' => 'nullable|url',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000',
+            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:2000000',
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
             'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
@@ -89,12 +106,19 @@ class MovieController extends Controller
 
         $movie = Movie::findOrFail($id);
 
+        // Resmi otomatik olarak 300x450 boyutlarına dönüştür
         if ($request->hasFile('image')) {
             if ($movie->image) {
                 Storage::disk('public')->delete($movie->image);
             }
-            $imagePath = $request->file('image')->store('uploads/images', 'public');
-            chmod(storage_path('app/public/' . $imagePath), 0644);
+            $image = $request->file('image');
+            $imagePath = $image->store('images', 'public');
+            
+            $manager = new ImageManager(new Driver());
+            $manager->read(storage_path('app/public/' . $imagePath))
+                ->cover(300, 450)
+                ->save(storage_path('app/public/' . $imagePath));
+                
             $movie->image = $imagePath;
         }
 
@@ -102,8 +126,7 @@ class MovieController extends Controller
             if ($movie->video) {
                 Storage::disk('public')->delete($movie->video);
             }
-            $videoPath = $request->file('video')->store('uploads/videos', 'public');
-            chmod(storage_path('app/public/' . $videoPath), 0644);
+            $videoPath = $request->file('video')->store('videos', 'public');
             $movie->video = $videoPath;
         }
 
@@ -111,8 +134,14 @@ class MovieController extends Controller
             if ($movie->poster) {
                 Storage::disk('public')->delete($movie->poster);
             }
-            $posterPath = $request->file('poster')->store('uploads/posters', 'public');
-            chmod(storage_path('app/public/' . $posterPath), 0644);
+            $posterPath = $request->file('poster')->store('posters', 'public');
+            
+            // Poster'ı 16:9 oranında yeniden boyutlandır (1280x720)
+            $manager = new ImageManager(new Driver());
+            $manager->read(storage_path('app/public/' . $posterPath))
+                ->cover(1280, 720)
+                ->save(storage_path('app/public/' . $posterPath));
+                
             $movie->poster = $posterPath;
         }
 
@@ -134,6 +163,15 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::findOrFail($id);
+        if ($movie->image) {
+            Storage::disk('public')->delete($movie->image);
+        }
+        if ($movie->video) {
+            Storage::disk('public')->delete($movie->video);
+        }
+        if ($movie->poster) {
+            Storage::disk('public')->delete($movie->poster);
+        }
         $movie->delete();
 
         return redirect()->route('admin.movies.index')->with('success', 'Movie deleted successfully.');

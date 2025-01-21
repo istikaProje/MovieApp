@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ShowPaymentController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -14,17 +15,28 @@ use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 
+
+//Route::get('/payment', [ShowPaymentController::class, 'show'])->name('payment.page');
+//Route::post('/payment', [ShowPaymentController::class, 'process'])->name('payment.process');
 Route::view('/','home.index')->name('home');
+Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+Route::view('/about_us', 'layouts.about_us')->name('about_us');
 
 Route::view('/about_us', 'layouts.about_us')->name('about_us');
 
 Route::middleware('guest')->group(function(){
+
     Route::view('/register','auth.register')->name('register');
     Route::post('/register',[AuthController::class,'register']);
     Route::view('/login','auth.login')->name('login');
     Route::post('/login',[AuthController::class,'login']);
 });
 
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::view('/payment','layouts.payments')->name('payment');
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -37,7 +49,10 @@ Route::post('/movies/{id}/comments', [MoviesController::class, 'addComment'])->m
 
   Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
-
+  Route::controller(ShowPaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 });
 
 Route::middleware('admin.guest')->group(function(){

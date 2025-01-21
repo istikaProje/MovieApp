@@ -1,6 +1,6 @@
 <!-- ====== Navbar Section Start -->
 <header x-data="{
-    navbarOpen: false
+   navbarOpen: false
 }" class=" sticky top-0 z-50 flex w-full items-center bg-primary header-shadow">
    <div class="container mx-auto">
       <div class="relative flex items-center justify-between">
@@ -13,6 +13,11 @@
 
 
 
+
+
+           </ul>
+           </nav>
+        </div>
 
                <nav :class="!navbarOpen && 'hidden'" id="navbarCollapse"
                   class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:shadow-none">
@@ -99,17 +104,17 @@
 
 
 
-                  <form action="{{ route('logout') }}" method="post">
-                     @csrf
-                     <button class="hover:bg-third hover:text-white block w-full rounded py-2 px-3 text-left text-sm ">Logout</button>
-                  </form>
+                 <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="hover:bg-third hover:text-white block w-full rounded py-2 px-3 text-left text-sm ">Logout</button>
+                 </form>
 
-               </div>
-            </div>
+              </div>
+           </div>
 
-         @endauth
-      </div>
-   </div>
-   </div>
+        @endauth
+     </div>
+  </div>
+  </div>
 </header>
 <!-- ====== Navbar Section End -->

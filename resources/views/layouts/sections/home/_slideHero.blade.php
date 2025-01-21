@@ -1,14 +1,21 @@
 <div class="swiper swiperHero">
-   <div class="swiper-wrapper">
-       <div class="swiper-slide">
-           <div class="relative ml-auto mr-auto">
-               <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
-                   <!-- Video -->
-                   <video x-ref="video" class="object-contain w-full" src="{{ asset('videos/BreakingBad.webm') }}" poster="{{ asset('images/heroslider.webp') }}"></video>
-               </div>
-           </div>
+    <div class="swiper-wrapper">
+        @foreach ($sliderMovies as $movie)
+            <div class="swiper-slide">
+                <div class="relative ml-auto mr-auto">
+                    <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
+                        <!-- Video -->
+                      <a href="{{ route('movies.show', ['id' => $movie->id]) }}">
+                            <video x-ref="video" class="object-contain w-full"
+                                src="{{ asset('storage/' . $movie->video) }}"
+                                poster="{{ asset('storage/' . $movie->poster) }}">
+                            </video>
+                        </a>
+                    </div>
+                </div>
 
-           <!-- Radial Gradient Overlay -->
+                <!-- Radial Gradient Overlay -->
+                <div class="hero-overlay pointer-events-none"></div>
 
            <div class="hero-overlay pointer-events-none"></div>
            <!-- Content -->
@@ -123,3 +130,25 @@
    <div class="swiper-button-prev !text-white hover:scale-125"></div>
    <div class="swiper-pagination"></div>
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiperHero', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            slidesPerView: 1,
+            spaceBetween: 10,
+        });
+    });
+</script>
