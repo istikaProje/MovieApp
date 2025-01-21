@@ -11,7 +11,8 @@
 <div class="mt-10 text-center text-white">
     <h2 class="text-3xl font-bold mb-5">Our Mission</h2>
     <p class="text-lg">We create digital experiences for brands and companies by using technology.</p>
-
+    <i class="icon-BookmarkOff"> </i>
+    <i class="icon-BookmarkOn"> </i>
 </div>
 
 @endsection
