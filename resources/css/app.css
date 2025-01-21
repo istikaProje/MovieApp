@@ -35,18 +35,35 @@
 }
 
  .custom-next{
-  color: #fff !important; /* Change to your desired icon color */
-  top: 14px !important;
-  right: 0px !important;
-  left: auto !important;
+
+  @apply !right-0 !left-auto !top-[14px] !text-white  ;
 
  }
 
 .swiper-button-next:after, .swiper-button-prev:after{
-    font-size: 24px !important; /* Change to your desired icon size */
+  @apply  !text-2xl;
   
 
 }
+.swiper-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+
+.hero-overlay {
+
+@apply bg-[radial-gradient(at_right_center,rgba(78,113,143,0)_40%,rgba(0,32,43,1)_75%)] absolute inset-0 z-10
+}
+
+
+
+
+.swiperHero .swiper-pagination-bullet-active{
+   @apply rounded-lg bg-white w-5 h-2 ;
+}
+
 
   .form-radio {
     -webkit-appearance: none;
@@ -124,6 +141,4 @@
     }
   }
 
-  
-   
     }

@@ -56,7 +56,7 @@ class AuthController extends Controller
             
         }else{
             return back()->withErrors([
-                'faulire' => 'The provided credentials do not match our records.',
+                'failure' => 'The provided credentials do not match our records.',
                 ]);
         }
 

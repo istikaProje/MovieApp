@@ -25,8 +25,8 @@ class User extends Authenticatable
         'subscription_plan',
         'subscription_ends_at',
         'subscription_created_at',
-         'stripe_subscription_id',
-
+        'stripe_subscription_id',
+        'role',
     ];
 
     /**
@@ -51,4 +51,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isAdmin()
+        {
+            return $this->role === 'admin';
+        }
+
+
 }
