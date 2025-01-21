@@ -3,13 +3,15 @@
  @section('description', 'test.')
  @section('keywords', 'test, test, test')
  @section('content')
+ @auth
+ @include('layouts.sections.home._slideHero')
 
 <section class="container mx-auto">
-    @auth
-    @include('layouts.sections.home._slideHero')
+
 
     @include('layouts.sections.home._slideFirst')
     @include('layouts.sections.home._slideSecond')
+    @include('layouts.sections.home._slideThird')
 
 
 

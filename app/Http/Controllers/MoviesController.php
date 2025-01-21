@@ -129,8 +129,12 @@ class MoviesController extends Controller
 
     public function show($id)
     {
-            $movie = Movie::with('comments.user')->findOrFail($id);
-            return view('movies.show', compact('movie'));
+        $movie = Movie::with('comments.user', 'categories')->findOrFail($id);
+        $recommendedMovies = Movie::whereHas('categories', function ($query) use ($movie) {
+            return $query->whereIn('categories.id', $movie->categories->pluck('id'));
+        })->where('movies.id', '!=', $movie->id)->get();
+
+        return view('movies.show', compact('movie', 'recommendedMovies'));
     }
 
     public function watch(Movie $movie)
