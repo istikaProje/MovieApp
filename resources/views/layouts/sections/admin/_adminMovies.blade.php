@@ -1,5 +1,3 @@
-
-
 @if (session('success'))
    <div class="bg-green-500 text-white p-4 mt-4 rounded mb-4">
       {{ session('success') }}
@@ -78,11 +76,18 @@
          @endforelse
       </tbody>
    </table>
+
+   <div>
+      {{ $movies->links() }}
+   </div>
+  
 </div>
 
 
+
+
   {{-- Responsive Table Card --}}
-  <div class="mt-10 grid grid-cols-1 gap-4 mx-3 sm:grid-cols-w md:hidden">
+  <div class="mt-10 grid grid-cols-1  gap-4 mx-3 sm:grid-cols-w md:hidden">
     @foreach($movies as $movie) 
     <div class="relative flex items-center space-x-3 rounded-lg bg-white px-6 py-5 shadow ring-1 ring-black ring-opacity-5">
       <div class="min-w-0 flex-1">
@@ -109,5 +114,8 @@
         </form>
      </td>    </div>
     @endforeach    
+    <div class="px-6 py-4">
+        {{ $movies->links() }}
+    </div>
   </div>
 
