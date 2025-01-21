@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ShowPaymentController; 
+use App\Http\Controllers\ShowPaymentController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\CommentController;
@@ -21,6 +21,10 @@ use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 Route::view('/','home.index')->name('home');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+Route::view('/about_us', 'layouts.about_us')->name('about_us');
+
+Route::view('/about_us', 'layouts.about_us')->name('about_us');
+
 Route::middleware('guest')->group(function(){
 
     Route::view('/register','auth.register')->name('register');

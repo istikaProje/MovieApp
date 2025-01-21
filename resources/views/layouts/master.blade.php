@@ -17,6 +17,7 @@
         {{-- Sayfaya Özel Style --}}
         @stack('styles')
 
+        <link rel="stylesheet" href="{{ asset('Icons/style.css') }}">
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     </head>

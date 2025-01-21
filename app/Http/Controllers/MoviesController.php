@@ -41,7 +41,7 @@ class MoviesController extends Controller
             'youtube_link' => 'required|string',
             'description' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'video' => 'required|mimes:mp4,mov,ogg,qt|max:20000',
+            'video' => 'required|mimes:mp4,mov,ogg,qt',
             'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             // ...other validation rules...
         ]);
