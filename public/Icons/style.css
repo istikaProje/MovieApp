@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?5akh27');
-  src:  url('fonts/icomoon.eot?5akh27#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?5akh27') format('truetype'),
-    url('fonts/icomoon.woff?5akh27') format('woff'),
-    url('fonts/icomoon.svg?5akh27#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?mvz7wc');
+  src:  url('fonts/icomoon.eot?mvz7wc#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?mvz7wc') format('truetype'),
+    url('fonts/icomoon.woff?mvz7wc') format('woff'),
+    url('fonts/icomoon.svg?mvz7wc#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-Youtube:before {
+  content: "\e902";
+}
+.icon-Users1:before {
+  content: "\e905";
+}
+.icon-LeftArrow:before {
+  content: "\e910";
+}
+.icon-Logout1:before {
+  content: "\e919";
+}
+.icon-Logout2:before {
+  content: "\e91a";
+}
 .icon-BookmarkOn:before {
   content: "\e917";
 }
@@ -33,9 +48,6 @@
 }
 .icon-Check:before {
   content: "\e904";
-}
-.icon-Logout2:before {
-  content: "\e905";
 }
 .icon-Users:before {
   content: "\e906";
@@ -50,17 +62,13 @@
   content: "\e909";
   color: #fff;
 }
-.icon-Youtube:before {
-  content: "\e90a";
-  color: #637381;
-}
 .icon-Star:before {
   content: "\e90b";
   color: #637381;
 }
 .icon-Movie:before {
   content: "\e90c";
-  color: #637381;
+
 }
 .icon-Plus:before {
   content: "\e90d";
@@ -70,9 +78,6 @@
 }
 .icon-GreenTick:before {
   content: "\e90f";
-}
-.icon-Logout:before {
-  content: "\e910";
 }
 .icon-Arrow-2:before {
   content: "\e911";
@@ -94,9 +99,6 @@
 }
 .icon-Dot:before {
   content: "\e903";
-}
-.icon-Renk:before {
-  content: "\e902";
 }
 .icon-Pause:before {
   content: "\e900";

@@ -23,7 +23,7 @@
                     href="javascript:void(0)"
                     class="px-3 text-[#dddddd] hover:opacity-30"
                   >
-                  <i class="icon-Facebook text-[18px] leading-none w-[10px] h-[18px] text-current"></i> <!-- Facebook SVG -->
+                  <i class="icon-Facebook text-[18px] leading-none w-[10px] h-[18px] z-[1] text-current"></i> <!-- Facebook SVG -->
                   </a>
                   <a
                     href="javascript:void(0)"
@@ -130,7 +130,7 @@
         </div>
 
         <div>
-          <span class="absolute left-0 top-0 z-[1]">
+          <span class="absolute left-0 top-0 z-[0] pointer-events-none">
             <svg
               width="419"
               height="492"
@@ -162,7 +162,7 @@
             </svg>
           </span>
 
-          <span class="absolute bottom-0 right-0 z-[1]">
+          <span class="absolute bottom-0 right-0 z-[0] pointer-events-none">
             <svg
               width="327"
               height="220"

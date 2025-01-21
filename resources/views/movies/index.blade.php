@@ -2,7 +2,7 @@
 
 @section('content')
 
-<x-hero-section title="Movies" subtitle="You can select a category and watch the movie you want." backgroundImage="{{ asset('images/loginBg.jpg') }}" />
+@include('layouts.sections._heroSection', ['title' => 'Movies' , 'subtitle'=> 'Explore our extensive collection of movies' , 'backgroundImage' => asset('images/loginBg.jpg') ])
 
 
    <div class="container mx-auto py-8">
