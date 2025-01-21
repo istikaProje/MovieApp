@@ -5,10 +5,12 @@
                 <div class="relative ml-auto mr-auto">
                     <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
                         <!-- Video -->
-                        <video x-ref="video" class="object-contain w-full"
-                               src="{{ asset('storage/' . $movie->video) }}"
-                               poster="{{ asset('storage/' . $movie->poster) }}">
-                        </video>
+                      <a href="{{ route('movies.show', ['id' => $movie->id]) }}">
+                            <video x-ref="video" class="object-contain w-full"
+                                src="{{ asset('storage/' . $movie->video) }}"
+                                poster="{{ asset('storage/' . $movie->poster) }}">
+                            </video>
+                        </a>
                     </div>
                 </div>
 
@@ -32,9 +34,11 @@
                         </p>
                     </div>
                     <div class="flex gap-4 mt-4">
-                        <button class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex px-6 py-3 rounded">
-                            Şimdi İzle
-                        </button>
+                        <a href="{{ route('movies.watch', ['movie' => $movie->id]) }}">
+                            <button class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex px-6 py-3 rounded">
+                                Şimdi İzle
+                            </button>
+                        </a>
                         <div class="group relative inline-block">
                             <button class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex p-3 rounded-full">
                                 İzleme Listesine Ekle
