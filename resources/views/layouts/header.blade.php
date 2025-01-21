@@ -22,12 +22,18 @@
      <nav :class="!navbarOpen && 'hidden' " id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:shadow-none">
       <ul class="block lg:flex">
        <li>
+        @if(auth()->check() && auth()->user()->is_payment == 0)
+        <a href="{{route('payment') }}" class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
+          Home
+         </a>
+        @else
         <a href="{{route('home') }}" class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
          Home
         </a>
+        @endif
        </li>
        <li>
-        <a href="{{route('payment')}}" class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
+        <a href="{{route('login')}}" class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
          Payment
         </a>
        </li>

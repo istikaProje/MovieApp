@@ -92,9 +92,12 @@
        </div>
        <div class="flex flex-wrap">
         <div class="w-full">
-         <button class="bg-secondary mb-3 py-4 rounded-lg w-full cursor-pointer px-5 text-white transition hover:bg-opacity-90">
+            <form action="{{route('payment')}}" method="GET">
+                @csrf
+                <input type="submit" class="bg-secondary mb-3 py-4 rounded-lg w-full cursor-pointer px-5 text-white transition hover:bg-opacity-90">
           Create Account
-         </button>
+            </input>
+            </form>
         </div>
        </div>
       </form>
