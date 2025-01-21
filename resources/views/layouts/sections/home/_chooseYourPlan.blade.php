@@ -1,7 +1,7 @@
     {{-- choose your plan --}}
 
     <div class="mx-3">
-       <h2 class="font-black text-7xl text-white py-8 text-center uppercase">
+       <h2 class="font-black md:text-7xl text-5xl text-white py-8 text-center uppercase">
           Choose Your Plan
        </h2>
        <div class="flex justify-between lg:flex-row flex-col gap-6 mt-8 items-center">
