@@ -9,7 +9,7 @@
         <meta name="description" content= "<?php echo $__env->yieldContent('description', 'MovieWatch ile en yeni filmleri, klasik başyapıtları ve popüler dizileri HD kalitede ücretsiz olarak izleyin. Film severler için tasarlanmış mükemmel bir platform.'); ?>">
         <!-- Anahtar Kelimeler -->
         <meta name="keywords" content="<?php echo $__env->yieldContent('keywords', 'film izle, film izleme sitesi, film izleme platformu, film izleme sitesi, film izleme platformu, film izleme sitesi, film izleme platformu, film izleme sitesi, film izleme platformu'); ?>">
-
+        
 
         <!-- Styles / Scripts -->
             <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
