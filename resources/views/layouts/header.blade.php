@@ -32,12 +32,6 @@
                      About Us
                   </a>
                </li>
-
-
-
-
-
-
             </ul>
          </nav>
 
@@ -56,18 +50,22 @@
 
          @endguest
 
-
          @auth
-
-
             <div x-data="{ openDropDown: false }" class=" block mr-5">
                <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                   <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
                      <img class="h-full w-full rounded-full object-cover object-center" src="{{ asset('avatars/' . Auth::user()->profile_photo) }}"
                         alt="" />
                   </div>
+               <div class="flex items-center">
+                  <a href="{{ route('favorites.index') }}" class="text-white text-base font-medium mr-10 hover:opacity-30">LİSTEM</a>
 
-               </button>
+                <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
+                  <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
+                     <img class="h-full w-full rounded-full object-cover object-center" src="https://picsum.photos/200" alt="" />
+                  </div>
+                </button>
+               </div>
                <div x-show="openDropDown" @click.outside="openDropDown = false"
                   class="shadow-card absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-third text-white p-2">
 
@@ -89,13 +87,6 @@
                      Movies
                   </a>
 
-
-
-
-
-
-
-
                   <form action="{{ route('logout') }}" method="post">
                      @csrf
                      <button
@@ -107,9 +98,6 @@
 
          @endauth
       </div>
-
-
-
    </div>
    </div>
    </div>
