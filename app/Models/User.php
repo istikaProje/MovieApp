@@ -27,6 +27,7 @@ class User extends Authenticatable
         'subscription_created_at',
         'stripe_subscription_id',
         'role',
+        'profile_photo',
     ];
 
     /**

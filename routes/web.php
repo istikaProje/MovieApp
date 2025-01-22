@@ -90,6 +90,12 @@ Route::middleware('admin.auth')->group(function(){
 
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/dashboard/update', [DashboardController::class, 'updateDashboard'])->name('dashboard.update');
+    Route::delete('/dashboard/delete', [DashboardController::class, 'deleteAccount'])->name('dashboard.delete');
+    Route::post('/dashboard/photo', [DashboardController::class, 'updatePhoto'])->name('photo.update');
+    Route::delete('/dashboard/photo', [DashboardController::class, 'deletePhoto'])->name('photo.delete');
 
+});
 
 
