@@ -1,13 +1,7 @@
-    @foreach($categories as $category)
-
-    
-
-    
-     
+@foreach($categories as $category)
+    @if($category->movies->isNotEmpty())
         <div class="bg-third my-4 p-4 rounded-md">
-       
-
-            <div class="swiper slider1  ">
+            <div class="swiper slider1">
                 <h2 class="bold mb-2 text-xl text-white">
                     <!-- Kategori başlığına tıklanabilir bağlantı ekledik -->
                     <a href="{{ route('movies.index', ['category' => $category->id]) }}" class="hover:underline">
@@ -18,7 +12,7 @@
                     <div class="swiper-button-prev custom-prev"></div>
                     <div class="swiper-button-next custom-next"></div>
                 </div>
-                <div class="swiper-wrapper  ">
+                <div class="swiper-wrapper">
                     @foreach($category->movies as $movie)
                         <div class="swiper-slide">
                             <!-- Filme tıklanabilir bağlantı -->
@@ -49,9 +43,7 @@
                     @endforeach
                 </div>
             </div>
-
-
         </div>
-      
-    @endforeach
+    @endif
+@endforeach
 

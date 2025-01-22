@@ -10,6 +10,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\MoviesController as FrontMoviesController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
@@ -18,6 +20,9 @@ use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 
 //Route::get('/payment', [ShowPaymentController::class, 'show'])->name('payment.page');
 //Route::post('/payment', [ShowPaymentController::class, 'process'])->name('payment.process');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 Route::view('/','home.index')->name('home');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
@@ -26,7 +31,6 @@ Route::view('/about_us', 'layouts.about_us')->name('about_us');
 Route::view('/about_us', 'layouts.about_us')->name('about_us');
 
 Route::middleware('guest')->group(function(){
-
     Route::view('/register','auth.register')->name('register');
     Route::post('/register',[AuthController::class,'register']);
     Route::view('/login','auth.login')->name('login');
@@ -34,22 +38,28 @@ Route::middleware('guest')->group(function(){
 });
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::view('/payment','layouts.payments')->name('payment');
+
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/category/{id}', [FrontCategoryController::class, 'show'])->name('category.show');
+
+    Route::view('/favoritesList', 'layouts.favoritesList')->name('favoritesList');
+    Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+
     Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
     Route::get('/movies/{id}', [FrontMoviesController::class, 'show'])->name('movies.show');
     Route::get('/movies/{movie}/watch', [FrontMoviesController::class, 'watch'])->name('movies.watch');
     Route::get('/movies/{id}', [MoviesController::class, 'show'])->name('movies.show');
-Route::post('/movies/{id}/comments', [MoviesController::class, 'addComment'])->middleware('auth')->name('movies.comment');
+    Route::post('/movies/{id}/comments', [MoviesController::class, 'addComment'])->middleware('auth')->name('movies.comment');
 
-  Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
-  Route::controller(ShowPaymentController::class)->group(function(){
+    Route::controller(ShowPaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
@@ -90,6 +100,12 @@ Route::middleware('admin.auth')->group(function(){
 
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/dashboard/update', [DashboardController::class, 'updateDashboard'])->name('dashboard.update');
+    Route::delete('/dashboard/delete', [DashboardController::class, 'deleteAccount'])->name('dashboard.delete');
+    Route::post('/dashboard/photo', [DashboardController::class, 'updatePhoto'])->name('photo.update');
+    Route::delete('/dashboard/photo', [DashboardController::class, 'deletePhoto'])->name('photo.delete');
 
+});
 
 
