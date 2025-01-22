@@ -63,7 +63,7 @@
             <div x-data="{ openDropDown: false }" class=" block mr-5">
                <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                   <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
-                     <img class="h-full w-full rounded-full object-cover object-center" src="https://picsum.photos/200"
+                     <img class="h-full w-full rounded-full object-cover object-center" src="{{ asset('avatars/' . Auth::user()->profile_photo) }}"
                         alt="" />
                   </div>
 
