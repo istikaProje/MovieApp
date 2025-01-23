@@ -1,4 +1,4 @@
-    {{-- watch and enjoy --}}
+{{-- watch and enjoy --}}
 
     <div class="relative flex flex-col">
        <div class="min-h-28">
@@ -8,13 +8,13 @@
              </h2>
              <div class="gap-6 mt-8 mx-4 md:flex">
                 <div class="md:w-1/2">
-                   <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
+                   <div class="wrap-video" x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
                       <video x-ref="video" class="object-contain h-96 w-full"
                          src="{{ asset('videos/BreakingBad.webm') }}"></video>
                    </div>
                 </div>
                 <div class="md:w-1/2">
-                   <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
+                   <div class="wrap-video" x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
                       <video x-ref="video" class="object-contain h-96 w-full"
                          src="{{ asset('videos/TheFastandtheFurious.webm') }}"></video>
                    </div>
@@ -24,13 +24,13 @@
 
           <div class="gap-6 mt-8 mx-4 md:flex">
              <div class="md:w-1/2">
-                <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
+                <div class="wrap-video" x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
                    <video x-ref="video" class="object-contain h-96 w-full"
                       src="{{ asset('videos/Nobody.webm') }}"></video>
                 </div>
              </div>
              <div class="md:w-1/2">
-                <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
+                <div class="wrap-video" x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
                    <video x-ref="video" class="object-contain h-96 w-full"
                       src="{{ asset('videos/johnwick.webm') }}"></video>
                 </div>
