@@ -245,11 +245,14 @@
                 <div class="flex flex-wrap items-stretch">
              <!-- Video Player -->
                 <div class="video-player" style=" display: block; margin-left: auto; margin-right: auto;" oncontextmenu="return false;"> <!-- div video player için div oncontextmenu="return false;" sağ tık'ı kapatıyor  -->
-                    <video class="video" id="myVideo" ondblclick="openFullscreen()" poster="{{ asset('storage/' . $movie->poster) }}">
-                        <source src="{{ asset('storage/' . $movie->video) }}" type="video/mp4">
+                    <video class="video" id="myVideo" ondblclick="openFullscreen()" width="100%" height="100%" poster="{{ asset('storage/' . $movie->poster) }}"">
+                      <source
+                        src="{{ asset('storage/' . $movie->video) }}"
+                        type="video/mp4"
+                      />
                       <p>İnternet tarayıcınız HTML5 video oynatıcısını desteklemiyor.</p>
                     </video>
-                    <button class="controls__button toggleButton" onclick="togglePlay()" title="Toggle Play"> <i class="icon-Play"></i> </button>
+                    <button class="controls__button toggleButton" title="Toggle Play"> <i class="icon-Play"></i> </button>
                     <button class="controls__button time_skipL" data-skip="-10">« 10s</button>
                     <button class="controls__button time_skipR" data-skip="10">10s »</button>
                     <div class="controls">
@@ -274,17 +277,17 @@
                       <div class="flex items-center justify-end space-x-2 ml-auto" style="margin-left: auto;">
 
                         <div class="dropdown relative">
-                            <button onclick="toggleDropdown()" class="dropdown-toggle cursor-pointer bg-transparent-200 p-2 rounded">
-                                <img src="{{ asset('images/Speed.png') }}" alt="Dropdown Icon" class="w-6 h-6" />
-                            </button>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item" onclick="setSpeed(2)">2x</div>
-                                <div class="dropdown-item" onclick="setSpeed(1.5)">1.5x</div>
-                                <div class="dropdown-item selected" onclick="setSpeed(1)">1x</div>
-                                <div class="dropdown-item" onclick="setSpeed(0.5)">0.5x</div>
-                                <div class="dropdown-item" onclick="setSpeed(0.25)">0.25x</div>
-                            </div>
-                        </div>
+                          <button onclick="toggleDropdown()" class="dropdown-toggle cursor-pointer bg-transparent-200 p-2 rounded">
+                              <img src="{{ asset('images/Speed.png') }}" alt="Dropdown Icon" class="w-6 h-6" />
+                          </button>
+                          <div class="dropdown-menu">
+                              <div class="dropdown-item" data-speed="2">2x</div>
+                              <div class="dropdown-item" data-speed="1.5">1.5x</div>
+                              <div class="dropdown-item selected" data-speed="1">1x</div>
+                              <div class="dropdown-item" data-speed="0.5">0.5x</div>
+                              <div class="dropdown-item" data-speed="0.25">0.25x</div>
+                          </div>
+                      </div>
 
                       <label class="time2" style="color: white;">0:00</label>
 
@@ -383,6 +386,7 @@
                 }
                 xhr.send();
 
+                //zaman update'i
                 function timeUpdate()
                 {
                     const minutes = Math.floor(video.currentTime / 60);
@@ -396,7 +400,7 @@
                 }
                 video.addEventListener("timeupdate", timeUpdate);
 
-
+                //Başlatma ve durdurma butonu
                 function updateToggleButton()
                 {
                 toggleButton.innerHTML = video.paused ? '<i class="icon-Play"></i>' : '<i class="icon-Pause"></i>';
@@ -485,43 +489,64 @@
                 }
 
              // Handle Speed Selection
-            dropdownItems.forEach(item =>
-            {
-            item.addEventListener('click', (e) =>
-            {
-            const newSpeed = e.target.getAttribute('data-speed');
-            video.playbackRate = parseFloat(newSpeed);
-            // Hide the dropdown after selection
-            speedDropdown.classList.add('hidden');
+              dropdownItems.forEach(item => {
+              item.addEventListener('click', (e) => {
+              // Retrieve the speed value from the `data-speed` attribute
+              const newSpeed = e.target.textContent.replace('x', ''); // Remove the "x" from "2x", "1x", etc.
+              const speedValue = parseFloat(newSpeed);
 
-            // Highlight the selected option
-            dropdownItems.forEach(i => i.classList.remove('selected'));
-            e.target.classList.add('selected');
-            });
-            });
+              if (!isNaN(speedValue)) { // Ensure it's a valid number
+                  video.playbackRate = speedValue;
+              } else {
+                  console.error("Invalid speed value:", newSpeed);
+              }
 
-            // Close dropdown if clicking outside of it (çalışmıyor silinebilir)
+              // Hide the dropdown after selection
+              const dropdown = document.querySelector('.dropdown');
+              dropdown.classList.remove('open');
 
-
-            function toggleDropdown() {
-                const dropdown = document.querySelector('.dropdown');
-                dropdown.classList.toggle('open');
-            }
-
-            function setSpeed(speed) {
-                const video = document.querySelector('video'); //gereksiz bir kod daha
-                video.playbackRate = speed;
-                // Update the selected item
-                const items = document.querySelectorAll('.dropdown-item');
-                items.forEach(item => item.classList.remove('selected'));
-                event.target.classList.add('selected');
-                const dropdown = document.querySelector('.dropdown');
-                dropdown.classList.remove('open');
-
-            }
+              // Highlight the selected option
+              dropdownItems.forEach(i => i.classList.remove('selected'));
+              e.target.classList.add('selected');
+          });
+        });
 
 
-            </script>
+        function toggleDropdown()
+        {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('open');
+        }
+
+        function setSpeed(speed)
+        {
+        const items = document.querySelectorAll('.dropdown-item');
+        const video = document.querySelector('video');
+
+        if (!isNaN(speed))
+        {
+            video.playbackRate = speed;
+        }
+        else
+        {
+            console.error("Invalid speed value:", speed);
+        }
+
+        // Update the selected item
+        items.forEach(item => item.classList.remove('selected'));
+        const targetItem = Array.from(items).find(item => parseFloat(item.getAttribute('data-speed')) === speed);
+        if (targetItem)
+        {
+            targetItem.classList.add('selected');
+        }
+
+        const dropdown = document.querySelector('.dropdown');
+        dropdown.classList.remove('open');
+        }
+
+
+        </script>
+
 
 @endsection
 

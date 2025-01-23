@@ -52,34 +52,26 @@
                 <ul>
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="{{ route('home') }}"
                       class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30"
                     >
-                      About company
+                        Home
                     </a>
                   </li>
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="{{ route('movies.index') }}"
                       class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30"
                     >
-                      Company services
+                      Movies
                     </a>
                   </li>
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="{{ route('about_us') }}"
                       class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30"
                     >
-                      Job opportunities
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="javascript:void(0)"
-                      class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30"
-                    >
-                      Creative people
+                      About Us
                     </a>
                   </li>
                 </ul>
