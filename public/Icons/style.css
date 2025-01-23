@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?mvz7wc');
-  src:  url('fonts/icomoon.eot?mvz7wc#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?mvz7wc') format('truetype'),
-    url('fonts/icomoon.woff?mvz7wc') format('woff'),
-    url('fonts/icomoon.svg?mvz7wc#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?tfca5j');
+  src:  url('fonts/icomoon.eot?tfca5j#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?tfca5j') format('truetype'),
+    url('fonts/icomoon.woff?tfca5j') format('woff'),
+    url('fonts/icomoon.svg?tfca5j#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,59 +25,59 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-Youtube:before {
+.icon-Hamburger:before {
+  content: "\e900";
+}
+.icon-Close:before {
+  content: "\e921";
+}
+.icon-plusIcon:before {
+  content: "\e901";
+}
+.icon-Pause:before {
   content: "\e902";
 }
-.icon-Users1:before {
+.icon-Play:before {
+  content: "\e903";
+}
+.icon-Youtube:before {
+  content: "\e904";
+}
+.icon-Dot:before {
   content: "\e905";
+}
+.icon-Check:before {
+  content: "\e906";
+}
+.icon-Users1:before {
+  content: "\e907";
+}
+.icon-Users:before {
+  content: "\e908";
+}
+.icon-Squares:before {
+  content: "\e909";
+}
+.icon-Ratio:before {
+  content: "\e90a";
+}
+.icon-LeftP:before {
+  content: "\e90b";
+}
+.icon-Star:before {
+  content: "\e90c";
+}
+.icon-Movie:before {
+  content: "\e90d";
+}
+.icon-Plus:before {
+  content: "\e90e";
+}
+.icon-Play2:before {
+  content: "\e90f";
 }
 .icon-LeftArrow:before {
   content: "\e910";
-}
-.icon-Logout1:before {
-  content: "\e919";
-}
-.icon-Logout2:before {
-  content: "\e91a";
-}
-.icon-BookmarkOn:before {
-  content: "\e917";
-}
-.icon-BookmarkOff:before {
-  content: "\e918";
-}
-.icon-Check:before {
-  content: "\e904";
-}
-.icon-Users:before {
-  content: "\e906";
-}
-.icon-Squares:before {
-  content: "\e907";
-}
-.icon-Ratio:before {
-  content: "\e908";
-}
-.icon-LeftP:before {
-  content: "\e909";
-  color: #fff;
-}
-.icon-Star:before {
-  content: "\e90b";
- 
-}
-.icon-Movie:before {
-  content: "\e90c";
-
-}
-.icon-Plus:before {
-  content: "\e90d";
-}
-.icon-Play2:before {
-  content: "\e90e";
-}
-.icon-GreenTick:before {
-  content: "\e90f";
 }
 .icon-Arrow-2:before {
   content: "\e911";
@@ -97,15 +97,18 @@
 .icon-LinkedIn:before {
   content: "\e916";
 }
-.icon-Dot:before {
-  content: "\e903";
+.icon-BookmarkOn:before {
+  content: "\e917";
 }
-.icon-Pause:before {
-  content: "\e900";
+.icon-BookmarkOff:before {
+  content: "\e918";
 }
-.icon-Play:before {
-  content: "\e901";
+.icon-Logout1:before {
+  content: "\e919";
 }
-.icon-plusIcon:before {
-  content: "\e900";
+.icon-Logout2:before {
+  content: "\e91a";
+}
+.icon-plusIcon1:before {
+  content: "\e91b";
 }
