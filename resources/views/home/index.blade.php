@@ -8,8 +8,7 @@
         @include('layouts.sections.home._slideHero')
 
         <section class="container mx-auto">
-            @include('layouts.sections.home._slideFirst')
-            @include('layouts.sections.home._slideSecond')
+            @include('layouts.sections.home._slideFirst', ['favorites' => $favorites])
             @include('layouts.sections.home._slideThird')
         </section>
 

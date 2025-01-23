@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Movie extends Model
 {
@@ -25,9 +26,17 @@ class Movie extends Model
     }
 
     public function comments()
-        {
-            return $this->hasMany(Comment::class);
-        }
+    {
+        return $this->hasMany(Comment::class);
+    }
 
+    public function isFavorite()
+    {
+        return $this->favorites()->where('user_id', Auth::id())->exists();
+    }
 
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }
