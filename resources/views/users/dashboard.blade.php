@@ -10,8 +10,6 @@
 
 <section class="relative flex min-h-screen w-full items-start bg-teal-700">
 
-
-
     <div class="p-[30px]">
 
         <div

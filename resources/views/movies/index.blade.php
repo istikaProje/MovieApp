@@ -10,25 +10,11 @@
 
 
 @include('layouts.sections.movies._movieList')
-@push('scripts')
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script>
-      function toggleFavorite(movieId, image, event) {
-         $.ajax({
-               url: '/favorites/toggle',
-               type: 'POST',
-               data: {
-                  movie_id: movieId,
-                  image: image,
-                  _token: '{{ csrf_token() }}'
-               },
-               success: function(data) {
-                  if (data.status === 'added' || data.status === 'removed') {
-                     location.reload();
-                  }
-               }
-         });
-      }
-   </script>
-@endpush
+
 @endsection
+
+
+
+@push('scripts')
+    @vite('resources/js/toggleFavorite.js')
+@endpush

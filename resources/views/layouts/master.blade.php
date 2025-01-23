@@ -5,24 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>@yield('title', 'MovieWatch - En İyi Filmleri Online İzle')</title>
-          <!-- Açıklama -->
-        <meta name="description" content= "@yield('description', 'MovieWatch ile en yeni filmleri, klasik başyapıtları ve popüler dizileri HD kalitede ücretsiz olarak izleyin. Film severler için tasarlanmış mükemmel bir platform.')">
+        <!-- Açıklama -->
+        <meta name="description" content="@yield('description', 'MovieWatch ile en yeni filmleri, klasik başyapıtları ve popüler dizileri HD kalitede ücretsiz olarak izleyin. Film severler için tasarlanmış mükemmel bir platform.')">
         <!-- Anahtar Kelimeler -->
         <meta name="keywords" content="@yield('keywords', 'film izle, film izleme sitesi, film izleme platformu, film izleme sitesi, film izleme platformu, film izleme sitesi, film izleme platformu, film izleme sitesi, film izleme platformu')">
-        
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Styles / Scripts -->
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         {{-- Sayfaya Özel Style --}}
-        @stack('styles')
-
         <link rel="stylesheet" href="{{ asset('Icons/style.css') }}">
-         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+        @stack('styles')
     </head>
-    <body class="bg-primary  ">
-
+    <body class="bg-primary">
         {{-- Navbar --}}
         @include('layouts.header')
         @yield('content')
@@ -30,7 +26,7 @@
         @include('layouts.footer')
 
         {{-- Sayfaya Özel Script --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @stack('scripts')
-
     </body>
 </html>
