@@ -52,11 +52,12 @@
 
          @auth
 
-            <div class="flex">
+            <div class="flex items-center
+">
 
 
                <a href="{{ route('favorites.index') }}"
-                  class="text-white text-base font-medium mr-10 hover:opacity-30">LİSTEM</a>
+                  class="text-white   font-medium mr-10 hover:opacity-30">LİSTEM</a>
                <div x-data="{ openDropDown: false }" class=" block mr-5">
                   <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                      <div class="relative mr-4 h-[62px] w-[62px] rounded-full">

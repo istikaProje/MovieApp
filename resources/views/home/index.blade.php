@@ -17,7 +17,7 @@
         @endpush
 
         @push('scripts')
-            @vite(['resources/js/swiper.js','resources/js/toggleFavorite.js','resources/js/slider.js','resources/js/slider1.js','resources/js/slider2.js' ,'resources/js/slideHero.js'])
+            @vite(['resources/js/swiper.js','resources/js/toggleFavorite.js', 'resources/js/sliders.js'])
         @endpush
     @endauth
 
