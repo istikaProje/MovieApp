@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rules\Password;
+
 
 
 class DashboardController extends Controller
@@ -24,14 +23,14 @@ class DashboardController extends Controller
             'current_password' => 'required',
             'name' => 'required|string|unique:users,name,' . auth()->id(),
             'email' => 'required|email|max:255|unique:users,email,' . auth()->id(),
-            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+            'password' => ['nullable', 'confirmed', Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
         ]);
 
         $user = auth()->user();
 
         // Eski şifre doğrulama
         if (!Hash::check($request->current_password, $user->password)) {
-            return back()->withErrors(['current_password' => 'Eski şifre yanlış.']);
+            return back()->withErrors(['current_password' => 'The old password is wrong.']);
         }
 
         $user->name = $request->name;
@@ -43,7 +42,7 @@ class DashboardController extends Controller
 
         $user->save();
 
-        return back()->with('status', 'Profil güncellendi.');
+        return back()->with('status', 'Profile updated.');
     }
 
     public function deleteAccount(){
@@ -79,7 +78,7 @@ class DashboardController extends Controller
        $user->profile_photo = $fileName;
        $user->save();
 
-       return redirect()->back()->with('success', 'Profil fotoğrafı güncellendi.');
+       return redirect()->back()->with('success', 'Profile photo updated.');
    }
 
    // Profil fotoğrafını silme
@@ -93,7 +92,7 @@ class DashboardController extends Controller
            $user->save();
        }
 
-       return redirect()->back()->with('success', 'Profil fotoğrafı silindi.');
+       return redirect()->back()->with('success', 'Profile photo deleted.');
    }
 
 
