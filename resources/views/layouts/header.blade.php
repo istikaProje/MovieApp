@@ -61,7 +61,7 @@
                   <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                      <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
                         <img class="h-full w-full rounded-full object-cover object-center"
-                           src="{{ asset('avatars/' . Auth::user()->profile_photo) }}" alt="" />
+                           src="{{ Auth::check() && Auth::user()->profile_photo ? asset('avatars/' . Auth::user()->profile_photo) : asset('images/smile-icon.jpg') }}" alt="" />
                      </div>
                   </button>
 
