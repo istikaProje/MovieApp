@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.sections._heroSection', ['title' => 'Movies' , 'subtitle'=> 'Explore our extensive collection of movies' , 'backgroundImage' => asset('images/loginBg.jpg') ])
+@include('layouts.sections._heroSection', ['title' => 'Movies' , 'subtitle'=> 'Explore our extensive collection of movies' , 'backgroundImage' => asset('images/moviebg.jpg') ])
 
 
    <div class="container mx-auto py-8">
@@ -51,7 +51,7 @@
                               <i class="icon-Star text-xl text-yellow-600"> <span class=" !text-md text-white">{{ $movie->vote_average }}/10</span> </i> <!-- Check Icon -->
                            </p>
                            <p class="text-sm my-3  line-clamp-3 text-white">{{ $movie->description }}</p>
-                          
+
                            <div class="absolute bottom-0 left-4  opacity-100" x-data="{ isFavorite: {{ $movie->isFavorite() ? 'true' : 'false' }} }">
                               <button type="button" class="add-to-favorites" @click="toggleFavorite({{ $movie->id }}, '{{ asset('storage/' . $movie->image) }}', $event)" @click.prevent>
                                  <i :class="isFavorite ? 'icon-BookmarkOn' : 'icon-BookmarkOff'" class="text-white"></i>
