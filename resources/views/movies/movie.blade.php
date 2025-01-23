@@ -62,7 +62,6 @@
     display: flex;
     flex-basis: 100%;
     height: 5px;
-    /* background: rgba(0,0,0,0.5); */
     background: rgba(255,255,255,0.5);
     cursor: pointer;
     height: 15px;
@@ -73,15 +72,6 @@
     flex: 0;
     flex-basis: 0%;
   }
-
-    /*
-  input[type=range] {
-    -webkit-appearance: none;
-    background: transparent;
-    width: 100%;
-    margin: 0 5px;
-  }
-    */
 
     input[type=range] {
     -webkit-appearance: none;
@@ -219,25 +209,19 @@
     }
 
     .dropdown-menu {
-    /* Dropdown menu default styling */
     position: absolute;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100px;
-    /* Menu width */
     display: none;
-    /* Hidden by default */
     bottom: 100%;
-    /* Make it open upwards */
     margin-bottom: 8px;
-    /* Add some space above the dropdown */
     z-index: 10;
     }
 
     .dropdown-item {
-    /* Styling for dropdown items */
     padding: 8px;
     cursor: pointer;
     font-size: 14px;
@@ -250,12 +234,10 @@
     .selected {
     font-weight: bold;
     color: #1D4ED8;
-    /* Blue color for the selected item */
     }
 
     .dropdown.open .dropdown-menu {
     display: block;
-    /* Show the dropdown when open */
     }
 
 </style>
@@ -273,7 +255,7 @@
                     src="{{asset('videos/videom2.mp4')}}"
                     type="video/mp4"
                   />
-                  <p>Your browser doesn't support HTML5 video.</p>
+                  <p>İnternet tarayıcınız HTML5 video oynatıcısını desteklemiyor.</p>
                 </video>
                 <button class="controls__button toggleButton" title="Toggle Play"> <i class="icon-Play"></i> </button>
                 <button class="controls__button time_skipL" data-skip="-10">« 10s</button>
@@ -311,18 +293,6 @@
                             <div class="dropdown-item" onclick="setSpeed(0.25)">0.25x</div>
                         </div>
                     </div>
-
-                    <!--
-                  <input
-                    type="range"
-                    name="playbackRate"
-                    class="controls__slider"
-                    min="0.5"
-                    max="2"
-                    step="0.1"
-                    value="1"
-                  />
-                    !-->
 
                   <label class="time2" style="color: white;">0:00</label>
 
@@ -510,6 +480,15 @@
                     } else {
                     video_player.msRequestFullscreen();
                     }
+                }
+
+                else if (videoElement.mozRequestFullScreen)
+                { // Firefox
+                    if(document.mozRequestFullScreenElement) {
+                    document.mozCancelFullScreen();
+                    } else {
+                    videoElement.mozRequestFullScreen();
+                    };
                 }
             }
 
