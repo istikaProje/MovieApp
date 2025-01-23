@@ -2,22 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ShowPaymentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\ShowPaymentController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\MoviesController as FrontMoviesController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
+use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::view('/about_us', 'layouts.about_us')->name('about_us');

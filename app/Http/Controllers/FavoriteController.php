@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Movie;
 use App\Models\Favorite;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
@@ -15,12 +16,15 @@ class FavoriteController extends Controller
     }
 
     public function home()
-    {
-        $favorites = Favorite::with(['movie' => function($query) {
-            $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
-        }])->where('user_id', Auth::id())->get();
-        return view('home.index', compact('favorites'));
-    }
+{
+    $favorites = Favorite::with(['movie' => function($query) {
+        $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
+    }])->where('user_id', Auth::id())->get();
+
+    $sliderMovies = Movie::inRandomOrder()->take(5)->get();
+
+    return view('home.index', compact('favorites', 'sliderMovies'));
+}
 
     public function toggle(Request $request)
     {
