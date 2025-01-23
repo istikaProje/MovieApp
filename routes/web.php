@@ -38,7 +38,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/category/{id}', [FrontCategoryController::class, 'show'])->name('category.show');
 
     Route::view('/favoritesList', 'layouts.favoritesList')->name('favoritesList');
-    Route::get('/', [FavoriteController::class, 'home'])->name('home');
+    // Remove the duplicate home route here
+    // Route::get('/', [FavoriteController::class, 'home'])->name('home');
 
     Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
@@ -58,6 +59,9 @@ Route::middleware('auth')->group(function(){
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
 });
+
+// Add the home route outside of the auth middleware group
+Route::get('/', [FavoriteController::class, 'home'])->name('home');
 
 Route::middleware('admin.guest')->group(function(){
     Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');

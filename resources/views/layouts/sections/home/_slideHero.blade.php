@@ -65,6 +65,8 @@
       <div class="swiper-button-prev !text-white hover:scale-125"></div>
       <div class="swiper-pagination"></div>
    </div>
+@else
+   <p class="text-white text-center text-lg md:text-xl lg:text-2xl py-4">İçerikler en kısa zamanda eklenecek.</p>
 @endif
 
 <script>
