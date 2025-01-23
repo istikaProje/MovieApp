@@ -2,43 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Movie;
 use App\Models\Favorite;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    public function store(Request $request)
-    {
-        // Önce kontrolü yapalım
-        $exists = Favorite::where('user_id', auth()->id())
-                         ->where('movie_id', $request->movie_id)
-                         ->exists();
-
-        if ($exists) {
-            return response()->json(['success' => false, 'message' => 'Bu içerik zaten favorilerinize eklenmiş!']);
-        }
-
-        Favorite::create([
-            'user_id' => auth()->id(),
-            'movie_id' => $request->movie_id,
-            'image_url' => $request->image_url
-        ]);
-
-        return response()->json(['success' => true, 'message' => 'Film favorilerinize eklendi!']);
-    }
-
     public function index()
     {
-        $favorites = Favorite::where('user_id', auth()->id())
-            ->orderBy('created_at', 'asc')  // En son eklenen en sona gelecek
-            ->get();
+        $favorites = Favorite::where('user_id', Auth::id())->get();
         return view('layouts.favoritesList', compact('favorites'));
+    }
+
+    public function home()
+{
+    $favorites = Favorite::with(['movie' => function($query) {
+        $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
+    }])->where('user_id', Auth::id())->get();
+
+    $sliderMovies = Movie::inRandomOrder()->take(5)->get();
+
+    return view('home.index', compact('favorites', 'sliderMovies'));
+}
+
+    public function toggle(Request $request)
+    {
+        $favorite = Favorite::where('user_id', Auth::id())
+                            ->where('movie_id', $request->movie_id)
+                            ->first();
+
+        if ($favorite) {
+            $favorite->delete();
+            return response()->json(['status' => 'removed']);
+        } else {
+            Favorite::create([
+                'user_id' => Auth::id(),
+                'movie_id' => $request->movie_id,
+                'image' => $request->image,
+                'poster' => $request->poster,
+            ]);
+            return response()->json(['status' => 'added']);
+        }
     }
 
     public function destroy($id)
     {
-        Favorite::where('id', $id)->delete();
-        return redirect()->back();
+        $favorite = Favorite::findOrFail($id);
+        $favorite->delete();
+        return redirect()->route('favorites.index')->with('success', 'Favorite removed successfully');
     }
 }
 

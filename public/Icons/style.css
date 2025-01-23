@@ -64,7 +64,7 @@
 }
 .icon-Star:before {
   content: "\e90b";
-  color: #637381;
+ 
 }
 .icon-Movie:before {
   content: "\e90c";
@@ -105,4 +105,7 @@
 }
 .icon-Play:before {
   content: "\e901";
+}
+.icon-plusIcon:before {
+  content: "\e900";
 }

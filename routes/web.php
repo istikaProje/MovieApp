@@ -2,32 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ShowPaymentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\ShowPaymentController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\MoviesController as FrontMoviesController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
+use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 
 
-//Route::get('/payment', [ShowPaymentController::class, 'show'])->name('payment.page');
-//Route::post('/payment', [ShowPaymentController::class, 'process'])->name('payment.process');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::view('/','home.index')->name('home');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-Route::view('/about_us', 'layouts.about_us')->name('about_us');
-
 Route::view('/about_us', 'layouts.about_us')->name('about_us');
 
 Route::middleware('guest')->group(function(){
@@ -37,8 +30,6 @@ Route::middleware('guest')->group(function(){
     Route::post('/login',[AuthController::class,'login']);
 });
 
-
-
 Route::view('/payment','layouts.payments')->name('payment');
 
 Route::middleware('auth')->group(function(){
@@ -47,9 +38,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/category/{id}', [FrontCategoryController::class, 'show'])->name('category.show');
 
     Route::view('/favoritesList', 'layouts.favoritesList')->name('favoritesList');
+    Route::get('/', [FavoriteController::class, 'home'])->name('home');
+
     Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+    Route::post('/favorites/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
 
     Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
     Route::get('/movies/{id}', [FrontMoviesController::class, 'show'])->name('movies.show');
@@ -95,9 +89,6 @@ Route::middleware('admin.auth')->group(function(){
     Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
     Route::put('/admin.categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/admin.categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
-
-
-
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -105,7 +96,5 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/dashboard/delete', [DashboardController::class, 'deleteAccount'])->name('dashboard.delete');
     Route::post('/dashboard/photo', [DashboardController::class, 'updatePhoto'])->name('photo.update');
     Route::delete('/dashboard/photo', [DashboardController::class, 'deletePhoto'])->name('photo.delete');
-
 });
-
 

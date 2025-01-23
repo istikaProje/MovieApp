@@ -35,15 +35,18 @@
                      </p>
                   </div>
                   <div class="flex gap-4 mt-4">
-                     <a href="{{ route('movies.watch', ['movie' => $movie->id]) }}">
-                        <button class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex px-6 py-3 rounded">
-                           Şimdi İzle
-                        </button>
+                     <a href="{{ route('movies.watch', ['movie' => $movie->id]) }}"
+                        class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex px-6 py-3 rounded">
+                        <div>
+                        <i class="icon-Play2 text-2xl"></i>
+                        </div>
+                        Şimdi İzle
                      </a>
 
-                     <div class="group relative inline-block">
-                        <button class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex p-3 rounded-full">
-                           <i class="icon-Plus" style="font-size: 24px;"> </i> <!-- Plus SVG -->
+                     <div class="group relative inline-block" x-data="{ isFavorite: {{ $movie->isFavorite() ? 'true' : 'false' }} }">
+                        <button @click="toggleFavorite({{ $movie->id }}, '{{ $movie->poster }}', $event)" 
+                                class="bg-[#ffffff33] text-white hover:text-primary hover:bg-white flex p-3 rounded-full">
+                           <i :class="isFavorite ? 'icon-Check' : 'icon-Plus'" class="text-2xl"></i>
                         </button>
                         <div
                            class="absolute bottom-full left-1/2 z-20 mb-3 -translate-x-1/2 whitespace-nowrap rounded bg-third py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100">
@@ -83,4 +86,33 @@
          spaceBetween: 10,
       });
    });
+</script>
+
+
+<script>
+   function toggleFavorite(movieId, image, event) {
+       if (event) {
+           event.preventDefault();
+       }
+       
+       fetch(`/favorites/toggle`, {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json',
+               'X-CSRF-TOKEN': '{{ csrf_token() }}'
+           },
+           body: JSON.stringify({ movie_id: movieId, image: image })
+       })
+       .then(response => response.json())
+       .then(data => {
+           const element = event.target.closest('[x-data]').__x.$data;
+           if (data.status === 'added') {
+               element.isFavorite = true;
+               alert('Added to favorites');
+           } else if (data.status === 'removed') {
+               element.isFavorite = false;
+               alert('Removed from favorites');
+           }
+       });
+   }
 </script>
