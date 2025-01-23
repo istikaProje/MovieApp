@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rules\Password;
 
 
 class DashboardController extends Controller
@@ -24,7 +22,7 @@ class DashboardController extends Controller
             'current_password' => 'required',
             'name' => 'required|string|unique:users,name,' . auth()->id(),
             'email' => 'required|email|max:255|unique:users,email,' . auth()->id(),
-            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+            'password' => ['nullable', 'confirmed', Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
         ]);
 
         $user = auth()->user();

@@ -68,7 +68,7 @@
                                                 value="{{ old('name', auth()->user()->name) }}"
                                                 class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-12 pr-5 text-base text-black outline-none focus:border-primary" required />
                                             @error('name')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <div class="error">{{ $message }}</div>
                                             @enderror
                                             <span
                                                 class="absolute left-[18px] top-1/2 -translate-y-1/2">
@@ -114,7 +114,7 @@
                                                 value="{{ old('email', auth()->user()->email) }}"
                                                 class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-12 pr-5 text-base text-black outline-none focus:border-primary" required />
                                             @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <div class="error">{{ $message }}</div>
                                             @enderror
                                             <span
                                                 class="absolute left-[18px] top-1/2 -translate-y-1/2">
@@ -157,7 +157,7 @@
                                                 placeholder="Current Password"
                                                 class="h-[46px] w-full rounded-md border border-[#E0E0E0] px-5 text-base text-black outline-none focus:border-primary" required />
                                             @error('current_password')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <div class="error">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                                                 placeholder="Enter your new password"
                                                 class="h-[46px] w-full rounded-md border border-[#E0E0E0] px-5 text-base text-black outline-none focus:border-primary" />
                                             @error('password')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <div class="error">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@
                     <div class="p-7 grid place-items-center">
                         <div class="mb-4 flex flex-col items-center gap-6">
                             <div class="h-[55px] w-[55px]">
-                                @if(Auth::user()->profile_photo)
+                                @if(Auth::check() &&   Auth::user()->profile_photo)
                                 <img
                                     src="{{ asset('avatars/' . Auth::user()->profile_photo) }}"
                                     id="profileImage"
@@ -237,9 +237,9 @@
                                     class="h-full w-full rounded-full object-cover object-center" />
                                 @else
                                 <img
-                                    src="https://via.placeholder.com/150"
+                                    src="{{ asset('images/smile-icon.jpg') }}"
                                     id="profileImage"
-                                    alt="photo"
+                                    alt="Smile Icon"
                                     class="h-full w-full rounded-full object-cover object-center" />
                                 @endif
                             </div>
