@@ -12,6 +12,17 @@ class Favorite extends Model
     protected $fillable = [
         'user_id',
         'movie_id',
-        'image_url'
+        'image', // Change this line
+        'poster', // Ensure this line is present
     ];
+
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

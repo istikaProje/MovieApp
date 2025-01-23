@@ -48,15 +48,14 @@
                         <div class="absolute bottom-0 bg-gradient-to-t from-secondary via-secondary/75 opacity-0 group-hover:opacity-100 to-transparent transition-opacity duration-500 p-5">
                            <h2 class="text-xl font-bold line-clamp-1 text-white">{{ $movie->title }}</h2>
                            <p class="text-sm font-semibold text-white mt-1 flex">
-                              <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" id="star">
-                                 <path fill="#f8b84e" d="M-1220 1212.362c-11.656 8.326-86.446-44.452-100.77-44.568-14.324-.115-89.956 51.449-101.476 42.936-11.52-8.513 15.563-95.952 11.247-109.61-4.316-13.658-76.729-69.655-72.193-83.242 4.537-13.587 96.065-14.849 107.721-23.175 11.656-8.325 42.535-94.497 56.86-94.382 14.323.116 43.807 86.775 55.327 95.288 11.52 8.512 103.017 11.252 107.334 24.91 4.316 13.658-68.99 68.479-73.527 82.066-4.536 13.587 21.133 101.451 9.477 109.777z" color="#000" overflow="visible" style="marker:none" transform="matrix(.04574 0 0 .04561 68.85 -40.34)"></path>
-                              </svg>{{ $movie->vote_average }}/10
+                              <i class="icon-Star text-xl text-yellow-600"> <span class=" !text-md text-white">{{ $movie->vote_average }}/10</span> </i> <!-- Check Icon -->
                            </p>
-                           <p class="text-sm mt-2 line-clamp-3 text-white">{{ $movie->description }}</p>
-                           <div class="flex text-white hover:translate-y-[-2px] transition-transform mt-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="save" fill="currentColor">
-                                 <path d="M18,2H6A1,1,0,0,0,5,3V21a1,1,0,0,0,1.65.76L12,17.27l5.29,4.44A1,1,0,0,0,18,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,19,21V3A1,1,0,0,0,18,2ZM17,18.86,12.64,15.2a1,1,0,0,0-1.28,0L7,18.86V4H17Z"></path>
-                              </svg>
+                           <p class="text-sm my-3  line-clamp-3 text-white">{{ $movie->description }}</p>
+                          
+                           <div class="absolute bottom-0 left-4  opacity-100" x-data="{ isFavorite: {{ $movie->isFavorite() ? 'true' : 'false' }} }">
+                              <button type="button" class="add-to-favorites" @click="toggleFavorite({{ $movie->id }}, '{{ asset('storage/' . $movie->image) }}', $event)" @click.prevent>
+                                 <i :class="isFavorite ? 'icon-BookmarkOn' : 'icon-BookmarkOff'" class="text-white"></i>
+                              </button>
                            </div>
                         </div>
                      </a>
@@ -71,4 +70,24 @@
          {{ $movies->links() }}
       </div>
    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function toggleFavorite(movieId, image, event) {
+        $.ajax({
+            url: '/favorites/toggle',
+            type: 'POST',
+            data: {
+                movie_id: movieId,
+                image: image,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(data) {
+                if (data.status === 'added' || data.status === 'removed') {
+                    location.reload();
+                }
+            }
+        });
+    }
+</script>
 @endsection

@@ -51,50 +51,56 @@
          @endguest
 
          @auth
-            <div x-data="{ openDropDown: false }" class=" block mr-5">
-               <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
-                  <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
-                     <img class="h-full w-full rounded-full object-cover object-center" src="{{ asset('avatars/' . Auth::user()->profile_photo) }}"
-                        alt="" />
+
+            <div class="flex">
+
+
+               <a href="{{ route('favorites.index') }}"
+                  class="text-white text-base font-medium mr-10 hover:opacity-30">LİSTEM</a>
+               <div x-data="{ openDropDown: false }" class=" block mr-5">
+                  <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
+                     <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
+                        <img class="h-full w-full rounded-full object-cover object-center"
+                           src="{{ asset('avatars/' . Auth::user()->profile_photo) }}" alt="" />
+                     </div>
+                  </button>
+
+
+                  <div x-show="openDropDown" @click.outside="openDropDown = false"
+                     class="shadow-card absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-third text-white p-2">
+
+                     @if (Auth::user()->role === 'admin')
+                        <a class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm"
+                           href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                     @endif
+
+                     <a href="{{ route('dashboard') }}"
+                        class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
+                        Dashboard
+                     </a>
+                     <a href="{{ route('home') }}"
+                        class="hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
+                        Home
+                     </a>
+                     <a href="{{ route('movies.index') }}"
+                        class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
+                        Movies
+                     </a>
+
+                     <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button
+                           class="hover:bg-third hover:text-white block w-full rounded py-2 px-3 text-left text-sm ">Logout</button>
+                     </form>
+
                   </div>
-               <div class="flex items-center">
-                  <a href="{{ route('favorites.index') }}" class="text-white text-base font-medium mr-10 hover:opacity-30">LİSTEM</a>
-
-                <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
-                  <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
-                     <img class="h-full w-full rounded-full object-cover object-center" src="https://picsum.photos/200" alt="" />
-                  </div>
-                </button>
                </div>
-               <div x-show="openDropDown" @click.outside="openDropDown = false"
-                  class="shadow-card absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-third text-white p-2">
 
-                  @if (Auth::user()->role === 'admin')
-                     <a class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm"
-                        href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-                  @endif
 
-                  <a href="{{ route('dashboard') }}"
-                     class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
-                     Dashboard
-                  </a>
-                  <a href="{{ route('home') }}"
-                     class="hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
-                     Home
-                  </a>
-                  <a href="{{ route('movies.index') }}"
-                     class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
-                     Movies
-                  </a>
-
-                  <form action="{{ route('logout') }}" method="post">
-                     @csrf
-                     <button
-                        class="hover:bg-third hover:text-white block w-full rounded py-2 px-3 text-left text-sm ">Logout</button>
-                  </form>
-
-               </div>
             </div>
+
+
+
 
          @endauth
       </div>
