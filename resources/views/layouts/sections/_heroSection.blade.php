@@ -2,7 +2,7 @@
 
 <section class="relative h-[50vh] w-full overflow-hidden flex justify-center items-center bg-black">
     <!-- Background Image -->
-    <div class="absolute inset-0 opacity-50 overflow-hidden">
+    <div class="absolute inset-0 opacity-70 overflow-hidden">
         <img src="{{ $backgroundImage }}" alt="Hero Background" class="w-full h-full object-cover object-center">
     </div>
 
