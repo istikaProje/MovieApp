@@ -1,11 +1,11 @@
 <div class="container mx-auto py-8">
-    <h1 class="text-3xl font-bold text-white mb-6">Movies</h1>
+    <h1 class="text-3xl font-bold text-white mb-6">Filmler</h1>
 
     <div class="flex flex-col md:flex-row">
        <div class="w-full md:w-4/12 px-4 mb-6 md:mb-0">
           <div class="rounded-lg bg-third py-6 px-8 lg:px-6 xl:px-8">
              <h3 class="border-b border-[#b67c7c] pb-4 text-lg font-semibold text-white">
-                Categories
+                Kategoriler
              </h3>
              <ul class="pt-6 max-h-96 overflow-y-auto">
                 <li class="mb-3">
@@ -44,7 +44,7 @@
                             <i class="icon-Star text-xl text-yellow-600"> <span class=" !text-md text-white">{{ $movie->vote_average }}/10</span> </i> <!-- Check Icon -->
                          </p>
                          <p class="text-sm my-3  line-clamp-3 text-white">{{ $movie->description }}</p>
-                        
+
                          <div class="absolute bottom-0 left-4  opacity-100" x-data="{ isFavorite: {{ $movie->isFavorite() ? 'true' : 'false' }} }">
                             <button type="button" class="add-to-favorites" @click="toggleFavorite({{ $movie->id }}, '{{ asset('storage/' . $movie->image) }}', $event)" @click.prevent>
                                <i :class="isFavorite ? 'icon-BookmarkOn' : 'icon-BookmarkOff'" class="text-white"></i>

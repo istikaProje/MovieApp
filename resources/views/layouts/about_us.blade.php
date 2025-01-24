@@ -9,7 +9,7 @@
 
 <div class="mt-10 text-center text-white">
     <h2 class="text-3xl font-bold mb-5"> Biz Kimiz </h2>
-    <p class="text-lg mb-5"> Her türden film veya dizinin içinde bulunduğu bir film sitesiyiz </p>
+    <p class="text-lg mb-5"> Her türden filmlerin bulunduğu bir film sitesiyiz </p>
 
     <h2 class="text-3xl font-bold mb-5"> Neyi Amaçlıyoruz </h2>
     <p class="text-lg"> Zaman zaman oksitosin (MUTLULUK), kimi zamanda Kortizol (Üzüntü-Korku) </p>

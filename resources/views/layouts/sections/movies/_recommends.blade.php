@@ -10,13 +10,13 @@
                    <img src="{{ asset('storage/' . $recommendedMovie->poster) }}" alt="{{ $recommendedMovie->title }}" class="w-full  object-cover transition-transform duration-300  group-hover:scale-105">
                    <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-70"></div>
                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <a href="{{ route('movies.show', ['id' => $recommendedMovie->id]) }}" class="px-4 py-2 bg-white text-black rounded-lg">Details</a>
+                      <a href="{{ route('movies.show', ['id' => $recommendedMovie->id]) }}" class="px-4 py-2 bg-white text-black rounded-lg">Detaylar</a>
                    </div>
                 </div>
              @endif
           @endforeach
        </div>
     @else
-       <p class="text-white">No recommended movies available.</p>
+       <p class="text-white">Önerilen film bulunamadı.</p>
     @endif
  </div>

@@ -17,19 +17,19 @@
                <li>
                   <a href="{{ route('home') }}"
                      class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
-                     Home
+                     Anasayfa
                   </a>
                </li>
                <li>
                   <a href="{{ route('movies.index') }}"
                      class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
-                     Movies
+                     Filmler
                   </a>
                </li>
                <li>
                   <a href="{{ route('about_us') }}"
                      class="flex py-2 text-base font-medium text-dark hover:opacity-30 lg:ml-12 lg:inline-flex lg:text-white">
-                     About Us
+                     Hakkımızda
                   </a>
                </li>
             </ul>
@@ -39,12 +39,12 @@
          @guest
             <div class="justify-end pr-16 sm:flex lg:pr-0">
                <a href="{{ route('login') }}" class="py-3 px-7 text-base font-medium text-white hover:opacity-30">
-                  Login
+                  Giriş Yap
                </a>
 
                <a href="{{ route('register') }}"
                   class="rounded-lg bg-white py-3 px-7 text-base flex-shrink-0 font-medium text-dark hover:opacity-90">
-                  Sign Up
+                  Kayıt Ol
                </a>
             </div>
 
@@ -72,26 +72,26 @@
 
                      @if (Auth::user()->role === 'admin')
                         <a class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm"
-                           href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                           href="{{ route('admin.dashboard') }}">Admin Kontrol Paneli</a>
                      @endif
 
                      <a href="{{ route('dashboard') }}"
                         class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
-                        Dashboard
+                        Kontrol Paneli
                      </a>
                      <a href="{{ route('home') }}"
                         class="hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
-                        Home
+                        Anasayfa
                      </a>
                      <a href="{{ route('movies.index') }}"
                         class=" hover:bg-white hover:text-third block w-full rounded py-2 px-3 text-left text-sm">
-                        Movies
+                        Filmler
                      </a>
 
                      <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button
-                           class="hover:bg-third hover:text-white block w-full rounded py-2 px-3 text-left text-sm ">Logout</button>
+                           class="hover:bg-third hover:text-white block w-full rounded py-2 px-3 text-left text-sm ">Çıkış Yap</button>
                      </form>
 
                   </div>

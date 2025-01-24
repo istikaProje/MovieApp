@@ -14,11 +14,11 @@
     <div class="w-full lg:w-1/2">
      <div class="w-full py-14 px-8 sm:p-[70px] lg:px-14 xl:px-[90px]">
       <h2 class="text-dark mb-3 text-[32px] font-bold">
-       Welcome Back
+       Hoşgeldiniz
       </h2>
       <p class="mb-14 text-base text-[#8F8F8F] xl:mb-20">
-       We make it easy for everyone to <br class="hidden sm:block" />
-       access their account
+        Herkesin hesabına erişmesini <br class="hidden sm:block" />
+        kolaylaştırıyoruz
       </p>
 
       <form action="{{ route('login') }}" method="post">
@@ -28,7 +28,7 @@
             type="email"
             name="email"
             value="{{ old('email') }}"
-            placeholder="Enter your email"
+            placeholder="E-posta Adresinizi giriniz"
             class="@error('email') !ring-red-500 @enderror focus:border-primary h-12 w-full rounded-lg border border-transparent bg-[#F6F6F6] px-5 outline-none focus-visible:shadow-none"
         />
         @error('email')
@@ -39,7 +39,7 @@
         <input
             type="password"
             name="password"
-            placeholder="Enter your Password"
+            placeholder="Şifrenizi Giriniz"
             class="@error('password') !ring-red-500 @enderror focus:border-primary h-12 w-full rounded-lg border border-transparent bg-[#F6F6F6] px-5 outline-none focus-visible:shadow-none"
         />
         @error('password')
@@ -56,18 +56,18 @@
          </label>
          <label class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link">
           <p>
-           Remember me
+           Beni Hatırla
           </p>
          </label>
         </div>
         <a href="javascript:void(0)" class="text-primary mb-2 text-base hover:underline">
-            Forget Password?
+            Şifreni mi Unuttun?
         </a>
     </div>
     <div class="flex flex-wrap">
         <div class="w-full">
             <button type="submit" class="bg-primary mb-3 rounded-lg py-4 w-full cursor-pointer px-5 text-white transition hover:bg-opacity-90">
-                Login
+                Giriş Yap
             </button>
         </div>
     </div>
