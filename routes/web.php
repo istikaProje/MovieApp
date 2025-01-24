@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
 use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
+use App\Http\Middleware\EnsureUserIsSubscribed;
 
 
 
@@ -102,3 +103,26 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/dashboard/photo', [DashboardController::class, 'deletePhoto'])->name('photo.delete');
 });
 
+
+
+
+// Ödeme yapmamış kullanıcıları ödeme sayfasına yönlendiren middleware
+Route::middleware(['auth', EnsureUserIsSubscribed::class])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/', [FavoriteController::class, 'home'])->name('home');
+
+    Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
+
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+
+});
+
+// Ödeme sayfası sadece giriş yapmış kullanıcılara açık olmalı
+Route::middleware(['auth'])->get('/payment', function () {
+    return view('layouts.payments');
+})->name('payment');
+
+
+
+  
