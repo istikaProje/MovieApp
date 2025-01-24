@@ -498,24 +498,23 @@
                     }
                 }
 
-             // Handle Speed Selection
+             // Hız ayarı seçme
               dropdownItems.forEach(item => {
               item.addEventListener('click', (e) => {
-              // Retrieve the speed value from the `data-speed` attribute
-              const newSpeed = e.target.textContent.replace('x', ''); // Remove the "x" from "2x", "1x", etc.
+              const newSpeed = e.target.textContent.replace('x', '');
               const speedValue = parseFloat(newSpeed);
 
-              if (!isNaN(speedValue)) { // Ensure it's a valid number
+              if (!isNaN(speedValue)) {
                   video.playbackRate = speedValue;
               } else {
                   console.error("Invalid speed value:", newSpeed);
               }
 
-              // Hide the dropdown after selection
+              // Dropdown'u seçtikten sonra kapat
               const dropdown = document.querySelector('.dropdown');
               dropdown.classList.remove('open');
 
-              // Highlight the selected option
+              // Seçili seçeneği parlak yap
               dropdownItems.forEach(i => i.classList.remove('selected'));
               e.target.classList.add('selected');
           });
@@ -542,7 +541,7 @@
             console.error("Invalid speed value:", speed);
         }
 
-        // Update the selected item
+        // seçilmiş seçeneği güncelle
         items.forEach(item => item.classList.remove('selected'));
         const targetItem = Array.from(items).find(item => parseFloat(item.getAttribute('data-speed')) === speed);
         if (targetItem)

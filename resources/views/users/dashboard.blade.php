@@ -35,7 +35,7 @@
                     class="mb-8 rounded-lg border border-stroke bg-white lg:mb-0">
                     <h3
                         class="border-b border-stroke py-4 px-7 text-base font-medium text-black">
-                        Personal Information
+                        Kişisel Bilgiler
                     </h3>
                     <div class="p-7">
 
@@ -55,7 +55,7 @@
                                         <label
                                             for="full_name"
                                             class="mb-[10px] block text-base font-medium text-black">
-                                            Full Name
+                                            Ad Soyad
                                         </label>
                                         <div class="relative">
                                             <input
@@ -83,7 +83,7 @@
                                         <label
                                             for="email"
                                             class="mb-[10px] block text-base font-medium text-black">
-                                            Email Address
+                                            Email Adresi
                                         </label>
                                         <div class="relative">
                                             <input
@@ -109,7 +109,7 @@
                                         <label
                                             for="current_password"
                                             class="mb-[10px] block text-base font-medium text-black">
-                                            Current Password
+                                            Mevcut Şifre
                                         </label>
                                         <div class="relative">
                                             <input
@@ -130,7 +130,7 @@
                                         <label
                                             for="password"
                                             class="mb-[10px] block text-base font-medium text-black">
-                                            New Password
+                                            Yeni Şifre
                                         </label>
                                         <div class="relative">
                                             <input
@@ -151,7 +151,7 @@
                                         <label
                                             for="password_confirmation"
                                             class="mb-[10px] block text-base font-medium text-black">
-                                            Re-type New Password
+                                            Yeni Şifre Tekrar
                                         </label>
                                         <div class="relative">
                                             <input
@@ -168,7 +168,7 @@
                                 <div class="w-full px-3 flex justify-center items-center">
                                     <button type="submit"
                                         class="flex h-11 items-center justify-center rounded border border-transparent bg-primary px-6 text-base font-medium text-white hover:bg-opacity-90">
-                                        Save changes
+                                        Değişiklikleri Kaydet
                                     </button>
                                 </div>
 
@@ -186,7 +186,7 @@
                 <!-- Photo start -->
                 <div class="w-full rounded-lg border border-stroke bg-white lg:w-auto">
                     <h3 class="border-b border-stroke py-4 px-7 text-base font-medium text-black">
-                        Your Photo
+                        Fotoğrafınız
                     </h3>
                     <div class="p-7 grid place-items-center">
                         <div class="mb-4 flex flex-col items-center gap-6">
@@ -210,11 +210,11 @@
                             <form action="{{ route('photo.update') }}" method="POST" enctype="multipart/form-data" class="flex flex-col items-center gap-4">
                                 @csrf
                                 <label for="profile_photo" class="cursor-pointer text-sm text-primary">
-                                    Edit your photo
+                                    Fotoğrafınızı Değiştirin
                                     <input type="file" class="sr-only" name="profile_photo" id="profile_photo" accept="image/*" onchange="previewImage(event)" />
                                 </label>
                                 <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                    Photo update
+                                    Fotoğraf Güncelle
                                 </button>
                             </form>
 
@@ -223,7 +223,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                    Photo delete
+                                    Fotoğraf Silme
                                 </button>
                             </form>
                         </div>
@@ -235,7 +235,7 @@
                 <!-- Account delete start -->
                 <div class="w-full rounded-lg border border-stroke bg-white lg:w-auto">
                     <h3 class="border-b border-stroke py-4 px-7 text-base font-medium text-black text-center">
-                        Account delete
+                        Hesap Sil
                     </h3>
 
                     <div class="p-7 place-items-center">
@@ -245,7 +245,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1">
-                                        Account Delete
+                                        Hesap Sil
                                     </button>
                                 </form>
                             </div>

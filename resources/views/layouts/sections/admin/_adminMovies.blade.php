@@ -6,26 +6,26 @@
 
 <div class="flex flex-col md:flex-row mx-3 justify-between items-center mt-3">
    <div class="text-white mb-4">
-      <h2 class="font-bold text-xl">Movies</h2>
-      <p>A list of all the movies in your collection including their title, Description, image, and rating.</p>
+      <h2 class="font-bold text-xl">Filmler</h2>
+      <p>Koleksiyonunuzdaki tüm filmlerin, başlıkları, açıklamaları, görselleri ve puanları dahil olmak üzere listesi.</p>
    </div>
 
    <a href="{{ route('admin.movies.create') }}"
-      class="px-4 py-2 rounded-md md:w-auto w-full flex-shrink-0 mb-2 text-white bg-secondary">Add Movie</a>
+      class="px-4 py-2 rounded-md md:w-auto w-full flex-shrink-0 mb-2 text-white bg-secondary">Film Ekle</a>
 </div>
 
 <div class="overflow-hidden  rounded-lg mt-10 hidden md:flex md:flex-col">
    <table class="min-w-full divide-y overflow-hidden rounded-lg   divide-gray-300">
       <thead class="bg-gray-50">
          <tr>
-            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Image</th>
-            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Title</th>
-            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Description</th>
-            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Vote Average</th>
-            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">YouTube Link</th>
+            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Resim</th>
+            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Başlık</th>
+            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Açıklama</th>
+            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">Oy Ortalaması</th>
+            <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900">YouTube Linki</th>
 
 
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Actions</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Eylemler</th>
          </tr>
       </thead>
       <tbody>
@@ -60,17 +60,17 @@
 
                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-500 sm:pl-6">
                   <a href="{{ route('admin.movies.edit', $movie->id) }}"
-                     class="text-indigo-600 mr-2 hover:text-indigo-900">Edit</a>
+                     class="text-indigo-600 mr-2 hover:text-indigo-900">Güncelle</a>
                   <form action="{{ route('admin.movies.destroy', $movie->id) }}" method="POST" class="inline-block">
                      @csrf
                      @method('DELETE')
-                     <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+                     <button type="submit" class="text-red-600 hover:text-red-900">Sil</button>
                   </form>
                </td>
             </tr>
          @empty
             <tr>
-               <td colspan="8" class="py-4 pl-4 pr-3 text-sm font-medium text-gray-500 text-center">No movies found.
+               <td colspan="8" class="py-4 pl-4 pr-3 text-sm font-medium text-gray-500 text-center">Film bulunamadı.
                </td>
             </tr>
          @endforelse
@@ -80,7 +80,7 @@
    <div class="mt-4">
       {{ $movies->links() }}
    </div>
-  
+
 </div>
 
 
@@ -88,7 +88,7 @@
 
   {{-- Responsive Table Card --}}
   <div class="mt-10 grid grid-cols-1  gap-4 mx-3 sm:grid-cols-w md:hidden">
-    @foreach($movies as $movie) 
+    @foreach($movies as $movie)
     <div class="relative flex items-center space-x-3 rounded-lg bg-white px-6 py-5 shadow ring-1 ring-black ring-opacity-5">
       <div class="min-w-0 flex-1">
         <div class="flex items-center space-x-3">
@@ -106,14 +106,14 @@
       </div>
       <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-500 sm:pl-6">
         <a href="{{ route('admin.movies.edit', $movie->id) }}"
-           class="text-indigo-600 mr-2 hover:text-indigo-900">Edit</a>
+           class="text-indigo-600 mr-2 hover:text-indigo-900">Güncelle</a>
         <form action="{{ route('admin.movies.destroy', $movie->id) }}" method="POST" class="inline-block">
            @csrf
            @method('DELETE')
-           <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+           <button type="submit" class="text-red-600 hover:text-red-900">Sil</button>
         </form>
      </td>    </div>
-    @endforeach    
+    @endforeach
     <div class="px-6 py-4">
         {{ $movies->links() }}
     </div>

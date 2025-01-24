@@ -6,7 +6,7 @@
 
 @section('content')
 
-@include('layouts.sections._heroSection', ['title' => 'Movies' , 'subtitle'=> 'Explore our extensive collection of movies' , 'backgroundImage' => asset('images/moviebg.jpg') ])
+@include('layouts.sections._heroSection', ['title' => 'Filmler' , 'subtitle'=> 'Kapsamlı film koleksiyonumuzu keşfedin' , 'backgroundImage' => asset('images/MoviesBg.jpg') ])
 
 
 @include('layouts.sections.movies._movieList')

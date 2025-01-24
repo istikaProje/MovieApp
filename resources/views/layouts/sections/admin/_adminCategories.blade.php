@@ -13,11 +13,11 @@
 
 
             <div class="text-white ">
-            <h1 class="font-bold  text-xl">Categories</h2>
+            <h1 class="font-bold  text-xl">Kategoriler</h2>
 
             </div>
 
-            <a href="{{ route('admin.categories.create') }}" class="px-4 py-2 mt-4 rounded-md md:w-auto w-full text-white bg-secondary">Add Category</a>
+            <a href="{{ route('admin.categories.create') }}" class="px-4 py-2 mt-4 rounded-md md:w-auto w-full text-white bg-secondary">Kategori Ekle</a>
         </div>
 
 
@@ -34,11 +34,11 @@
             <div>
 
             </div>
-            <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+            <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900">Güncelle</a>
             <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="inline-block">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Sil</button>
             </form>
             </div>
             @endforeach

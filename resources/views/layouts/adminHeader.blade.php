@@ -12,18 +12,18 @@
     <ul class="hidden lg:flex space-x-6">
         @auth('admin')
         <li>
-            <a href="{{ route('admin.dashboard') }}" class="text-white hover:text-secondary transition-colors duration-300">Dashboard</a>
+            <a href="{{ route('admin.dashboard') }}" class="text-white hover:text-secondary transition-colors duration-300">Kontrol paneli</a>
         </li>
         <li>
-            <a href="{{ route('admin.movies.index') }}" class="text-white hover:text-secondary transition-colors duration-300">Movies</a>
-        </li>
-
-        <li>
-            <a href="{{ route('admin.users') }}" class="text-white hover:text-secondary transition-colors duration-300">Users</a>
+            <a href="{{ route('admin.movies.index') }}" class="text-white hover:text-secondary transition-colors duration-300">Filmler</a>
         </li>
 
         <li>
-            <a href="{{ route('admin.categories.index')}}" class="text-white hover:text-secondary transition-colors duration-300">Categories</a>
+            <a href="{{ route('admin.users') }}" class="text-white hover:text-secondary transition-colors duration-300">Kullanıcılar</a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.categories.index')}}" class="text-white hover:text-secondary transition-colors duration-300">Kategoriler</a>
         </li>
         @endauth
     </ul>
@@ -36,17 +36,16 @@
             @csrf
             <button type="submit" class="flex items-center px-4 py-2 text-white bg-secondary hover:bg-red-700 rounded-lg shadow-md transition duration-300">
                 <i class="icon-Logout1 mr-2"></i><!-- Logout SVG -->
-                Logout
+                Çıkış Yap
             </button>
         </form>
     @else
-        <a href="{{ route('admin.login') }}" class="text-white hover:text-secondary transition-colors duration-300">Login</a>
+        <a href="{{ route('admin.login') }}" class="text-white hover:text-secondary transition-colors duration-300">Giriş Yap</a>
     @endauth
 </div>
 
 <!-- Mobile Menu Button -->
 <button @click="open = !open" class="text-white text-3xl lg:hidden">
-
 
     <i class="text-white text-2xl " :class="open ? 'icon-Close' : 'icon-Hamburger'"></i>
 
@@ -58,19 +57,19 @@
     @auth('admin')
 <ul class="flex flex-col space-y-2 p-4">
     <li>
-        <a href="{{ route('admin.dashboard') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Dashboard</a>
+        <a href="{{ route('admin.dashboard') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Kontrol Paneli</a>
     </li>
     <li>
-        <a href="{{ route('admin.movies.index') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Movies</a>
+        <a href="{{ route('admin.movies.index') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Filmler</a>
     </li>
 
     <li>
-        <a href="{{ route('admin.users') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Users</a>
+        <a href="{{ route('admin.users') }}" class="block text-lg hover:text-red-500 transition-colors duration-300">Kullanıcılar</a>
     </li>
     <li>
         <button  class="flex items-center text-red-600 hover:text-red-700 transition-colors duration-300">
             <i class="icon-Logout1 mr-2"></i> <!-- Logout SVG -->
-            Logout
+            Çıkış Yap
         </button>
     </li>
     @endauth

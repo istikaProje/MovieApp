@@ -8,7 +8,7 @@
     <div class="w-full px-4">
         <div class="flex flex-wrap px- items-end justify-between sm:flex-nowrap sm:space-x-4">
             <h2 class="mb-4 text-2xl font-semibold text-white">
-                Edit Movie
+                Film Güncelle
             </h2>
         </div>
         <form action="{{ route('admin.movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data" novalidate>
@@ -17,17 +17,17 @@
             <div class="flex w-full md:space-x-4 flex-col md:flex-row">
                 <div class="mb-8 rounded-lg border border-stroke bg-white w-full">
                     <h3 class="border-b border-stroke py-4 px-7 text-base font-medium text-black">
-                        Information
+                        Bilgi
                     </h3>
                     <div class="p-7">
                         <div class="flex flex-wrap">
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
                                     <label for="title" class="mb-[10px] block text-base font-medium text-black">
-                                        Title
+                                        Başlık
                                     </label>
                                     <div class="relative">
-                                        <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}" placeholder="Title"
+                                        <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}" placeholder="Başlık"
                                             class="h-[46px] w-full rounded-md border @error('title') border-red-500 @else border-[#E0E0E0] @enderror pl-12 pr-5 text-base text-black outline-none focus:border-primary" />
                                         @error('title')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -41,7 +41,7 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
                                     <label for="vote_average" class="mb-[10px] block text-base font-medium text-black">
-                                        Vote Average
+                                        Oy Ortalaması
                                     </label>
                                     <div class="relative">
                                         <input type="number" name="vote_average" id="vote_average" value="{{ old('vote_average', $movie->vote_average) }}" min="1" max="10" step="0.1"
@@ -58,7 +58,7 @@
                             <div class="w-full px-3 ">
                                 <div class="mb-[30px]">
                                     <label for="description" class="mb-[10px] block text-base font-medium text-black">
-                                        Description
+                                        Açıklama
                                     </label>
                                     <textarea name="description" id="description" rows="4"
                                         class="w-full rounded-md border @error('description') border-red-500 @else border-[#E0E0E0] @enderror p-3 text-base text-black outline-none focus:border-primary">{{ old('description', $movie->description) }}</textarea>
@@ -70,7 +70,7 @@
                             <div class="w-full px-3 ">
                                 <div class="mb-[30px]">
                                     <label for="youtube_link" class="mb-[10px] block text-base font-medium text-black">
-                                        YouTube Trailer Link
+                                        YouTube Fragman Linki
                                     </label>
                                     <div class="relative">
                                         <input type="url" name="youtube_link" id="youtube_link" value="{{ old('youtube_link', $movie->youtube_link) }}" placeholder="https://www.youtube.com/watch?v=example"
@@ -87,11 +87,11 @@
                             <div class="w-full px-3 ">
                                 <div class="mb-[30px]" x-data="{ open: false }">
                                     <label class="mb-[10px] block text-base font-medium text-black">
-                                        Categories
+                                        Kategoriler
                                     </label>
                                     <div class="relative">
                                         <button type="button" @click="open = !open" class="h-[46px] w-full rounded-md border border-[#E0E0E0] pl-3 pr-5 text-base text-black outline-none focus:border-primary flex justify-between items-center">
-                                            <span>Select Categories</span>
+                                            <span>Kategori Seçiniz</span>
                                             <i :class="{'rotate-180': open}" class="icon-Arrow transform transition-transform duration-200 text-xl"> </i> <!-- Arrow Icon -->
                                         </button>
                                         <div x-show="open" @click.away="open = false" class="absolute z-10 mt-2 w-full rounded-md border border-[#E0E0E0] bg-white shadow-lg max-h-60 overflow-y-auto">
@@ -118,7 +118,7 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <div class="mb-[30px]">
                                     <label for="image" class="mb-[10px] block text-base font-medium text-black">
-                                        Image
+                                        Resim
                                     </label>
                                     <input type="file" name="image" id="image" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg,image/webp"
                                         class="w-full rounded-md border @error('image') border-red-500 @else border-[#E0E0E0] @enderror p-3 text-base text-black outline-none focus:border-primary" onchange="previewImage(event, 'image-preview')" />
@@ -170,7 +170,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Update Movie</button>
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Filmi Güncelle</button>
         </form>
     </div>
 </section>

@@ -1,249 +1,312 @@
     <!-- ====== Footer Section Start -->
     <footer class="bg-primary relative z-5 overflow-hidden mt-16 pt-10">
-       <div class="container mx-auto">
-          <div class=" flex flex-wrap">
-             <div class="w-full px-4 sm:w-2/3 lg:w-4/12 xl:w-3/12">
-                <div class="mb-10 w-full">
-                   <a href="javascript:void(0)" class="mb-6 inline-block max-w-[160px]">
-                      <img src="{{ asset('images/MovieWatchLogo.png') }}" alt="logo" class="max-w-full" />
-                   </a>
-                   <p class="mb-7 text-base text-white">
-                      We create digital experiences for brands and companies by using
-                      technology.
-                   </p>
-                   <div class="flex items-center">
-                      <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
-                         <i class="icon-Facebook text-[18px] leading-none w-[10px] h-[18px] z-[1] text-current"></i>
-                         <!-- Facebook SVG -->
-                      </a>
-                      <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
-                         <i class="icon-Twitter text-[18px] leading-none w-[10px] h-[18px] text-current"></i>
-                         <!-- Twitter SVG -->
-                      </a>
-                      <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
-                         <i class="icon-Instagram text-[18px] leading-none w-[10px] h-[18px] text-current"></i>
-                         <!-- Instagram SVG -->
-                      </a>
-                      <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
-                         <i class="icon-LinkedIn text-[18px] leading-none w-[10px] h-[18px] text-current"></i>
-                         <!-- LinkedIn SVG -->
-                      </a>
-                   </div>
-                </div>
-             </div>
-             <div class="w-full px-4 sm:w-1/2 lg:w-3/12 xl:w-2/12">
-                <div class="mb-10 w-full">
-                   <h4 class="mb-9 text-lg font-semibold text-white">Kısayollar</h4>
-                   <ul>
-                      <li>
-                         <a href="{{ route('home') }}"
-                            class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30">
-                            Home
-                         </a>
-                      </li>
-                      <li>
-                         <a href="{{ route('movies.index') }}"
-                            class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30">
-                            Movies
-                         </a>
-                      </li>
-                      <li>
-                         <a href="{{ route('about_us') }}"
-                            class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30">
-                            About Us
-                         </a>
-                      </li>
-                   </ul>
-                </div>
-             </div>
-
-          </div>
-       </div>
-
-       <div class="mt-12 border-t border-white border-opacity-40  py-8 lg:mt-[60px]">
-          <div class="container mx-auto">
-            <div class=" flex flex-wrap">
-              <div class="w-full px-4 md:w-2/3 lg:w-1/2">
-                <div class="my-1">
-                  <div
-                    class=" flex flex-wrap items-center justify-center md:justify-start"
-                  >
-                  <div x-data="{ open: false }">
-                    <a
-                      href="javascript:void(0)"
-                      class="px-3 text-base text-white hover:opacity-30"
-                      @click="open = true">
-                      Privacy policy
+        <div class="container mx-auto">
+           <div class=" flex flex-wrap">
+              <div class="w-full px-4 sm:w-2/3 lg:w-4/12 xl:w-3/12">
+                 <div class="mb-10 w-full">
+                    <a href="javascript:void(0)" class="mb-6 inline-block max-w-[160px]">
+                       <img src="{{ asset('images/MovieWatchLogo.png') }}" alt="logo" class="max-w-full" />
                     </a>
-
-                    <div x-show="open" @click.away="open = false" @click="open = false"
-                    class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75 " >
-                    <div @click.stop class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all ">
-                       <div class="bg-gray-900 p-4">
-                          <button @click="open = false" class="text-white float-right">&times;</button>
-                          <h3 class="text-lg leading-6 font-medium text-white">
-                              Movie Video Kullanım Şartları
-                          </h3>
-                       </div>
-
-                       <div class=" bg-gray-900 p-4 w-full w-[560px] h-100 lg:w-[560px] lg:h-[555px] overflow-y-scroll   ">
-
-                          <div class="terms-container">
-                              <h1 class="text-2xl font-bold">Movie Video Kullanım Şartları</h1>
-
-                              <p class="text-sm text-gray-600">Son Güncelleme: 19 Ekim 2023</p>
-                              <p>
-                                Movie Video kullanım şartlarına hoş geldiniz. Bu şartlar, sizin ile size Movie Video hizmetini sunan ve konumunuza göre, Movie.com Services LLC, Movie Digital UK Limited veya bunların iştiraklerinden herhangi biri olabilecek olan tüzel kişi (“Movie”, “biz” veya “bizim”) aranızda geçerlidir. Bulunduğunuz konuma bağlı olarak size Movie Video hizmetini sunan Movie iştirakini ve uygulanan diğer şartlara ulaşmak için www.primevideo.com/ww-av-legal-home adresini ziyaret ediniz. Movie Video hizmet sağlayıcınız, muhtelif zamanlarda, (yürürlükte bulunan mevzuat aksini gerektirmedikçe) bildirim ile veya bildirimsiz olarak değişebilecektir. Lütfen bu şartları sizin için geçerli olan Gizlilik Bildirimi, Kullanım Koşulları, ve Movie Video Kullanım Kuralları ile Movie Video hizmetine ilişkin diğer tüm kural ve politikalar (herhangi bir ürün ayrıntı sayfasında veya Movie Video hizmeti için herhangi bir yardım veya diğer bilgi sayfasında belirtilen kurallar veya kullanım hükümleri dahil, fakat bunlarla sınırlı olmamak üzere) (hep birlikte, bu "Sözleşme") ile birlikte okuyun. Birleşik Krallık, Avrupa Birliği veya Brezilya'da bulunuyorsanız, Gizlilik Bildirimi Çerez Bildirimi ve İlgi Alanına Dayalı Reklam Bildirimi, Sözleşmenize dahil değildir. Bu politika ve bildirimlerin sizin için geçerli olan versiyonları, kişisel bilgilerinizi nasıl işlediğimizin anlaşılması için incelemenize açıktır. Movie Video hizmetini her ziyaret ettiğinizde, göz attığınızda veya kullandığınızda, bu Sözleşmeyi kendiniz, evinizin tüm üyeleri ve hesabınız kapsamında Hizmeti kullanan diğer kişiler adına kabul etmiş olursunuz.
-                              </p>
-                              <h2 class="text-lg font-semibold">1. Hizmet</h2>
-                              <p>
-                                  Movie Video ("Hizmet"); size dijital filmler, televizyon programları ve diğer video içerikleri (birlikte, “Dijital İçerik”) ve bu Sözleşmede belirtilen diğer hizmetleri sunan, tavsiye eden ve keşfetmenize yardımcı olan kişiselleştirilmiş bir hizmettir. Movie da dahil olmak üzere, Hizmet ve Dijital İçerik'e erişmenin farklı yolları bulunmaktadır ve diğer Prime olanakları ve Movie hizmetlerini kullanımınız uygulamalar, internet siteleri veya bu hizmetlere erişim sağladığınız cihazlarda mevcut olan ayrı şartlara tabidir. 18 yaşının altında veya bulunduğunuz ülkedeki reşit olma yaşının altında olmanız durumunda, Hizmeti, yalnızca bir ebeveyn veya vasinin gözetimi ile kullanabilirsiniz. İlginizi çekebilecek olan Dijital İçerik, özellikler ve hizmetler ile ilgili tavsiyeleri göstermek de dahil olmak üzere, Hizmetlerin bir parçası olarak içerik ve özellikleri kişiselleştirmekteyiz. Ayrıca sürekli olarak Movie cihazları ve hizmetleri ile sizin bunlar ile deneyiminizi geliştirmeye çalışmaktayız.
-                              <h2 class="text-lg font-semibold">2. Uyumlu Cihazlar</h2>
-                              <p>
-                                  Dijital İçerik'i anlık olarak görüntülemek (streaming) veya Dijital İçerik'i indirmek için, muhtelif zamanlarda oluşturduğumuz sistem ve uyumluluk gerekliliklerini karşılayan bir kişisel bilgisayar, taşınabilir ortam yürütücüsü veya diğer bir cihazı (“Uyumlu Cihaz”) kullanmanız gerekmektedir. Hangi cihazların desteklendiğine ilişkin daha fazla bilgiyi şu bölümlerde bulabilirsiniz: ABD, Birleşik Krallık, Almanya, Japonya, Tüm Diğer Ülkeler. Bazı Uyumlu Cihazlar, yalnızca Dijital İçerik'i anlık görüntülemek için kullanılabilir, bazıları ise yalnızca Dijital İçerik'i indirmek için kullanılabilir ve bazıları da hem Dijital İçerik'i anlık görüntülemek hem de Dijital İçerik'i indirmek için kullanılabilir. Uyumlu Cihazlar ile ilgili gerekliliklere ilişkin olarak zaman zaman değişiklik yapabiliriz ve bazı durumlarda, bir cihazın Uyumlu Cihaz olup olmadığı (veya Uyumlu Cihaz olmaya devam edip etmediği) cihaz üreticisi tarafından veya diğer üçüncü kişilerce sunulan veya sürdürülen yazılım veya sistemlere bağlı olabilecektir. Dolayısıyla, mevcut durumda Uyumlu Cihaz olan cihazlar, ileride Uyumlu Cihaz sayılmayabilecektir. Size Movie Video mobil uygulamasını sunan Movie şirketi, size Hizmet'i sunan Movie şirketinden farklı olabilir..
-                              </p>
-                              <h2 class="text-lg font-semibold">3. Coğrafi Değişkenlik</h2>
-                              <p>
-                                  İçerik sağlayıcılar tarafından uygulanan teknik ve diğer kısıtlamalar sebebiyle, Hizmet, yalnızca belirli ülkelerde sunulabilir. (Dijital İçerik'in altyazılı ve dublajlı ses versiyonları dahil) Dijital İçerik ve Dijital İçerik'i nasıl sunduğumuz zaman içinde ve bulunduğunuz konuma göre değişiklik gösterecektir. Movie, coğrafi konumunuzu doğrulamak için birtakım teknolojiler kullanacaktır. Konumunuzu saklamak veya gizlemek için herhangi bir teknoloji veya teknik kullanamazsınız.
-                              </p>
-                              <h2 class="text-lg font-semibold">4. Dijital İçerik</h2> <p>
-                                  Hizmet, (i) abonelik süresi boyunca (örneğin, Movie veya diğer abonelikler veya tek başına video abonelik olanakları ile) sınırlı bir süre ile görüntülemek için abonelik bazında Dijital İçerik'e erişmenize (“Abonelik Dijital İçerik”); (ii) sınırlı bir süre boyunca isteğe bağlı görüntüleme için Dijital İçerik'i kiralamanıza (“Kiralık Dijital İçerik”); (iii) sınırsız bir süre boyunca isteğe bağlı görüntüleme için Dijital İçerik'i satın almanıza (“Satın Alınan Dijital İçerik”); (iv) sınırlı bir süre boyunca izlediğin kadar öde esasıyla görüntülemek için Dijital İçerik'i satın almanıza (“PPV Dijital İçerik”); ve/veya (v) sınırlı bir süre boyunca bedava, reklam destekli veya tanıtıcı amaçlı olarak Dijital İçerik'e erişmenize (“Bedava Dijital İçerik”) imkan tanıyabilir. Dijital İçerik; Abonelik Dijital İçerik, Kiralık Dijital İçerik, Satın Alınan Dijital İçerik, PPV Dijital İçerik, Bedava Dijital İçerik olarak veya bunların birleşimi şeklinde sunulabilecek olup her durumda, aşağıda açıklanan sınırlı lisans hakkına tabidir.
-                              </p>
-                            </div>
-
-                      </div>
+                    <p class="mb-7 text-base text-white">
+                     En iyi filmleri izletmek için buradayız.
+                     Keyifli seyirler! 🎬🍿
+                    </p>
+                    <div class="flex items-center">
+                       <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
+                          <i class="icon-Facebook text-[18px] leading-none w-[10px] h-[18px] z-[1] text-current"></i>
+                          <!-- Facebook SVG -->
+                       </a>
+                       <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
+                          <i class="icon-Twitter text-[18px] leading-none w-[10px] h-[18px] text-current"></i>
+                          <!-- Twitter SVG -->
+                       </a>
+                       <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
+                          <i class="icon-Instagram text-[18px] leading-none w-[10px] h-[18px] text-current"></i>
+                          <!-- Instagram SVG -->
+                       </a>
+                       <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:opacity-30">
+                          <i class="icon-LinkedIn text-[18px] leading-none w-[10px] h-[18px] text-current"></i>
+                          <!-- LinkedIn SVG -->
+                       </a>
                     </div>
                  </div>
-
+              </div>
+              <div class="w-full px-4 sm:w-1/2 lg:w-3/12 xl:w-2/12">
+                 <div class="mb-10 w-full">
+                    <h4 class="mb-9 text-lg font-semibold text-white">Kısayollar</h4>
+                    <ul>
+                       <li>
+                          <a href="{{ route('home') }}"
+                             class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30">
+                             Anasayfa
+                          </a>
+                       </li>
+                       <li>
+                          <a href="{{ route('movies.index') }}"
+                             class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30">
+                             Filmler
+                          </a>
+                       </li>
+                       <li>
+                          <a href="{{ route('about_us') }}"
+                             class="mb-2 inline-block text-base leading-loose text-white hover:opacity-30">
+                             Hakkımızda
+                          </a>
+                       </li>
+                    </ul>
+                 </div>
               </div>
 
+           </div>
+        </div>
 
-              <div x-data="{ open: false }">
-                <a
-                  href="javascript:void(0)"
-                  class="px-3 text-base text-white hover:opacity-30"
-                  @click="open = true">
-                  Legal notice
-                </a>
+        <div class="mt-12 border-t border-white border-opacity-40  py-8 lg:mt-[60px]">
+           <div class="container mx-auto">
+             <div class=" flex flex-wrap">
+               <div class="w-full px-4 md:w-2/3 lg:w-1/2">
+                 <div class="my-1">
+                   <div
+                     class=" flex flex-wrap items-center justify-center md:justify-start"
+                   >
+                   <div x-data="{ open: false }">
+                     <a
+                       href="javascript:void(0)"
+                       class="px-3 text-base text-white hover:opacity-30"
+                       @click="open = true">
+                       Gizlilik Politikası
+                     </a>
 
-                <div x-show="open" @click.away="open = false" @click="open = false"
-                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75 " >
-                <div @click.stop class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all ">
-                   <div class="bg-gray-900 p-4">
-                      <button @click="open = false" class="text-white float-right">&times;</button>
-                      <h3 class="text-lg leading-6 font-medium text-white">
-                          Movie Video Kullanım Şartları
-                      </h3>
-                   </div>
-
-                   <div class=" bg-gray-900 p-4 w-full w-[560px] h-100 lg:w-[560px] lg:h-[555px] overflow-y-scroll   ">
-
-                      <div class="terms-container">
-                          <h1 class="text-2xl font-bold">Movie Video Kullanım Şartları</h1>
-
-                          <p class="text-sm text-gray-600">Son Güncelleme: 19 Ekim 2023</p>
-                          <p>
-                            Movie Video kullanım şartlarına hoş geldiniz. Bu şartlar, sizin ile size Movie Video hizmetini sunan ve konumunuza göre, Movie.com Services LLC, Movie Digital UK Limited veya bunların iştiraklerinden herhangi biri olabilecek olan tüzel kişi (“Movie”, “biz” veya “bizim”) aranızda geçerlidir. Bulunduğunuz konuma bağlı olarak size Movie Video hizmetini sunan Movie iştirakini ve uygulanan diğer şartlara ulaşmak için www.primevideo.com/ww-av-legal-home adresini ziyaret ediniz. Movie Video hizmet sağlayıcınız, muhtelif zamanlarda, (yürürlükte bulunan mevzuat aksini gerektirmedikçe) bildirim ile veya bildirimsiz olarak değişebilecektir. Lütfen bu şartları sizin için geçerli olan Gizlilik Bildirimi, Kullanım Koşulları, ve Movie Video Kullanım Kuralları ile Movie Video hizmetine ilişkin diğer tüm kural ve politikalar (herhangi bir ürün ayrıntı sayfasında veya Movie Video hizmeti için herhangi bir yardım veya diğer bilgi sayfasında belirtilen kurallar veya kullanım hükümleri dahil, fakat bunlarla sınırlı olmamak üzere) (hep birlikte, bu "Sözleşme") ile birlikte okuyun. Birleşik Krallık, Avrupa Birliği veya Brezilya'da bulunuyorsanız, Gizlilik Bildirimi Çerez Bildirimi ve İlgi Alanına Dayalı Reklam Bildirimi, Sözleşmenize dahil değildir. Bu politika ve bildirimlerin sizin için geçerli olan versiyonları, kişisel bilgilerinizi nasıl işlediğimizin anlaşılması için incelemenize açıktır. Movie Video hizmetini her ziyaret ettiğinizde, göz attığınızda veya kullandığınızda, bu Sözleşmeyi kendiniz, evinizin tüm üyeleri ve hesabınız kapsamında Hizmeti kullanan diğer kişiler adına kabul etmiş olursunuz.
-                          </p>
-                          <h2 class="text-lg font-semibold">1. Hizmet</h2>
-                          <p>
-                              Movie Video ("Hizmet"); size dijital filmler, televizyon programları ve diğer video içerikleri (birlikte, “Dijital İçerik”) ve bu Sözleşmede belirtilen diğer hizmetleri sunan, tavsiye eden ve keşfetmenize yardımcı olan kişiselleştirilmiş bir hizmettir. Movie da dahil olmak üzere, Hizmet ve Dijital İçerik'e erişmenin farklı yolları bulunmaktadır ve diğer Prime olanakları ve Movie hizmetlerini kullanımınız uygulamalar, internet siteleri veya bu hizmetlere erişim sağladığınız cihazlarda mevcut olan ayrı şartlara tabidir. 18 yaşının altında veya bulunduğunuz ülkedeki reşit olma yaşının altında olmanız durumunda, Hizmeti, yalnızca bir ebeveyn veya vasinin gözetimi ile kullanabilirsiniz. İlginizi çekebilecek olan Dijital İçerik, özellikler ve hizmetler ile ilgili tavsiyeleri göstermek de dahil olmak üzere, Hizmetlerin bir parçası olarak içerik ve özellikleri kişiselleştirmekteyiz. Ayrıca sürekli olarak Movie cihazları ve hizmetleri ile sizin bunlar ile deneyiminizi geliştirmeye çalışmaktayız.
-                          <h2 class="text-lg font-semibold">2. Uyumlu Cihazlar</h2>
-                          <p>
-                              Dijital İçerik'i anlık olarak görüntülemek (streaming) veya Dijital İçerik'i indirmek için, muhtelif zamanlarda oluşturduğumuz sistem ve uyumluluk gerekliliklerini karşılayan bir kişisel bilgisayar, taşınabilir ortam yürütücüsü veya diğer bir cihazı (“Uyumlu Cihaz”) kullanmanız gerekmektedir. Hangi cihazların desteklendiğine ilişkin daha fazla bilgiyi şu bölümlerde bulabilirsiniz: ABD, Birleşik Krallık, Almanya, Japonya, Tüm Diğer Ülkeler. Bazı Uyumlu Cihazlar, yalnızca Dijital İçerik'i anlık görüntülemek için kullanılabilir, bazıları ise yalnızca Dijital İçerik'i indirmek için kullanılabilir ve bazıları da hem Dijital İçerik'i anlık görüntülemek hem de Dijital İçerik'i indirmek için kullanılabilir. Uyumlu Cihazlar ile ilgili gerekliliklere ilişkin olarak zaman zaman değişiklik yapabiliriz ve bazı durumlarda, bir cihazın Uyumlu Cihaz olup olmadığı (veya Uyumlu Cihaz olmaya devam edip etmediği) cihaz üreticisi tarafından veya diğer üçüncü kişilerce sunulan veya sürdürülen yazılım veya sistemlere bağlı olabilecektir. Dolayısıyla, mevcut durumda Uyumlu Cihaz olan cihazlar, ileride Uyumlu Cihaz sayılmayabilecektir. Size Movie Video mobil uygulamasını sunan Movie şirketi, size Hizmet'i sunan Movie şirketinden farklı olabilir..
-                          </p>
-                          <h2 class="text-lg font-semibold">3. Coğrafi Değişkenlik</h2>
-                          <p>
-                              İçerik sağlayıcılar tarafından uygulanan teknik ve diğer kısıtlamalar sebebiyle, Hizmet, yalnızca belirli ülkelerde sunulabilir. (Dijital İçerik'in altyazılı ve dublajlı ses versiyonları dahil) Dijital İçerik ve Dijital İçerik'i nasıl sunduğumuz zaman içinde ve bulunduğunuz konuma göre değişiklik gösterecektir. Movie, coğrafi konumunuzu doğrulamak için birtakım teknolojiler kullanacaktır. Konumunuzu saklamak veya gizlemek için herhangi bir teknoloji veya teknik kullanamazsınız.
-                          </p>
-                          <h2 class="text-lg font-semibold">4. Dijital İçerik</h2> <p>
-                              Hizmet, (i) abonelik süresi boyunca (örneğin, Movie veya diğer abonelikler veya tek başına video abonelik olanakları ile) sınırlı bir süre ile görüntülemek için abonelik bazında Dijital İçerik'e erişmenize (“Abonelik Dijital İçerik”); (ii) sınırlı bir süre boyunca isteğe bağlı görüntüleme için Dijital İçerik'i kiralamanıza (“Kiralık Dijital İçerik”); (iii) sınırsız bir süre boyunca isteğe bağlı görüntüleme için Dijital İçerik'i satın almanıza (“Satın Alınan Dijital İçerik”); (iv) sınırlı bir süre boyunca izlediğin kadar öde esasıyla görüntülemek için Dijital İçerik'i satın almanıza (“PPV Dijital İçerik”); ve/veya (v) sınırlı bir süre boyunca bedava, reklam destekli veya tanıtıcı amaçlı olarak Dijital İçerik'e erişmenize (“Bedava Dijital İçerik”) imkan tanıyabilir. Dijital İçerik; Abonelik Dijital İçerik, Kiralık Dijital İçerik, Satın Alınan Dijital İçerik, PPV Dijital İçerik, Bedava Dijital İçerik olarak veya bunların birleşimi şeklinde sunulabilecek olup her durumda, aşağıda açıklanan sınırlı lisans hakkına tabidir.
-                          </p>
+                     <div x-show="open" @click.away="open = false" @click="open = false"
+                     class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75 " >
+                     <div @click.stop class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all ">
+                        <div class="bg-gray-900 p-4">
+                           <button @click="open = false" class="text-white float-right">&times;</button>
+                           <h3 class="text-lg leading-6 font-medium text-white">
+                             Gizlilik Şartları
+                           </h3>
                         </div>
 
+                        <div class=" bg-gray-900 p-4 w-full w-[560px] h-100 lg:w-[560px] lg:h-[555px] overflow-y-scroll   ">
+
+                           <div class="terms-container">
+                               <h1 class="text-2xl font-bold text-white">Gizlilik Şartları</h1>
+
+                               <p class="text-sm text-gray-600">Son Güncelleme: 19 Ekim 2023</p>
+                               <h2 class="text-lg font-semibold text-white mb-5 mt-5">1. Giriş</h2>
+                               <p class="text-white">
+                                 Bu Gizlilik Politikası, Movie Watch olarak kullanıcılarımızın kişisel bilgilerini nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklamaktadır.
+                                 Bu siteyi kullanarak, Gizlilik Politikamızı kabul etmiş olursunuz.
+                             </p>
+                               <h2 class="text-lg font-semibold text-white mb-5 mt-5">2. Topladığımız Bilgiler</h2>
+                               <p class="text-white">
+                                 a. Kişisel Bilgiler: Kullanıcılarımızdan, siteyi kullanabilmeleri için gerekli olabilecek temel kişisel bilgiler toplanabilir. Bu bilgiler şunlar olabilir:
+                               </p>
+                                 <p class="text-white"> •	Ad ve soyad </p>
+                                 <p class="text-white"> •	E-posta adresi </p>
+                                 <p class="text-white"> •	Cihaz bilgileri </p>
+                                 <p class="text-white"> •	IP adresi </p>
+                                 <p class="text-white"> •	Siteye giriş saati ve tarihi </p>
+                                 <p class="text-white">
+                                     b. Otomatik Olarak Toplanan Bilgiler: Siteyi ziyaret ettiğinizde, sistemimiz otomatik olarak bazı teknik bilgileri toplar. Bu bilgiler şunları içerebilir:
+                                 </p>
+                                 <p class="text-white"> •	IP adresiniz </p>
+                                 <p class="text-white"> •	Tarayıcı türünüz ve sürümünüz </p>
+                                 <p class="text-white">  •	Ziyaret ettiğiniz sayfalar </p>
+                                 <p class="text-white">  •	Cihaz türünüz (mobil, masaüstü vb.) </p>
+                                 <p class="text-white"> •	Siteye giriş saati ve tarihi </p>
+
+                                 <h2 class="text-lg font-semibold text-white mb-5 mt-5">3. Bilgilerin Kullanımı</h2>
+                                 <p class="text-white"> Topladığımız bilgiler, aşağıdaki amaçlarla kullanılacaktır: </p>
+                                 <p class="text-white"> •	Hizmetlerimizi sağlamak ve geliştirmek  </p>
+                                 <p class="text-white"> •	Kullanıcı deneyimini kişiselleştirmek  </p>
+                                 <p class="text-white"> •	Destek sağlamak ve soruları yanıtlamak  </p>
+                                 <p class="text-white"> •	Siteyi analiz etmek ve kullanıcı davranışlarını incelemek  </p>
+                                 <p class="text-white"> •	Yasal yükümlülükleri yerine getirmek   </p>
+
+                                 <h2 class="text-lg font-semibold text-white mb-5 mt-5">4. Bilgilerin Paylaşımı</h2>
+                                 <p class="text-white">Kişisel bilgileriniz, üçüncü şahıslarla yalnızca aşağıdaki durumlarda paylaşılabilir: </p>
+                                 <p class="text-white"> •	Yasal yükümlülükler dogrultusunda</p>
+                                 <p class="text-white"> •	Yasal yükümlülükler doğrultusunda</p>
+                                 <p class="text-white">  •	Kullanıcı onayı ile</p>
+                                 <p class="text-white"> •	İhtiyaç duyulması halinde, hizmet sağlayıcılarımızla (örneğin, sunucu sağlayıcıları veya analiz araçları)</p>
+
+                                 <h2 class="text-lg font-semibold text-white mb-5 mt-5">5. Çerezler (Cookies)</h2>
+                                 <p class="text-white">Web sitemizde, kullanıcı deneyimini geliştirmek amacıyla çerezler kullanılabilir. </p>
+                                 <p class="text-white">    Çerezler, cihazınıza yerleştirilen küçük veri dosyalarıdır. </p>
+                                 <p class="text-white">    Çerezler, siteyi tekrar ziyaret ettiğinizde sizi tanımamıza ve tercihlerinize göre içeriği özelleştirmemize yardımcı olur. </p>
+                                 <p class="text-white">   Çerezleri tarayıcı ayarlarınızdan kontrol edebilir veya silebilirsiniz. </p>
+
+                                 <h2 class="text-lg font-semibold text-white mb-5 mt-5">6. Bilgilerin Güvenliği</h2>
+                                 <p class="text-white"> Kişisel bilgilerinizin güvenliği bizim için önemlidir. </p>
+                                 <p class="text-white"> Bu bilgilerin korunması için endüstri standardı güvenlik önlemleri ve şifreleme teknolojileri kullanmaktayız. </p>
+                                 <p class="text-white"> Ancak, internet üzerinden veri iletiminin tamamen güvenli olacağını garanti edemeyiz. </p>
+
+                                 <h2 class="text-lg font-semibold text-white mb-5 mt-5">7. Üçüncü Taraf Bağlantıları</h2>
+                                 <p class="text-white"> Web sitemiz, üçüncü taraf web sitelerine bağlantılar içerebilir. </p>
+                                 <p class="text-white"> Bu sitelerin gizlilik uygulamaları bizim denetimimiz dışında olup, biz herhangi bir sorumluluk kabul etmiyoruz.  </p>
+                                 <p class="text-white"> Lütfen bu sitelerin gizlilik politikalarını inceleyin. </p>
+
+                                 <h2 class="text-lg font-semibold text-white mb-5 mt-5">8. Çocukların Gizliliği</h2>
+                                 <p class="text-white"> Web sitemiz, 13 yaşın altındaki çocuklara yönelik değildir ve bu yaş grubundan herhangi bir kişisel bilgi toplamamaktadır. </p>
+                                 <p class="text-white"> Eğer böyle bir bilgi toplandığı fark edilirse, derhal silinecektir.  </p>
+
+                                 <h2 class="text-lg font-semibold text-white mb-5 mt-5">9. Gizlilik Politikasındaki Değişiklikler</h2>
+                                 <p class="text-white"> Bu Gizlilik Politikası zaman zaman güncellenebilir. </p>
+                                 <p class="text-white"> Herhangi bir değişiklik yapıldığında, güncellenmiş politika sitemizde yayımlanacaktır.   </p>
+                                 <p class="text-white"> Değişiklikler yayınlandığı anda yürürlüğe girer.  </p>
+
+                             </div>
+
+                       </div>
+                     </div>
                   </div>
-                </div>
-             </div>
 
-          </div>
-          <div x-data="{ open: false }">
-            <a
-              href="javascript:void(0)"
-              class="px-3 text-base text-white hover:opacity-30"
-              @click="open = true">
-              Terms of service
-            </a>
-
-            <div x-show="open" @click.away="open = false" @click="open = false"
-            class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75 " >
-            <div @click.stop class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all ">
-               <div class="bg-gray-900 p-4">
-                  <button @click="open = false" class="text-white float-right">&times;</button>
-                  <h3 class="text-lg leading-6 font-medium text-white">
-                      Movie Video Kullanım Şartları
-                  </h3>
                </div>
 
-               <div class=" bg-gray-900 p-4 w-full w-[560px] h-100 lg:w-[560px] lg:h-[555px] overflow-y-scroll   ">
 
-                  <div class="terms-container">
-                      <h1 class="text-2xl font-bold">Movie Video Kullanım Şartları</h1>
+               <div x-data="{ open: false }">
+                 <a
+                   href="javascript:void(0)"
+                   class="px-3 text-base text-white hover:opacity-30"
+                   @click="open = true">
+                   Yasal uyarı
+                 </a>
 
-                      <p class="text-sm text-gray-600">Son Güncelleme: 19 Ekim 2023</p>
-                      <p>
-                        Movie Video kullanım şartlarına hoş geldiniz. Bu şartlar, sizin ile size Movie Video hizmetini sunan ve konumunuza göre, Movie.com Services LLC, Movie Digital UK Limited veya bunların iştiraklerinden herhangi biri olabilecek olan tüzel kişi (“Movie”, “biz” veya “bizim”) aranızda geçerlidir. Bulunduğunuz konuma bağlı olarak size Movie Video hizmetini sunan Movie iştirakini ve uygulanan diğer şartlara ulaşmak için www.primevideo.com/ww-av-legal-home adresini ziyaret ediniz. Movie Video hizmet sağlayıcınız, muhtelif zamanlarda, (yürürlükte bulunan mevzuat aksini gerektirmedikçe) bildirim ile veya bildirimsiz olarak değişebilecektir. Lütfen bu şartları sizin için geçerli olan Gizlilik Bildirimi, Kullanım Koşulları, ve Movie Video Kullanım Kuralları ile Movie Video hizmetine ilişkin diğer tüm kural ve politikalar (herhangi bir ürün ayrıntı sayfasında veya Movie Video hizmeti için herhangi bir yardım veya diğer bilgi sayfasında belirtilen kurallar veya kullanım hükümleri dahil, fakat bunlarla sınırlı olmamak üzere) (hep birlikte, bu "Sözleşme") ile birlikte okuyun. Birleşik Krallık, Avrupa Birliği veya Brezilya'da bulunuyorsanız, Gizlilik Bildirimi Çerez Bildirimi ve İlgi Alanına Dayalı Reklam Bildirimi, Sözleşmenize dahil değildir. Bu politika ve bildirimlerin sizin için geçerli olan versiyonları, kişisel bilgilerinizi nasıl işlediğimizin anlaşılması için incelemenize açıktır. Movie Video hizmetini her ziyaret ettiğinizde, göz attığınızda veya kullandığınızda, bu Sözleşmeyi kendiniz, evinizin tüm üyeleri ve hesabınız kapsamında Hizmeti kullanan diğer kişiler adına kabul etmiş olursunuz.
-                      </p>
-                      <h2 class="text-lg font-semibold">1. Hizmet</h2>
-                      <p>
-                          Movie Video ("Hizmet"); size dijital filmler, televizyon programları ve diğer video içerikleri (birlikte, “Dijital İçerik”) ve bu Sözleşmede belirtilen diğer hizmetleri sunan, tavsiye eden ve keşfetmenize yardımcı olan kişiselleştirilmiş bir hizmettir. Movie da dahil olmak üzere, Hizmet ve Dijital İçerik'e erişmenin farklı yolları bulunmaktadır ve diğer Prime olanakları ve Movie hizmetlerini kullanımınız uygulamalar, internet siteleri veya bu hizmetlere erişim sağladığınız cihazlarda mevcut olan ayrı şartlara tabidir. 18 yaşının altında veya bulunduğunuz ülkedeki reşit olma yaşının altında olmanız durumunda, Hizmeti, yalnızca bir ebeveyn veya vasinin gözetimi ile kullanabilirsiniz. İlginizi çekebilecek olan Dijital İçerik, özellikler ve hizmetler ile ilgili tavsiyeleri göstermek de dahil olmak üzere, Hizmetlerin bir parçası olarak içerik ve özellikleri kişiselleştirmekteyiz. Ayrıca sürekli olarak Movie cihazları ve hizmetleri ile sizin bunlar ile deneyiminizi geliştirmeye çalışmaktayız.
-                      <h2 class="text-lg font-semibold">2. Uyumlu Cihazlar</h2>
-                      <p>
-                          Dijital İçerik'i anlık olarak görüntülemek (streaming) veya Dijital İçerik'i indirmek için, muhtelif zamanlarda oluşturduğumuz sistem ve uyumluluk gerekliliklerini karşılayan bir kişisel bilgisayar, taşınabilir ortam yürütücüsü veya diğer bir cihazı (“Uyumlu Cihaz”) kullanmanız gerekmektedir. Hangi cihazların desteklendiğine ilişkin daha fazla bilgiyi şu bölümlerde bulabilirsiniz: ABD, Birleşik Krallık, Almanya, Japonya, Tüm Diğer Ülkeler. Bazı Uyumlu Cihazlar, yalnızca Dijital İçerik'i anlık görüntülemek için kullanılabilir, bazıları ise yalnızca Dijital İçerik'i indirmek için kullanılabilir ve bazıları da hem Dijital İçerik'i anlık görüntülemek hem de Dijital İçerik'i indirmek için kullanılabilir. Uyumlu Cihazlar ile ilgili gerekliliklere ilişkin olarak zaman zaman değişiklik yapabiliriz ve bazı durumlarda, bir cihazın Uyumlu Cihaz olup olmadığı (veya Uyumlu Cihaz olmaya devam edip etmediği) cihaz üreticisi tarafından veya diğer üçüncü kişilerce sunulan veya sürdürülen yazılım veya sistemlere bağlı olabilecektir. Dolayısıyla, mevcut durumda Uyumlu Cihaz olan cihazlar, ileride Uyumlu Cihaz sayılmayabilecektir. Size Movie Video mobil uygulamasını sunan Movie şirketi, size Hizmet'i sunan Movie şirketinden farklı olabilir..
-                      </p>
-                      <h2 class="text-lg font-semibold">3. Coğrafi Değişkenlik</h2>
-                      <p>
-                          İçerik sağlayıcılar tarafından uygulanan teknik ve diğer kısıtlamalar sebebiyle, Hizmet, yalnızca belirli ülkelerde sunulabilir. (Dijital İçerik'in altyazılı ve dublajlı ses versiyonları dahil) Dijital İçerik ve Dijital İçerik'i nasıl sunduğumuz zaman içinde ve bulunduğunuz konuma göre değişiklik gösterecektir. Movie, coğrafi konumunuzu doğrulamak için birtakım teknolojiler kullanacaktır. Konumunuzu saklamak veya gizlemek için herhangi bir teknoloji veya teknik kullanamazsınız.
-                      </p>
-                      <h2 class="text-lg font-semibold">4. Dijital İçerik</h2> <p>
-                          Hizmet, (i) abonelik süresi boyunca (örneğin, Movie veya diğer abonelikler veya tek başına video abonelik olanakları ile) sınırlı bir süre ile görüntülemek için abonelik bazında Dijital İçerik'e erişmenize (“Abonelik Dijital İçerik”); (ii) sınırlı bir süre boyunca isteğe bağlı görüntüleme için Dijital İçerik'i kiralamanıza (“Kiralık Dijital İçerik”); (iii) sınırsız bir süre boyunca isteğe bağlı görüntüleme için Dijital İçerik'i satın almanıza (“Satın Alınan Dijital İçerik”); (iv) sınırlı bir süre boyunca izlediğin kadar öde esasıyla görüntülemek için Dijital İçerik'i satın almanıza (“PPV Dijital İçerik”); ve/veya (v) sınırlı bir süre boyunca bedava, reklam destekli veya tanıtıcı amaçlı olarak Dijital İçerik'e erişmenize (“Bedava Dijital İçerik”) imkan tanıyabilir. Dijital İçerik; Abonelik Dijital İçerik, Kiralık Dijital İçerik, Satın Alınan Dijital İçerik, PPV Dijital İçerik, Bedava Dijital İçerik olarak veya bunların birleşimi şeklinde sunulabilecek olup her durumda, aşağıda açıklanan sınırlı lisans hakkına tabidir.
-                      </p>
+                 <div x-show="open" @click.away="open = false" @click="open = false"
+                 class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75 " >
+                 <div @click.stop class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all ">
+                    <div class="bg-gray-900 p-4">
+                       <button @click="open = false" class="text-white float-right">&times;</button>
+                       <h3 class="text-lg leading-6 font-medium text-white">
+                         Yasal Uyarı
+                       </h3>
                     </div>
 
-              </div>
-            </div>
-         </div>
+                    <div class="bg-gray-900 p-4 w-full w-[560px] h-100 lg:w-[560px] lg:h-[555px] overflow-y-scroll   ">
 
-      </div>
-                  </div>
+                       <div class="terms-container">
+                           <h1 class="text-2xl font-bold text-white">Yasal Uyarı</h1>
+
+                           <p class="text-sm text-gray-600">Son Güncelleme: 19 Ekim 2023</p>
+                           <p class="text-white">
+                             Bu platformda sunulan içeriklerin çoğu telif hakkı ile korunmaktadır ve izinsiz olarak paylaşılamaz.
+                             Film, dizi ve diğer medya içeriği, yasal olmayan yollarla sunulması halinde, telif hakkı ihlali teşkil eder.
+                             Bu tür içerikleri izlemek, indirmek veya paylaşmak, yasal sonuçlar doğurabilir.
+                             Lütfen içerikleri sadece yasal ve lisanslı platformlardan izleyiniz.
+                             Telif hakkı sahiplerinin haklarına saygı göstermek, hem yasal hem de etik açıdan önemlidir.
+                           </p>
+                           <p class="text-white mt-5">
+                             Eğer bu platformdaki içeriklerin yasal olmayan bir şekilde paylaşıldığını düşünüyorsanız, lütfen bizimle iletişime geçin.
+                             İçeriklerin kaldırılması talebiyle ilgili gerekli işlemleri başlatacağız.
+                           </p>
+                         </div>
+
+                   </div>
+                 </div>
+              </div>
+
+           </div>
+           <div x-data="{ open: false }">
+             <a
+               href="javascript:void(0)"
+               class="px-3 text-base text-white hover:opacity-30"
+               @click="open = true">
+               Hizmet Şartları
+             </a>
+
+             <div x-show="open" @click.away="open = false" @click="open = false"
+             class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75 " >
+             <div @click.stop class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all ">
+                <div class="bg-gray-900 p-4">
+                   <button @click="open = false" class="text-white float-right">&times;</button>
+                   <h3 class="text-lg leading-6 font-medium text-white">
+                     Hizmet Şartları
+                   </h3>
                 </div>
+
+                <div class=" bg-gray-900 p-4 w-full w-[560px] h-100 lg:w-[560px] lg:h-[555px] overflow-y-scroll   ">
+
+                   <div class="terms-container">
+                       <h1 class="text-2xl font-bold text-white"> Hizmet Tanımı:</h1>
+
+                       <p class="text-sm text-gray-600">Son Güncelleme: 19 Ekim 2023</p>
+                       <h2 class="text-lg font-semibold text-white mb-5 mt-5">1. Giriş</h2>
+                       <p class="text-white">
+                         Bu Şartlar ve Koşullar, Movie watch tarafından sağlanan film izleme hizmetlerini kullanmanız için geçerli olan hüküm ve koşulları belirler.
+                         Siteyi ziyaret ederek veya kullanarak, bu şartları kabul etmiş olursunuz.
+                         Eğer şartları kabul etmiyorsanız, Siteyi kullanmamayı kabul etmiş sayılırsınız.
+                     </p>
+                       <h2 class="text-lg font-semibold text-white mb-5 mt-5">2. Hizmet Tanımı</h2>
+                         <p class="text-white"> Movie watch, kullanıcılara çevrimiçi film izleme imkanı sunan bir platformdur. </p>
+                         <p class="text-white"> Bu platform, çeşitli film ve video içeriklerini izleyicilere sunmak için tasarlanmıştır. </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">3. Kullanıcı Sorumlulukları</h2>
+                         <p class="text-white"> •	Kullanıcılar, Siteyi yalnızca yasal amaçlarla kullanmakla yükümlüdür.  </p>
+                         <p class="text-white"> •	Site üzerinden sunulan içeriklerin telif hakları ile korunduğunu ve kullanıcıların bu içerikleri izinsiz çoğaltamayacağını, dağıtamayacağını veya ticari amaçla kullanamayacağını kabul eder.  </p>
+                         <p class="text-white"> •	Hesap açan kullanıcılar, hesaplarının güvenliğinden ve gizliliğinden sorumludur.  </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">4. İçerik ve Telif Hakları</h2>
+                         <p class="text-white"> •	Site üzerindeki tüm içerikler, Movie watch veya içerik sağlayıcılarına ait telif haklarına tabidir. Hiçbir içerik, önceden izin alınmaksızın çoğaltılamaz veya dağıtılamaz.. </p>
+                         <p class="text-white"> •	Movie watch, kullanıcıların Siteye yüklediği içerikleri denetlemek zorunda değildir ancak yasal gerekliliklere uygun şekilde gerekli müdahaleyi yapabilir. </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">5. Üyelik ve Abonelik</h2>
+                         <p class="text-white"> •   Siteye erişim, ücretsiz veya ücretli üyelik seçenekleriyle sağlanabilir. Ücretli üyelikler için belirli ödeme koşulları geçerli olacaktır. </p>
+                         <p class="text-white"> •   Kullanıcılar, üyelik bilgilerini doğru ve güncel tutmakla yükümlüdür. </p>
+                         <p class="text-white"> •   Site, hizmetlerini önceden bildirimde bulunmaksızın değiştirme veya sonlandırma hakkına sahiptir. </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">6. Gizlilik ve Veri Koruma</h2>
+                         <p class="text-white"> •   Site, kullanıcıların kişisel bilgilerini yalnızca yasal gerekliliklere uygun olarak toplar ve işler. </p>
+                         <p class="text-white"> •   Kullanıcılar, gizlilik politikasını inceleyerek hangi bilgilerin toplandığı ve nasıl kullanıldığı hakkında bilgi sahibi olmalıdır. </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">7. Hizmetin Değiştirilmesi ve Kesilmesi </h2>
+                         <p class="text-white"> Movie watch, herhangi bir zaman, hizmeti değiştirme, askıya alma veya sonlandırma hakkını saklı tutar. Bu durum, kullanıcılara önceden bildirilmeksizin yapılabilir. </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">8. Sorumluluk Sınırı</h2>
+                         <p class="text-white"> Mavie watch, platformun kullanımından doğabilecek doğrudan veya dolaylı zararlar, kayıplar, kesintiler, virüsler veya diğer yazılımlar nedeniyle meydana gelen zararlardan sorumlu tutulamaz. </p>
+                         <p class="text-white"> Site, içeriklerin doğruluğu, güvenliği veya kullanıcı deneyimi ile ilgili hiçbir garanti vermez.  </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">9. Yasal Uygulamalar</h2>
+                         <p class="text-white"> Bu Şartlar ve Koşullar, Türkiye yasalarına tabi olup, herhangi bir ihtilaf durumunda [şehir adı] mahkemeleri yetkilidir. </p>
+
+                         <h2 class="text-lg font-semibold text-white mb-5 mt-5">10. Değişiklikler</h2>
+                         <p class="text-white"> Mavie watch, bu Şartlar ve Koşulları zaman zaman güncelleyebilir. Herhangi bir değişiklik yapıldığında, güncel metin Site üzerinde yayınlanacaktır. </p>
+                     </div>
+
+               </div>
              </div>
           </div>
 
+       </div>
+                   </div>
+                 </div>
+              </div>
+           </div>
 
-          <div>
-             <span class="absolute left-0 top-0 z-[0] pointer-events-none">
-                <svg width="419" height="492" viewBox="0 0 419 492" fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-                   <ellipse cx="55.0003" cy="350" rx="364" ry="364"
-                      transform="rotate(-45 55.0003 350)" fill="url(#paint0_linear)" />
-                   <defs>
-                      <linearGradient id="paint0_linear" x1="55.0003" y1="-14" x2="55.0003" y2="714"
-                         gradientUnits="userSpaceOnUse">
-                         <stop stop-color="#ff5757" stop-opacity="0.4" />
-                         <stop offset="1" stop-opacity="0" />
-                      </linearGradient>
-                   </defs>
-                </svg>
-             </span>
 
-             <span class="absolute bottom-0 right-0 z-[0] pointer-events-none">
-               <div class="w-[327px] h-[220px] bg-gradient-to-b from-secondary/30 to-transparent rounded-full rotate-[-75deg]"></div>
+           <div>
+              <span class="absolute left-0 top-0 z-[0] pointer-events-none">
+                 <svg width="419" height="492" viewBox="0 0 419 492" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="55.0003" cy="350" rx="364" ry="364"
+                       transform="rotate(-45 55.0003 350)" fill="url(#paint0_linear)" />
+                    <defs>
+                       <linearGradient id="paint0_linear" x1="55.0003" y1="-14" x2="55.0003" y2="714"
+                          gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#ff5757" stop-opacity="0.4" />
+                          <stop offset="1" stop-opacity="0" />
+                       </linearGradient>
+                    </defs>
+                 </svg>
+              </span>
 
-             </span>
+              <span class="absolute bottom-0 right-0 z-[0] pointer-events-none">
+                <div class="w-[327px] h-[220px] bg-gradient-to-b from-secondary/30 to-transparent rounded-full rotate-[-75deg]"></div>
 
-             <span class="absolute top-0 right-0 z-[1]">
-                <i class="icon-Dot text-[102px] text-gray-500 leading-none"></i>
-             </span>
-          </div>
-    </footer>
-    <!-- ====== Footer Section End -->
+              </span>
+
+              <span class="absolute top-0 right-0 z-[1]">
+                 <i class="icon-Dot text-[102px] text-gray-500 leading-none"></i>
+              </span>
+           </div>
+     </footer>
+     <!-- ====== Footer Section End -->

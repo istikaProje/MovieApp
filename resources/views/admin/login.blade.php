@@ -18,12 +18,11 @@
     <div class="w-full lg:w-1/2">
      <div class="w-full py-14 px-8 sm:p-[70px] lg:px-14 xl:px-[90px]">
       <h2 class="text-dark mb-3 text-[32px] font-bold">
-       Welcome Back
+       Hoşgeldiniz
       </h2>
       <p class="mb-14 text-base text-[#8F8F8F] xl:mb-20">
-       We make it easy for everyone to <br class="hidden sm:block" />
-       access their account
-      </p>
+        Herkesin hesabına erişmesini <br class="hidden sm:block" />
+        kolaylaştırıyoruz
       <form action="{{ route('admin.authenticate') }}" method="post">
         @csrf
 
@@ -64,12 +63,12 @@
                     </span>
                 </label>
                 <label for="remember" class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link">
-                    Remember me
+                    Beni Hatırla
                 </label>
             </div>
 
             <a href="javascript:void(0)" class="text-primary mb-2 text-base hover:underline">
-                Forget Password?
+                Şifrenizi mi unuttunuz?
             </a>
         </div>
 
