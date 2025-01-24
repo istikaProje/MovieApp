@@ -9,7 +9,7 @@ MovieApp is a web application that allows users to browse, search, and review mo
 ## Technologies Used
 
 - [Laravel](https://laravel.com) - A PHP framework for web artisans.
-- [Vue.js](https://vuejs.org) - A progressive JavaScript framework for building user interfaces.
+- [Alpine.js](https://alpinejs.dev) - A rugged, minimal framework for composing JavaScript behavior in your HTML templates.
 - [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework for rapid UI development.
 - [Swiper](https://swiperjs.com) - A modern touch slider.
 - [jQuery](https://jquery.com) - A fast, small, and feature-rich JavaScript library.
