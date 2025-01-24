@@ -10,13 +10,14 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\ShowPaymentController;
+use App\Http\Middleware\EnsureUserIsSubscribed;
+use App\Http\Controllers\WatchProgressController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\MoviesController as FrontMoviesController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
 use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
-use App\Http\Middleware\EnsureUserIsSubscribed;
 
 
 
@@ -58,6 +59,8 @@ Route::middleware('auth')->group(function(){
     Route::controller(ShowPaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
+    Route::post('/watch-progress', [WatchProgressController::class, 'saveProgress'])->middleware('auth');
+
 });
 });
 
@@ -125,4 +128,3 @@ Route::middleware(['auth'])->get('/payment', function () {
 
 
 
-  
