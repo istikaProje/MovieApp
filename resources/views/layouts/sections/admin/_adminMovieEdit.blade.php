@@ -117,6 +117,7 @@
                                     </label>
                                     <input type="file" name="image" id="image" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg,image/webp"
                                         class="w-full rounded-md border @error('image') border-red-500 @else border-[#E0E0E0] @enderror p-3 text-base text-black outline-none focus:border-primary" onchange="previewImage(event, 'image-preview')" />
+                                        <span class="text-gray-500 text-xs">300,450 Çözünürlükte Resim yükleyiniz</span>
                                     @if($movie->image)
                                         <img src="{{ asset('storage/' . $movie->image) }}"  loading="lazy" alt="Current Image" class="mt-2 max-w-xs" id="image-preview">
                                     @endif
@@ -151,6 +152,7 @@
                                     </label>
                                     <input type="file" name="poster" id="poster" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg,image/webp"
                                         class="w-full rounded-md border @error('poster') border-red-500 @else border-[#E0E0E0] @enderror p-3 text-base text-black outline-none focus:border-primary" onchange="previewImage(event, 'poster-preview')" />
+                                        <span class="text-gray-500 text-xs">1280,720 Çözünürlükte Resim yükleyiniz</span>
                                     @if($movie->poster)
                                         <img src="{{ asset('storage/' . $movie->poster) }}"  loading="lazy" alt="Current Poster" class="mt-2 max-w-xs" id="poster-preview">
                                     @endif
