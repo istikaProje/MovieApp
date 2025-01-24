@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?19teem');
+  src:  url('fonts/icomoon.eot?19teem#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?19teem') format('truetype'),
+    url('fonts/icomoon.woff?19teem') format('woff'),
+    url('fonts/icomoon.svg?19teem#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Email:before {
+  content: "\e900";
+}
+.icon-Pause:before {
+  content: "\e901";
+}
+.icon-Play:before {
+  content: "\e902";
+}
+.icon-Youtube:before {
+  content: "\e903";
+}
+.icon-Dot:before {
+  content: "\e904";
+}
+.icon-Check:before {
+  content: "\e905";
+}
+.icon-Users1:before {
+  content: "\e906";
+}
+.icon-Users:before {
+  content: "\e907";
+}
+.icon-Squares:before {
+  content: "\e908";
+}
+.icon-Ratio:before {
+  content: "\e909";
+}
+.icon-LeftP:before {
+  content: "\e90a";
+}
+.icon-Star:before {
+  content: "\e90b";
+}
+.icon-Movie:before {
+  content: "\e90c";
+}
+.icon-Plus:before {
+  content: "\e90d";
+}
+.icon-Play2:before {
+  content: "\e90e";
+}
+.icon-LeftArrow:before {
+  content: "\e910";
+}
+.icon-Arrow-2:before {
+  content: "\e911";
+}
+.icon-Arrow:before {
+  content: "\e912";
+}
+.icon-Twitter:before {
+  content: "\e913";
+}
+.icon-Facebook:before {
+  content: "\e914";
+}
+.icon-Instagram:before {
+  content: "\e915";
+}
+.icon-LinkedIn:before {
+  content: "\e916";
+}
+.icon-BookmarkOn:before {
+  content: "\e917";
+}
+.icon-BookmarkOff:before {
+  content: "\e918";
+}
+.icon-Logout1:before {
+  content: "\e919";
+}
+.icon-Logout2:before {
+  content: "\e91a";
+}

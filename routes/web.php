@@ -2,54 +2,67 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ShowPaymentController; 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\ShowPaymentController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\MoviesController as FrontMoviesController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
+use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
+use App\Http\Middleware\EnsureUserIsSubscribed;
 
 
-//Route::get('/payment', [ShowPaymentController::class, 'show'])->name('payment.page');
-//Route::post('/payment', [ShowPaymentController::class, 'process'])->name('payment.process');
-Route::view('/','home.index')->name('home');
+
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-Route::middleware('guest')->group(function(){
+Route::view('/about_us', 'layouts.about_us')->name('about_us');
 
+Route::middleware('guest')->group(function(){
     Route::view('/register','auth.register')->name('register');
     Route::post('/register',[AuthController::class,'register']);
     Route::view('/login','auth.login')->name('login');
     Route::post('/login',[AuthController::class,'login']);
 });
 
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::view('/payment','layouts.payments')->name('payment');
+
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/category/{id}', [FrontCategoryController::class, 'show'])->name('category.show');
+
+    Route::view('/favoritesList', 'layouts.favoritesList')->name('favoritesList');
+    // Remove the duplicate home route here
+    // Route::get('/', [FavoriteController::class, 'home'])->name('home');
+
+    Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+    Route::post('/favorites/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
+
     Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
     Route::get('/movies/{id}', [FrontMoviesController::class, 'show'])->name('movies.show');
     Route::get('/movies/{movie}/watch', [FrontMoviesController::class, 'watch'])->name('movies.watch');
     Route::get('/movies/{id}', [MoviesController::class, 'show'])->name('movies.show');
-Route::post('/movies/{id}/comments', [MoviesController::class, 'addComment'])->middleware('auth')->name('movies.comment');
+    Route::post('/movies/{id}/comments', [MoviesController::class, 'addComment'])->middleware('auth')->name('movies.comment');
 
-  Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
-  Route::controller(ShowPaymentController::class)->group(function(){
+    Route::controller(ShowPaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
 });
+
+// Add the home route outside of the auth middleware group
+Route::get('/', [FavoriteController::class, 'home'])->name('home');
 
 Route::middleware('admin.guest')->group(function(){
     Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
@@ -81,11 +94,35 @@ Route::middleware('admin.auth')->group(function(){
     Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
     Route::put('/admin.categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/admin.categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+});
 
-
-
+Route::middleware(['auth'])->group(function () {
+    Route::post('/dashboard/update', [DashboardController::class, 'updateDashboard'])->name('dashboard.update');
+    Route::delete('/dashboard/delete', [DashboardController::class, 'deleteAccount'])->name('dashboard.delete');
+    Route::post('/dashboard/photo', [DashboardController::class, 'updatePhoto'])->name('photo.update');
+    Route::delete('/dashboard/photo', [DashboardController::class, 'deletePhoto'])->name('photo.delete');
 });
 
 
 
 
+// Ödeme yapmamış kullanıcıları ödeme sayfasına yönlendiren middleware
+Route::middleware(['auth', EnsureUserIsSubscribed::class])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/', [FavoriteController::class, 'home'])->name('home');
+
+    Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
+
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+
+});
+
+// Ödeme sayfası sadece giriş yapmış kullanıcılara açık olmalı
+Route::middleware(['auth'])->get('/payment', function () {
+    return view('layouts.payments');
+})->name('payment');
+
+
+
+  

@@ -3,7 +3,7 @@
 @section('description', 'test.')
 @section('keywords', 'test, test, test')
 @section('content')
-<section class="relative z-10 py-20">
+<section class="relative z-10 py-10">
  <div class="bg-third absolute left-0 top-0 z-[-1] h-full w-1/4"></div>
  <div class="container mx-auto">
   <div class="bg-white">
@@ -63,12 +63,9 @@
        </div>
        <div class="flex flex-wrap">
         <div class="w-full">
-            <form action="{{route('payment')}}" method="GET">
-                @csrf
          <button id="submit-button" class="bg-secondary mb-3 py-4 rounded-lg w-full cursor-pointer px-5 text-white transition hover:bg-opacity-90">
           Create Account
-            </input>
-            </form>
+         </button>
         </div>
        </div>
       </form>
@@ -116,23 +113,10 @@
  </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const checkbox = document.getElementById('check-with-link');
-        const submitButton = document.getElementById('submit-button');
-        const form = document.getElementById('register-form');
 
-        // Form gönderimi sırasında kontrol
-        form.addEventListener('submit', (e) => {
-            if (!checkbox.checked) {
-                e.preventDefault(); // Checkbox işaretlenmemişse gönderimi durdur
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Lütfen hizmet şartlarını kabul edin.',
-                });
-            }
-        });
-    });
-</script>
 @endsection
+
+
+@push('scripts')
+@vite('resources/js/register.js')
+@endpush

@@ -1,7 +1,7 @@
     {{-- choose your plan --}}
 
     <div class="mx-3">
-       <h2 class="font-black text-7xl text-white py-8 text-center uppercase">
+       <h2 class="font-black md:text-7xl text-5xl text-white py-8 text-center uppercase">
           Choose Your Plan
        </h2>
        <div class="flex justify-between lg:flex-row flex-col gap-6 mt-8 items-center">
@@ -12,24 +12,15 @@
                 <div class="text-4xl font-bold text-gray-800 mb-6">$9.99</div>
                 <ul class="space-y-3 mb-6">
                    <li class="flex items-center text-gray-700">
-                      <svg class="w-5 h-5 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
+                      <i class="icon-Check w-5 h-5 text-green-500 mr-2 text-xl"></i>
                       Sınırsız izleme
                    </li>
                    <li class="flex items-center text-gray-700">
-                      <svg class="w-5 h-5 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
+                    <i class="icon-Check w-5 h-5 text-green-500 mr-2 text-xl"></i>
                       Reklamsız deneyim
                    </li>
                    <li class="flex items-center text-gray-700">
-                      <svg class="w-5 h-5 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
+                    <i class="icon-Check w-5 h-5 text-green-500 mr-2 text-xl"></i>
                       Çoklu cihaz desteği
                    </li>
                 </ul>
@@ -47,17 +38,11 @@
                 <div class="text-4xl font-bold mb-6">$50</div>
                 <ul class="space-y-3 mb-6">
                    <li class="flex items-center">
-                      <svg class="w-5 h-5 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
+                    <i class="icon-Check w-5 h-5 text-green-500 mr-2 text-xl"></i>
                       12 aylık kesintisiz erişim
                    </li>
                    <li class="flex items-center">
-                      <svg class="w-5 h-5 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
+                    <i class="icon-Check w-5 h-5 text-green-500 mr-2 text-xl"></i>
                       Tüm premium özellikler
                    </li>
                 </ul>
@@ -68,4 +53,4 @@
           </div>
        </div>
     </div>
-æ
+
