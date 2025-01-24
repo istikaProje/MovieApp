@@ -25,10 +25,6 @@ class MoviesController extends Controller
 
         $movies = $query->paginate(12); // Adjust the number of items per page as needed
 
-        // Debugging: Log the category ID and the number of movies found
-        \Log::info('Category ID: ' . $category_id);
-        \Log::info('Number of movies found: ' . $movies->count());
-
         return view('movies.index', compact('movies', 'categories', 'category_id'));
     }
 
@@ -142,20 +138,20 @@ class MoviesController extends Controller
         return view('movies.watch', compact('movie'));
     }
 
-public function addComment(Request $request, $movieId)
-{
-    $request->validate([
-        'content' => 'required|string|max:1000',
-    ]);
+    public function addComment(Request $request, $movieId)
+    {
+        $request->validate([
+            'content' => 'required|string|max:1000',
+        ]);
 
-    Comment::create([
-        'content' => $request->content,
-        'movie_id' => $movieId,
-        'user_id' => auth()->id(), // Kullanıcıyı al
-    ]);
+        Comment::create([
+            'content' => $request->content,
+            'movie_id' => $movieId,
+            'user_id' => auth()->id(), // Kullanıcıyı al
+        ]);
 
-    return redirect()->back()->with('success', 'Yorum başarıyla eklendi!');
-}
+        return redirect()->back()->with('success', 'Yorum başarıyla eklendi!');
+    }
 
 
 }
