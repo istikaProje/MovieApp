@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?19teem');
-  src:  url('fonts/icomoon.eot?19teem#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?19teem') format('truetype'),
-    url('fonts/icomoon.woff?19teem') format('woff'),
-    url('fonts/icomoon.svg?19teem#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?5i70ml');
+  src:  url('fonts/icomoon.eot?5i70ml#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?5i70ml') format('truetype'),
+    url('fonts/icomoon.woff?5i70ml') format('woff'),
+    url('fonts/icomoon.svg?5i70ml#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -23,6 +23,60 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-subtitle:before {
+  content: "\e921";
+}
+.icon-compress {
+    content: "\e90a";
+    cursor: pointer;
+    color: white;
+}
+.icon-expand:before {
+  content: "\e91b";
+}
+.icon-expand {
+    content: "\e91b";
+    cursor: pointer;
+    color: white;
+}
+.icon-rotate_left:before {
+  content: "\e91c";
+}
+.icon-rotate_left {
+   cursor: pointer;
+}
+.icon-rotate_right:before {
+  content: "\e91d";
+}
+.icon-rotate_right {
+    content: "\e91d";
+    cursor: pointer;
+}
+.icon-volume_high:before {
+  content: "\e91e";
+}
+.icon-volume_high {
+    content: "\e91e";
+    cursor: pointer;
+    color: white;
+}
+.icon-volume_low:before {
+  content: "\e91f";
+}
+.icon-volume_low {
+    content: "\e91f";
+    cursor: pointer;
+    color: white;
+}
+.icon-volume_off:before {
+  content: "\e920";
+}
+.icon-volume_off {
+    content: "\e920";
+    cursor: pointer;
+    color: white;
 }
 
 .icon-Email:before {
