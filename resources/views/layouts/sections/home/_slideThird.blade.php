@@ -17,7 +17,7 @@
                         <div class="swiper-slide">
                             <div class="block group relative rounded-lg overflow-hidden">
                                 <a href="{{ route('movies.show', $movie->id) }}">
-                                    <img src="{{ asset('storage/' . $movie->poster) }}" alt="{{ $movie->title }}" class="w-full h-auto aspect-[16/9] object-cover transition-transform duration-300 group-hover:scale-105">
+                                    <img loading="lazy" src="{{ asset('storage/' . $movie->poster) }}" alt="{{ $movie->title }}" class="w-full h-auto aspect-[16/9] object-cover transition-transform duration-300 group-hover:scale-105">
                                     <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-10"></div>
                                 </a>
                                 <div class="absolute top-2 right-2 opacity-100" x-data="{ isFavorite: {{ $movie->isFavorite() ? 'true' : 'false' }} }">
@@ -34,22 +34,4 @@
     @endif
 @endforeach
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function toggleFavorite(movieId, image, event) {
-        $.ajax({
-            url: '/favorites/toggle',
-            type: 'POST',
-            data: {
-                movie_id: movieId,
-                image: image,
-                _token: '{{ csrf_token() }}'
-            },
-            success: function(data) {
-                if (data.status === 'added' || data.status === 'removed') {
-                    location.reload();
-                }
-            }
-        });
-    }
-</script>
+

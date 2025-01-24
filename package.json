@@ -16,8 +16,7 @@
     },
     "dependencies": {
         "alpinejs": "^3.14.8",
-        "swiper": "^11.2.1",
-        "video.js": "^8.21.0",
-        "videojs": "^1.0.0"
+        "jquery": "^3.7.1",
+        "swiper": "^11.2.1"
     }
 }

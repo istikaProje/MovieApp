@@ -47,7 +47,8 @@
 <!-- Mobile Menu Button -->
 <button @click="open = !open" class="text-white text-3xl lg:hidden">
 
-    <i class="fa-solid " :class="open ? 'fa-x' : 'fa-bars'"></i>
+
+    <i class="text-white text-2xl " :class="open ? 'icon-Close' : 'icon-Hamburger'"></i>
 
 </button>
 </div>

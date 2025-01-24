@@ -24,9 +24,7 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-white hover:text-secondary transition-colors duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-6 w-6">
-                                <path fill="currentColor" d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/>
-                            </svg>
+                           <i class="icon-BookmarkOn text-2xl"></i>
                         </button>
                     </form>
                 </div>
@@ -35,24 +33,9 @@
         @endforeach
     </div>
 </div>
-<script>
-    function toggleFavorite(movieId, image) {
-        fetch(`/favorites/toggle`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ movie_id: movieId, image: image })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'added') {
-                alert('Added to favorites');
-            } else if (data.status === 'removed') {
-                alert('Removed from favorites');
-            }
-        });
-    }
-</script>
+  
 @endsection
+
+@push('scripts')
+    @vite('resources/js/toggleFavorite.js')
+@endpush

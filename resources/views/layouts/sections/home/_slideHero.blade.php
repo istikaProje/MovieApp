@@ -4,12 +4,11 @@
          @foreach ($sliderMovies as $movie)
             <div class="swiper-slide">
                <div class="relative ml-auto mr-auto">
-                  <div x-data="videoHandler" @mouseenter="playVideo" @mouseleave="pauseVideo">
+                  <div>
                      <!-- Video -->
                      <a href="{{ route('movies.show', ['id' => $movie->id]) }}">
-                        <video x-ref="video" class="object-contain w-full" src="{{ asset('storage/' . $movie->video) }}"
-                           poster="{{ asset('storage/' . $movie->poster) }}">
-                        </video>
+                        <img loading="lazy" src="{{ asset('storage/' . $movie->poster) }}" alt="{{ $movie->title }}"
+                           class="w-full h-auto aspect-[16/9] object-cover transition-transform duration-300 group-hover:scale-105">
                      </a>
                   </div>
                </div>
@@ -17,7 +16,6 @@
                <!-- Radial Gradient Overlay -->
                <div class="hero-overlay pointer-events-none"></div>
 
-               <div class="hero-overlay pointer-events-none"></div>
                <!-- Content -->
                <div class="absolute bottom-10 left-10 z-20">
                   <div x-data="{ show: false }" class="max-w-[400px]" @mouseenter="show = true" @mouseleave="show = false">
@@ -69,52 +67,8 @@
    <p class="text-white text-center text-lg md:text-xl lg:text-2xl py-4">İçerikler en kısa zamanda eklenecek.</p>
 @endif
 
-<script>
-   document.addEventListener('DOMContentLoaded', function() {
-      const swiper = new Swiper('.swiperHero', {
-         loop: true,
-         autoplay: {
-            delay: 5000,
-         },
-         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-         },
-         pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-         },
-         slidesPerView: 1,
-         spaceBetween: 10,
-      });
-   });
-</script>
 
 
-<script>
-   function toggleFavorite(movieId, image, event) {
-       if (event) {
-           event.preventDefault();
-       }
-       
-       fetch(`/favorites/toggle`, {
-           method: 'POST',
-           headers: {
-               'Content-Type': 'application/json',
-               'X-CSRF-TOKEN': '{{ csrf_token() }}'
-           },
-           body: JSON.stringify({ movie_id: movieId, image: image })
-       })
-       .then(response => response.json())
-       .then(data => {
-           const element = event.target.closest('[x-data]').__x.$data;
-           if (data.status === 'added') {
-               element.isFavorite = true;
-               alert('Added to favorites');
-           } else if (data.status === 'removed') {
-               element.isFavorite = false;
-               alert('Removed from favorites');
-           }
-       });
-   }
-</script>
+
+
+

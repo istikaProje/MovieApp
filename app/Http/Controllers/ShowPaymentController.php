@@ -58,6 +58,7 @@ class ShowPaymentController extends Controller
             // Ödeme başarılı olduğunda kullanıcının 'is_payment' durumunu güncelle
             // Kullanıcının ödeme durumu ve abonelik bilgilerini güncelleme
             $user = Auth::user();
+            $user->is_subscribed = true;
             $user->is_payment = 1;  // Ödeme yapıldı
             $user->subscription_plan = $plan;  // Abonelik planını kaydet  // Stripe abonelik ID'sini kaydet
             $user->subscription_created_at = now();  // Abonelik oluşturulma tarihi
