@@ -11,25 +11,23 @@
       }
 
       .video-player {
-        width: 95%;
-        max-width: 850px;
         position: relative;
-        overflow: hidden;
-      }
-
-      .video {
         width: 100%;
-      }
+        height: 100%;
+    }
 
-      .controls__button {
-        line-height: 1;
-        color: white;
-        text-align: center;
-        outline: 0;
-        padding: 0;
+    .progress {
+        flex: 1;
+        display: flex;
+        align-items: center;
         cursor: pointer;
-        max-width: 50px;
-      }
+        margin: 0 10px;
+    }
+
+    .progress__filled {
+        height: 5px;
+    }
+
       .controls__slider {
         width: 10px ;
         height: 30px;
@@ -45,9 +43,12 @@
         bottom: 0;
         width: 100%;
         flex-wrap: wrap;
-        background: rgba(0,0,0,0.1);
+        background: rgba(0,0,0,0.5);
         transform: translateY(0);
+        padding-left: 10px;
+        padding-right: 10px;
       }
+
       .controls > * {
         flex: 1;
       }
@@ -78,6 +79,7 @@
       input[type=range]:focus {
         outline: none;
       }
+
       input[type=range]::-webkit-slider-runnable-track {
         width: 100%;
         height: 8.4px;
@@ -85,6 +87,7 @@
         background: rgba(255,255,255,0.8);
         border-radius: 4px;
       }
+
       input[type=range]::-webkit-slider-thumb {
         height: 0.9rem;
         width: 0.9rem;
@@ -94,6 +97,7 @@
         -webkit-appearance: none;
         margin-top: -3.5px;
       }
+
       input[type=range]::-moz-range-track {
         width: 100%;
         height: 8.4px;
@@ -101,6 +105,7 @@
         background: rgba(255,255,255,0.8);
         border-radius: 4px;
       }
+
       input[type=range]::-moz-range-thumb {
         height: 0.9rem;
         width: 0.9rem;
@@ -109,10 +114,6 @@
         cursor: pointer;
         -webkit-appearance: none;
         margin-top: -3.5px;
-      }
-
-      .controls{
-        visibility: hidden;
       }
 
         .time
@@ -145,7 +146,6 @@
         height: 3em;
         white-space: nowrap;
         line-height: 0;
-        visibility: hidden;
         }
 
         .time_skipL{
@@ -165,8 +165,8 @@
         height: 3em;
         white-space: nowrap;
         line-height: 0;
-        visibility: hidden;
         }
+
         .time_skipR{
         position: absolute;
         top: 43%;
@@ -184,7 +184,6 @@
         height: 3em;
         white-space: nowrap;
         line-height: 0;
-        visibility: hidden;
         }
 
       .playbackRate{
@@ -197,11 +196,6 @@
       select.playbackRate option {
         color: rgb(172, 16, 16);
       }
-
-        /* Dropdown Menu */
-        .hidden {
-        display: none;
-        }
 
         .dropdown-menu {
         position: absolute;
@@ -239,30 +233,28 @@
 
     <link rel="stylesheet" href="{{ asset('Icons/style.css') }}">
 
-        <section class="relative z-10 py-20">
-
-            <div class="container mx-auto">
-                <div class="flex flex-wrap items-stretch">
+    <div class="video-player flex items-center justify-center min-h-screen bg-black" oncontextmenu="return false;">
              <!-- Video Player -->
-                <div class="video-player" style=" display: block; margin-left: auto; margin-right: auto;" oncontextmenu="return false;"> <!-- div video player için div oncontextmenu="return false;" sağ tık'ı kapatıyor  -->
+                 <!-- div video player için div oncontextmenu="return false;" sağ tık'ı kapatıyor  -->
                     <video class="video" id="myVideo" ondblclick="openFullscreen()" width="100%" height="100%" poster="{{ asset('storage/' . $movie->poster) }}"">
                       <source
                         src="{{ asset('storage/' . $movie->video) }}"
                         type="video/mp4"
                       />
+                      <track src="{{ asset('images/sample.vtt') }}" kind="subtitles" srclang="en" label="English">
                       <p>İnternet tarayıcınız HTML5 video oynatıcısını desteklemiyor.</p>
                     </video>
                     <button class="controls__button toggleButton" title="Toggle Play"> <i class="icon-Play"></i> </button>
-                    <button class="controls__button time_skipL" data-skip="-10">« 10s</button>
-                    <button class="controls__button time_skipR" data-skip="10">10s »</button>
+                    <i class="icon-rotate_left controls__button time_skipL" data-skip="-10"></i>
+                    <i class="icon-rotate_right controls__button time_skipR" data-skip="10"></i>
                     <div class="controls">
                       <div class="progress">
                         <div class="progress__filled"></div>
                       </div>
 
-                      <label class="time" style="color: white; margin-top: 8px" width="10px">0:00</label>
+                      <label class="time mx-2" style="color: white; margin-top: 8px" width="10px">0:00</label>
 
-                      <img src="{{asset('images/Sound.png')}}"  style="max-width: 25px; max-height: 20px; margin-top: 10px; margin-left: 5px; cursor: pointer;" />
+                      <i class="icon-volume_high text-xl  mx-2" style="max-width: 25px; margin-top: 10px; margin-left: 15px;"> </i>
                       <input
                         type="range"
                         name="volume"
@@ -275,6 +267,8 @@
                         style="margin-top: 5px"
                       />
                       <div class="flex items-center justify-end space-x-2 ml-auto" style="margin-left: auto;">
+
+                        <i class="icon-subtitle text-white text-xl cursor-pointer hover:text-gray-400" id="subtitleToggle" onclick="toggleSubtitles()"> </i>
 
                         <div class="dropdown relative">
                           <button onclick="toggleDropdown()" class="dropdown-toggle cursor-pointer bg-transparent-200 p-2 rounded">
@@ -289,19 +283,16 @@
                           </div>
                       </div>
 
-                      <label class="time2" style="color: white;">0:00</label>
+                      <label class="time2 " style="color: white; margin-top:0; margin-left 10px">0:00</label>
 
-                      <img src="{{asset('images/Fullscreen.png')}}" onclick="openFullscreen();" style="max-width: 30px; cursor: pointer;" />
+                      <i id="fullscreen" class="icon-expand text-xl px-2" onclick="openFullscreen();" title="Fullscreen"> </i>
 
                      </div>
 
                     </div>
-                  </div>
+
 
               </div>
-            </div>
-
-        </section>
 
             <script>
                 const video = document.querySelector(".video");
@@ -315,6 +306,7 @@
                 const video_player = document.querySelector(".video-player");
                 const speedDropdown = document.getElementById("speedDropdown");
                 const dropdownItems = document.querySelectorAll(".dropdown-item");
+                const fullscreenButton = document.getElementById("fullscreen");
 
                 let isPaused = true;
                 let isMouseOver = false;
@@ -449,14 +441,20 @@
                 if (e.code === "Space") togglePlay();
                 });
 
+
+                // Tam Ekran
                 function openFullscreen()
                 {
                     if (video_player.requestFullscreen)
                     {
                         if (document.fullscreenElement) {
                         document.exitFullscreen();
+                        fullscreenButton.classList.remove('icon-compress');
+                        fullscreenButton.classList.add('icon-expand');
                         } else {
                         video_player.requestFullscreen();
+                        fullscreenButton.classList.remove('icon-expand');
+                        fullscreenButton.classList.add('icon-compress');
                         }
                     }
 
@@ -464,8 +462,12 @@
                     { /* Safari için*/
                         if (document.webkitFullscreenElement) {
                         document.webkitExitFullscreen();
+                        fullscreenButton.classList.remove('icon-compress');
+                        fullscreenButton.classList.add('icon-expand');
                         } else {
                         video_player.webkitRequestFullscreen();
+                        fullscreenButton.classList.remove('icon-expand');
+                        fullscreenButton.classList.add('icon-compress');
                         }
                     }
 
@@ -473,8 +475,12 @@
                     { /* IE11 için*/
                         if (document.msFullscreenElement) {
                         document.msExitFullscreen();
+                        fullscreenButton.classList.remove('icon-compress');
+                        fullscreenButton.classList.add('icon-expand');
                         } else {
                         video_player.msRequestFullscreen();
+                        fullscreenButton.classList.remove('icon-expand');
+                        fullscreenButton.classList.add('icon-compress');
                         }
                     }
 
@@ -482,8 +488,12 @@
                     { // Firefox
                         if(document.mozRequestFullScreenElement) {
                         document.mozCancelFullScreen();
+                        fullscreenButton.classList.remove('icon-compress');
+                        fullscreenButton.classList.add('icon-expand');
                         } else {
                         videoElement.mozRequestFullScreen();
+                        fullscreenButton.classList.remove('icon-expand');
+                        fullscreenButton.classList.add('icon-compress');
                         };
                     }
                 }
@@ -544,6 +554,18 @@
         dropdown.classList.remove('open');
         }
 
+
+        // Altyazı açma ve kapatma
+        function toggleSubtitles() {
+        const video = document.getElementById('myVideo');
+        const track = video.textTracks[0]; // Get the first text track (subtitles)
+
+        if (track.mode === 'showing') {
+            track.mode = 'hidden'; // Hide subtitles
+        } else {
+            track.mode = 'showing'; // Show subtitles
+        }
+}
 
         </script>
 

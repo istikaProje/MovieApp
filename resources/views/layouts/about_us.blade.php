@@ -4,7 +4,7 @@
 @section('keywords', 'about, us, company')
 @section('content')
 
-@include('layouts.sections._heroSection', ['title' => 'Hakkımızda' , 'subtitle'=> 'Movie Watch' , 'backgroundImage' => asset('images/loginBg.jpg') ])
+@include('layouts.sections._heroSection', ['title' => 'Hakkımızda' , 'subtitle'=> 'Movie Watch' , 'backgroundImage' => asset('images/hak.jpg') ])
 
 
 <div class="mt-10 text-center text-white">
