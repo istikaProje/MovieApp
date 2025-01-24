@@ -241,7 +241,7 @@
                         src="{{ asset('storage/' . $movie->video) }}"
                         type="video/mp4"
                       />
-                      <track src="{{ asset('images/sample.vtt') }}" kind="subtitles" srclang="en" label="English">
+                      <track src="{{ asset('subtitle/sample.vtt') }}" kind="subtitles" srclang="en" label="English">
                       <p>İnternet tarayıcınız HTML5 video oynatıcısını desteklemiyor.</p>
                     </video>
                     <button class="controls__button toggleButton" title="Toggle Play"> <i class="icon-Play"></i> </button>
@@ -558,12 +558,12 @@
         // Altyazı açma ve kapatma
         function toggleSubtitles() {
         const video = document.getElementById('myVideo');
-        const track = video.textTracks[0]; // Get the first text track (subtitles)
+        const track = video.textTracks[0];
 
         if (track.mode === 'showing') {
-            track.mode = 'hidden'; // Hide subtitles
+            track.mode = 'hidden'; // alt yazı gizleme
         } else {
-            track.mode = 'showing'; // Show subtitles
+            track.mode = 'showing'; // alt yazı göster
         }
 }
 
