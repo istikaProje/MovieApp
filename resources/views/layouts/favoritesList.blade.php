@@ -12,7 +12,7 @@
             @if($favorite->movie)
             <div class="relative group overflow-hidden rounded-md cursor-pointer">
                 <a href="{{ route('movies.show', $favorite->movie->id) }}">
-                    <img src="{{ asset('storage/' . $favorite->movie->image) }}" alt="poster" class="w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                    <img src="{{ asset('storage/' . $favorite->movie->image) }}" alt="poster"  loading="lazy" class="w-full h-full transition-transform duration-500 group-hover:scale-105" />
                     <div class="absolute bottom-0 bg-gradient-to-t from-secondary via-secondary/75 opacity-0 left-0 group-hover:opacity-100 to-transparent transition-opacity duration-500 p-5">
                         <h1 class="text-xl font-bold text-white">{{ $favorite->movie->title }}</h1>
                         <h3 class="text-sm font-semibold text-white mt-1"><i class="fa-solid fa-star"></i> {{ $favorite->movie->vote_average }}/10</h3>

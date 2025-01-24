@@ -11,7 +11,7 @@
     <div class="w-full lg:w-1/2">
      <div class="relative hidden h-full w-full overflow-hidden lg:flex">
       <div class="flex h-full items-end">
-       <img src="{{asset('./images/register.jpg')}}" alt="image" class="h-full w-full object-cover object-center" />
+       <img src="{{asset('./images/register.jpg')}}" alt="image"  loading="lazy" class="h-full w-full object-cover object-center" />
       </div>
      </div>
     </div>
@@ -56,7 +56,7 @@
             <label class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link">
                 <label class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link" >
 
-                    <div x-data="{ open: false }">
+                    <div x-data="{ open: false }" x-cloak>
                           <p>
 
                             <a id="terms-link" class="font-medium hover:text-slate-800 underline" @click="open = true">Şartlar ve koşullar</a>
@@ -184,6 +184,7 @@
 
 
 @endsection
+
 
 
 @push('scripts')

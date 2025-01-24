@@ -16,7 +16,7 @@
                     <div class="swiper-slide">
                         <div class="overflow-hidden rounded-md cursor-pointer">
                             <a href="{{ route('movies.show', $favorite->movie->id) }}" class="relative group">
-                                <img src="{{ asset('storage/' . $favorite->movie->image) }}" alt="{{ $favorite->movie->title }}"
+                                <img src="{{ asset('storage/' . $favorite->movie->image) }}"  loading="lazy" alt="{{ $favorite->movie->title }}"
                                     class="w-full h-full transition-transform duration-500 group-hover:scale-105"
                                     onerror="this.onerror=null;this.src='{{ asset('images/fallback.jpg') }}';">
                                 <div class="absolute bottom-0 left-0 right-0 w-full bg-gradient-to-t from-secondary via-secondary/75 opacity-0 group-hover:opacity-100 to-transparent transition-opacity duration-500 p-5">

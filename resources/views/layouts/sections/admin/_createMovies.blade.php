@@ -1,5 +1,5 @@
 <!-- ====== Movie Section Start -->
-<section class="flex w-full mt-4 items-start">
+<section class="flex w-full mt-4 items-start h-auto md:h-screen">
     <div class="w-full px-4">
         <div class="flex flex-wrap px- items-end justify-between sm:flex-nowrap sm:space-x-4">
             <h2 class="mb-4 text-2xl font-semibold text-white">
@@ -166,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Ekle</button>
+            <button type="submit" class="px-4 py-2 bg-secondary text-white rounded-md">Oluştur</button>
         </form>
     </div>
 </section>

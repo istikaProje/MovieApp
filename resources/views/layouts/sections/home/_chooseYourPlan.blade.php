@@ -1,4 +1,4 @@
-    {{-- choose your plan --}}
+{{-- choose your plan --}}
 
     <div class="mx-3">
         <h2 class="font-black md:text-7xl text-5xl text-white py-8 text-center uppercase">
@@ -26,7 +26,7 @@
                  </ul>
               </div>
 
-              <button class="w-full bg-primary mt-auto text-white py-2 rounded-lg hover:bg-gray-900 transition">Hemen
+              <button onclick="window.location.href='/register'" class="w-full bg-primary mt-auto text-white py-2 rounded-lg hover:bg-gray-900 transition">Hemen
                  Başla</button>
            </div>
 
@@ -48,7 +48,7 @@
                  </ul>
               </div>
 
-              <button class="w-full mt-auto bg-white text-primary py-2 rounded-lg hover:bg-gray-200 transition">Hemen
+              <button onclick="window.location.href='/register'" class="w-full mt-auto bg-white text-primary py-2 rounded-lg hover:bg-gray-200 transition">Hemen
                  Başla</button>
            </div>
         </div>

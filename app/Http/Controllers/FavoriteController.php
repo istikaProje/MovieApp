@@ -16,15 +16,23 @@ class FavoriteController extends Controller
     }
 
     public function home()
-{
-    $favorites = Favorite::with(['movie' => function($query) {
-        $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
-    }])->where('user_id', Auth::id())->get();
+    {
+        if (Auth::check()) {
+            if (!Auth::user()->is_subscribed) {
+                return redirect()->route('payment');
+            }
 
-    $sliderMovies = Movie::inRandomOrder()->take(5)->get();
+            $favorites = Favorite::with(['movie' => function($query) {
+                $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
+            }])->where('user_id', Auth::id())->get();
 
-    return view('home.index', compact('favorites', 'sliderMovies'));
-}
+            $sliderMovies = Movie::inRandomOrder()->take(5)->get();
+
+            return view('home.index', compact('favorites', 'sliderMovies'));
+        }
+
+        return view('home.index');
+    }
 
     public function toggle(Request $request)
     {

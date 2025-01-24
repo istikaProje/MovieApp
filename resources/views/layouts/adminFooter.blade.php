@@ -1,16 +1,3 @@
-    
-    <style>
-      .svg-gradient {
-  width: 327px;
-  height: 220px;
-  background: linear-gradient(
-    180deg, /* Dikey yönde */
-    rgba(51, 51, 51, 0.7) 0%, /* başlangıç rengi (from-gray-800, biraz opak) */
-    rgba(51, 51, 51, 0) 100%  /* bitiş noktası (şeffaf) */
-  );
-  border-radius: 50%; /* Yarıçapı yuvarlak yaparak ellipse şekli verilmiş olur */
-}
-    </style>
     <!-- ====== Footer Section Start -->
     <footer class="bg-gradient-to-b from-gray-800 to-gray-900 relative mt-4 overflow-hidden  z-50 ">
   

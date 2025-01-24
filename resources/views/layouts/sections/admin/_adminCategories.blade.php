@@ -21,7 +21,7 @@
         </div>
 
 
-        <div class="mt-10 grid grid-cols-1 gap-4 mx-6 sm:grid-cols-w md:grid-cols-2 ">
+        <div class="mt-10 grid grid-cols-1 gap-4 mx-6 sm:grid-cols-w md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach($categories as $category)
             <div class="relative flex items-center space-x-3 rounded-lg bg-white px-6 py-5 shadow ring-1 ring-black ring-opacity-5">
             <div class="min-w-0 flex-1">

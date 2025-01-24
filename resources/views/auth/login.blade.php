@@ -3,11 +3,11 @@
  <div class="bg-third absolute left-0 top-0 z-[-1] h-full w-1/4"></div>
  <div class="container mx-auto">
   <div class="bg-white">
-   <div class="flex flex-wrap items-stretch">
+   <div class="flex flex-wrap items-stretch min-h-[740px]">
     <div class="w-full lg:w-1/2">
      <div class="relative hidden h-full w-full overflow-hidden lg:flex">
       <div class="flex h-full items-end">
-       <img src="{{asset('./images/log.jpg')}}" alt="image" class="h-full w-full object-cover object-center" />
+       <img src="{{asset('./images/log.jpg')}}" alt="image"  loading="lazy" class="h-full w-full object-cover object-center" />
       </div>
      </div>
     </div>

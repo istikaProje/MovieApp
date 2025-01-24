@@ -27,8 +27,8 @@
 
         @include('layouts.footer')
 
-        {{-- Sayfaya Özel Script --}}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        {{-- Sayfaya Özel Script --}}
         @stack('scripts')
     </body>
 </html>

@@ -35,7 +35,7 @@
                   class="whitespace-nowrap w-full sm:w-auto sm:w-none max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                   @if ($movie->image)
                      <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}"
-                        class="w-16 h-16 object-cover">
+                        class="w-16 h-16 object-cover"  loading="lazy">
                   @endif
                </td>
                <td
@@ -94,7 +94,7 @@
         <div class="flex items-center space-x-3">
             @if ($movie->image)
             <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}"
-               class="w-16 h-16 object-cover truncate">
+               class="w-16 h-16 object-cover truncate"  loading="lazy">
          @endif
           <span class="inline-block flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-medium {{ $movie->vote_average >= 5 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">{{ $movie->vote_average }}</span>
         </div>

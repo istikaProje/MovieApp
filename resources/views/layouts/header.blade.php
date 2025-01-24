@@ -6,7 +6,7 @@
       <div class="relative flex items-center justify-between">
          <div class="px-4">
             <a href="{{ route('home') }}" class="block max-w-[160px] w-full py-3">
-               <img src="{{ asset('images/MovieWatchLogo.png') }}" alt="logo" class="w-full" />
+               <img src="{{ asset('images/MovieWatchLogo.png') }}"  loading="lazy" alt="logo" class="w-full" />
             </a>
          </div>
 
@@ -37,13 +37,13 @@
 
 
          @guest
-            <div class="justify-end pr-16 sm:flex lg:pr-0">
-               <a href="{{ route('login') }}" class="py-3 px-7 text-base font-medium text-white hover:opacity-30">
+            <div class="justify-end pr-16 sm:flex flex-shrink-0 lg:pr-0">
+               <a href="{{ route('login') }}" class="py-2 px-4 ftext-base font-medium text-white hover:opacity-30">
                   Giriş Yap
                </a>
 
                <a href="{{ route('register') }}"
-                  class="rounded-lg bg-white py-3 px-7 text-base flex-shrink-0 font-medium text-dark hover:opacity-90">
+                  class="rounded-lg bg-white py-2 px-4 text-base  font-medium text-dark hover:opacity-90">
                   Kayıt Ol
                </a>
             </div>
@@ -62,7 +62,7 @@
                   <button @click="openDropDown = !openDropDown" class="flex items-center text-left">
                      <div class="relative mr-4 h-[62px] w-[62px] rounded-full">
                         <img class="h-full w-full rounded-full object-cover object-center"
-                           src="{{ Auth::check() && Auth::user()->profile_photo ? asset('avatars/' . Auth::user()->profile_photo) : asset('images/smile-icon.jpg') }}" alt="" />
+                           src="{{ Auth::check() && Auth::user()->profile_photo ? asset('avatars/' . Auth::user()->profile_photo) : asset('images/smile-icon.jpg') }}"  loading="lazy" alt="" />
                      </div>
                   </button>
 
