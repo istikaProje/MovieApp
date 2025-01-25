@@ -26,16 +26,13 @@
 
         const movieId = {{ $movie->id }};
 
+        // **YENİ: Backend'den gelen progress değerini alıyoruz**
+        const startTime = {{ $progress ?? 0 }}; // Eğer progress bilgisi yoksa 0 olarak başlat
+
         let isPaused = true;
         let isMouseOver = false;
         let hideControlsTimeout;
-
         let lastCall = 0;
-
-
-
-
-
 
         function showControls() {
             clearTimeout(hideControlsTimeout);
@@ -121,6 +118,13 @@
             let blop = new Blob([xhr.response]);
             let url = URL.createObjectURL(blop);
             video.src = url;
+
+            // **YENİ: Videoyu belirli bir süreden başlatıyoruz**
+            video.addEventListener('loadedmetadata', () => {
+                if (startTime > 0 && startTime <= video.duration) {
+                    video.currentTime = startTime; // Videoyu progress'ten başlat
+                }
+            });
         }
         xhr.send();
 

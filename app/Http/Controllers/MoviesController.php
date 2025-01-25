@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\WatchProgress;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Comment;
 
 class MoviesController extends Controller
 {
@@ -134,9 +136,17 @@ class MoviesController extends Controller
     }
 
     public function watch(Movie $movie)
-    {
-        return view('movies.watch', compact('movie'));
-    }
+{
+    // Kullanıcının izleme ilerlemesini al
+    $progress = WatchProgress::where('movie_id', $movie->id)
+        ->where('user_id', Auth::id()) // Kullanıcıya göre filtrele
+        ->value('progress'); // Sadece progress sütununu al
+
+    // Eğer progress bilgisi yoksa 0 döndür
+    $progress = $progress ?? 0;
+
+    return view('movies.watch', compact('movie', 'progress'));
+}
 
     public function addComment(Request $request, $movieId)
     {
