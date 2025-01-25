@@ -16,8 +16,8 @@
        <!-- Content -->
        <div class="absolute bottom-10 left-10 z-20">
 
-          <h1 class="text-4xl text-white cursor-pointer font-bold">{{ $movie->title }}</h1>
-          <p class="mt-2 text-lg text-white max-w-[500px]">
+          <h1 class="text-md  lg:text-4xl text-white cursor-pointer font-bold">{{ $movie->title }}</h1>
+          <p class="mt-2 text-sm md:text-md  lg:text-lg text-white max-w-[500px]">
              {{ $movie->description }}
           </p>
 

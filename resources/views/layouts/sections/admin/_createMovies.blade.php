@@ -1,5 +1,5 @@
 <!-- ====== Movie Section Start -->
-<section class="flex w-full mt-4 items-start">
+<section class="flex w-full mt-4 items-start ">
     <div class="w-full px-4">
         <div class="flex flex-wrap px- items-end justify-between sm:flex-nowrap sm:space-x-4">
             <h2 class="mb-4 text-2xl font-semibold text-white">
@@ -122,6 +122,7 @@
                                     </label>
                                     <input type="file" name="image" id="image" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg,image/webp"
                                         class="w-full rounded-md border @error('image') border-red-500 @else border-[#E0E0E0] @enderror p-3 text-base text-black outline-none focus:border-primary" />
+                                        <span class="text-gray-500 text-xs">300,450 Çözünürlükte Resim yükleyiniz</span>
                                     @if(old('image'))
                                         <p class="text-green-500 text-xs mt-1">Seçili Resim {{ old('image') }}</p>
                                     @endif
@@ -152,6 +153,7 @@
                                     </label>
                                     <input type="file" name="poster" id="poster" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg,image/webp"
                                         class="w-full rounded-md border @error('poster') border-red-500 @else border-[#E0E0E0] @enderror p-3 text-base text-black outline-none focus:border-primary" />
+                                        <span class="text-gray-500 text-xs">1280,720 Çözünürlükte Resim yükleyiniz</span>
                                     @if(old('poster'))
                                         <p class="text-green-500 text-xs mt-1">Seçili Poster: {{ old('poster') }}</p>
                                     @endif
@@ -166,7 +168,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Ekle</button>
+            <button type="submit" class="px-4 py-2 bg-secondary text-white rounded-md">Oluştur</button>
         </form>
     </div>
 </section>

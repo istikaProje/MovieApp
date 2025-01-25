@@ -23,7 +23,7 @@
     @endauth
 
     @guest
-        <section class="container mx-auto" >
+        <section class="container mx-auto">
             @include('layouts.sections.home._guestHero')
             @include('layouts.sections.home._guestWatchEnjoy')
             @include('layouts.sections.home._chooseYourPlan')

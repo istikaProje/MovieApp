@@ -1,4 +1,10 @@
-    <!-- ====== Footer Section Start -->
+
+
+<style>
+   [x-cloak] { display: none; }
+</style>
+   
+
     <footer class="bg-primary relative z-5 overflow-hidden mt-16 pt-10">
         <div class="container mx-auto">
            <div class=" flex flex-wrap">
@@ -68,7 +74,7 @@
                    <div
                      class=" flex flex-wrap items-center justify-center md:justify-start"
                    >
-                   <div x-data="{ open: false }">
+                   <div x-data="{ open: false }" x-cloak>
                      <a
                        href="javascript:void(0)"
                        class="px-3 text-base text-white hover:opacity-30"
@@ -164,7 +170,7 @@
                </div>
 
 
-               <div x-data="{ open: false }">
+               <div x-data="{ open: false }" x-cloak>
                  <a
                    href="javascript:void(0)"
                    class="px-3 text-base text-white hover:opacity-30"
@@ -206,7 +212,7 @@
               </div>
 
            </div>
-           <div x-data="{ open: false }">
+           <div x-data="{ open: false }" x-cloak>
              <a
                href="javascript:void(0)"
                class="px-3 text-base text-white hover:opacity-30"

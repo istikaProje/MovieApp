@@ -35,7 +35,7 @@
              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                 @foreach ($movies as $movie)
                    <a href="{{ route('movies.show', $movie->id) }}" class="relative group overflow-hidden rounded-md cursor-pointer">
-                      <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}"
+                      <img src="{{ asset('storage/' . $movie->image) }}"  loading="lazy" alt="{{ $movie->title }}"
                          class="w-full h-full transition-transform duration-500 group-hover:scale-105"
                          onerror="this.onerror=null;this.src='{{ asset('images/fallback.jpg') }}';">
                       <div class="absolute bottom-0 bg-gradient-to-t from-secondary via-secondary/75 opacity-0 group-hover:opacity-100 to-transparent transition-opacity duration-500 p-5">

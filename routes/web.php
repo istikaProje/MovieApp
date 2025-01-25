@@ -67,6 +67,13 @@ Route::middleware('auth')->group(function(){
 // Add the home route outside of the auth middleware group
 Route::get('/', [FavoriteController::class, 'home'])->name('home');
 
+// Ensure users who are not subscribed are redirected to the payment page
+Route::middleware(['auth', EnsureUserIsSubscribed::class])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+});
+
 Route::middleware('admin.guest')->group(function(){
     Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
     Route::post('authenticate', [LoginController::class, 'authenticate'])->name('admin.authenticate');
@@ -112,13 +119,8 @@ Route::middleware(['auth'])->group(function () {
 // Ödeme yapmamış kullanıcıları ödeme sayfasına yönlendiren middleware
 Route::middleware(['auth', EnsureUserIsSubscribed::class])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::get('/', [FavoriteController::class, 'home'])->name('home');
-
     Route::get('/movies', [FrontMoviesController::class, 'index'])->name('movies.index');
-
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
-
 });
 
 // Ödeme sayfası sadece giriş yapmış kullanıcılara açık olmalı

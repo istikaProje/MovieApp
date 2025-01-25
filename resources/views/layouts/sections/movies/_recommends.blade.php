@@ -7,7 +7,7 @@
           @foreach ($recommendedMovies as $recommendedMovie)
              @if ($recommendedMovie->id !== $movie->id && $recommendedMovie->categories->intersect($movie->categories)->isNotEmpty())
                 <div class="group relative rounded-lg overflow-hidden">
-                   <img src="{{ asset('storage/' . $recommendedMovie->poster) }}" alt="{{ $recommendedMovie->title }}" class="w-full  object-cover transition-transform duration-300  group-hover:scale-105">
+                   <img src="{{ asset('storage/' . $recommendedMovie->poster) }}"  loading="lazy" alt="{{ $recommendedMovie->title }}" class="w-full  object-cover transition-transform duration-300  group-hover:scale-105">
                    <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-70"></div>
                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                       <a href="{{ route('movies.show', ['id' => $recommendedMovie->id]) }}" class="px-4 py-2 bg-white text-black rounded-lg">Detaylar</a>

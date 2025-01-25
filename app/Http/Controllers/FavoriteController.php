@@ -17,26 +17,23 @@ class FavoriteController extends Controller
     }
 
     public function home()
-{
-    $favorites = Favorite::with(['movie' => function($query) {
-        $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
-    }])->where('user_id', Auth::id())->get();
+    {
+        if (Auth::check()) {
+            if (!Auth::user()->is_subscribed) {
+                return redirect()->route('payment');
+            }
 
-    $sliderMovies = Movie::inRandomOrder()->take(5)->get();
+            $favorites = Favorite::with(['movie' => function($query) {
+                $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
+            }])->where('user_id', Auth::id())->get();
 
-    $continueWatching = WatchProgress::with(['movie' => function($query) {
-        $query->select('id', 'title', 'vote_average', 'description', 'image', 'poster');
-    }])
-    ->where('user_id', Auth::id())
-    ->get();
+            $sliderMovies = Movie::inRandomOrder()->take(5)->get();
 
-    // Şu anki filmin ilerlemesi
-    $currentMovieProgress = WatchProgress::where('user_id', Auth::id())
-        ->where('movie_id', request()->movie_id) // Mevcut film ID'sine göre ilerlemeyi al
-        ->value('progress');
+            return view('home.index', compact('favorites', 'sliderMovies'));
+        }
 
-    return view('home.index', compact('favorites', 'sliderMovies', 'continueWatching', 'currentMovieProgress'));
-}
+        return view('home.index');
+    }
 
     public function toggle(Request $request)
     {

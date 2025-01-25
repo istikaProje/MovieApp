@@ -6,7 +6,7 @@
     <div class="container mx-auto flex justify-between items-center">
         <!-- Logo -->
         <a href="{{ route('admin.dashboard') }}" class="text-white text-2xl font-semibold max-w-[100px] flex items-center space-x-2">
-            <img src="{{ asset('images/MovieWatchLogo.png') }}"  alt="Moviewatchlogo" class="rounded-full hover:opacity-90 transition-opacity duration-300">
+            <img src="{{ asset('images/MovieWatchLogo.png') }}"  loading="lazy"  alt="Moviewatchlogo" class="rounded-full hover:opacity-90 transition-opacity duration-300">
         </a>
 <nav>
     <ul class="hidden lg:flex space-x-6">

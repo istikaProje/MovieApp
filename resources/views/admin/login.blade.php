@@ -11,7 +11,7 @@
     <div class="w-full lg:w-1/2">
      <div class="relative hidden h-full w-full overflow-hidden lg:flex">
       <div class="flex h-full items-end">
-       <img src="{{asset('./images/loginBg.jpg')}}" alt="image" class="h-full w-full object-cover object-center" />
+       <img src="{{asset('./images/loginBg.jpg')}}" alt="image"   loading="lazy" class="h-full w-full object-cover object-center" />
       </div>
      </div>
     </div>

@@ -30,7 +30,7 @@ class MovieController extends Controller
             'title' => 'required|string|max:255',
             'vote_average' => 'required|numeric|min:1|max:10',
             'youtube_link' => 'nullable|url',
-            'description' => 'nullable|string',
+            'description' => 'nullable|string|min:50|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000',
             'categories' => 'nullable|array',
@@ -94,7 +94,7 @@ class MovieController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'nullable',
+            'description' => 'nullable|string|min:50|max:250',
             'vote_average' => 'nullable|numeric|min:0|max:10',
             'youtube_link' => 'nullable|url',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
