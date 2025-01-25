@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\ShowPaymentController;
 use App\Http\Middleware\EnsureUserIsSubscribed;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\WatchProgressController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\MoviesController as FrontMoviesController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
@@ -65,11 +66,18 @@ Route::middleware('auth')->group(function(){
     Route::controller(ShowPaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
+    Route::post('/watch-progress', [WatchProgressController::class, 'saveProgress'])->middleware('auth');
+
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::post('/watch-progress', [WatchProgressController::class, 'saveProgress'])->middleware('auth');
+
 });
 });
 
 // Add the home route outside of the auth middleware group
-Route::get('/', [FavoriteController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::post('/watch-progress', [WatchProgressController::class, 'saveProgress'])->middleware('auth');
+
 
 // Ensure users who are not subscribed are redirected to the payment page
 Route::middleware(['auth', EnsureUserIsSubscribed::class])->group(function () {
