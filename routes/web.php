@@ -68,6 +68,9 @@ Route::middleware('auth')->group(function(){
     Route::post('stripe', 'stripePost')->name('stripe.post');
     Route::post('/watch-progress', [WatchProgressController::class, 'saveProgress'])->middleware('auth');
 
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::post('/watch-progress', [WatchProgressController::class, 'saveProgress'])->middleware('auth');
+
 });
 });
 

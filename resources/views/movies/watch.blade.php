@@ -23,38 +23,18 @@
         const speedDropdown = document.getElementById("speedDropdown");
         const dropdownItems = document.querySelectorAll(".dropdown-item");
         const fullscreenButton = document.getElementById("fullscreen");
+
         const movieId = {{ $movie->id }};
 
         let isPaused = true;
         let isMouseOver = false;
         let hideControlsTimeout;
+
         let lastCall = 0;
 
-        function saveProgress() {
-            const progress = Math.floor(video.currentTime); // İzlenilen süre (saniye)
 
-            fetch('/watch-progress', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    },
-                    body: JSON.stringify({
-                        movie_id: movieId,
-                        progress
-                    })
-                }).then(response => response.json())
-                .then(data => console.log('Progress saved:', data))
-                .catch(error => console.error('Error saving progress:', error));
-        }
 
-        function throttleSaveProgress() {
-            const now = Date.now();
-            if (now - lastCall > 5000) { // 5 saniyede bir API çağrısı yap
-                saveProgress();
-                lastCall = now;
-            }
-        }
+
 
 
         function showControls() {
@@ -84,6 +64,32 @@
                 video.pause();
                 isPaused = true;
                 showControls();
+            }
+        }
+
+        function saveProgress() {
+            const progress = Math.floor(video.currentTime); // İzlenilen süre (saniye)
+
+            fetch('/watch-progress', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: JSON.stringify({
+                        movie_id: movieId,
+                        progress
+                    })
+                }).then(response => response.json())
+                .then(data => console.log('Progress saved:', data))
+                .catch(error => console.error('Error saving progress:', error));
+        }
+
+        function throttleSaveProgress() {
+            const now = Date.now();
+            if (now - lastCall > 5000) { // 5 saniyede bir API çağrısı yap
+                saveProgress();
+                lastCall = now;
             }
         }
 
@@ -155,12 +161,13 @@
         }
 
         toggleButton.addEventListener("click", togglePlay);
-        video.addEventListener("pause", saveProgress); // Durdurulduğunda kaydet
-        video.addEventListener("timeupdate", throttleSaveProgress); // İzlerken periyodik kaydet
+
         video.addEventListener("click", togglePlay);
         video.addEventListener("play", updateToggleButton);
         video.addEventListener("pause", updateToggleButton);
         video.addEventListener("timeupdate", handleProgress);
+        video.addEventListener("pause", saveProgress); // Durdurulduğunda kaydet
+        video.addEventListener("timeupdate", throttleSaveProgress); // İzlerken periyodik kaydet
         progress.addEventListener("click", scrub);
 
         sliders.forEach((slider) => {
