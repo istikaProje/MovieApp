@@ -10,13 +10,14 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\ShowPaymentController;
+use App\Http\Middleware\EnsureUserIsSubscribed;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\MoviesController as FrontMoviesController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\CategoryController as FrontCategoryController;
 use App\Http\Controllers\FavoriteController; // Ensure this import is present
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
-use App\Http\Middleware\EnsureUserIsSubscribed;
 
 
 
@@ -29,6 +30,12 @@ Route::middleware('guest')->group(function(){
     Route::post('/register',[AuthController::class,'register']);
     Route::view('/login','auth.login')->name('login');
     Route::post('/login',[AuthController::class,'login']);
+
+    Route::view('/forgot-password', 'auth.forgot-password')->name('password.request');
+    Route::post('/forgot-password', [ResetPasswordController::class, 'passwordEmail']);
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'passwordReset'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class, 'passwordUpdate'])->name('password.update');
+
 });
 
 Route::view('/payment','layouts.payments')->name('payment');
