@@ -251,6 +251,10 @@
             });
         });
 
+                function toggleDropdown() {
+                    const dropdown = document.querySelector(".dropdown");
+                    dropdown.classList.toggle("open");
+                }
 
         function toggleDropdown() {
             const dropdown = document.querySelector('.dropdown');
@@ -278,6 +282,13 @@
             dropdown.classList.remove('open');
         }
 
+                    if (track.mode === "showing") {
+                        track.mode = "hidden"; // Altyazı gizleme
+                    } else {
+                        track.mode = "showing"; // Altyazı gösterme
+                    }
+                }
+            </script>
 
         // Altyazı açma ve kapatma
         function toggleSubtitles() {

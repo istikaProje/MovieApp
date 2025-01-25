@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use App\Models\WatchProgress;
 use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
