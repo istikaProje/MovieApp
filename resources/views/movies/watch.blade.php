@@ -289,24 +289,15 @@
             dropdown.classList.remove('open');
         }
 
-                    if (track.mode === "showing") {
-                        track.mode = "hidden"; // Altyazı gizleme
-                    } else {
-                        track.mode = "showing"; // Altyazı gösterme
-                    }
-                }
-            </script>
-
-        // Altyazı açma ve kapatma
         function toggleSubtitles() {
-            const video = document.getElementById('myVideo');
-            const track = video.textTracks[0];
+          const video = document.getElementById('myVideo');
+          const track = video.textTracks[0];
 
-            if (track.mode === 'showing') {
-                track.mode = 'hidden'; // alt yazı gizleme
-            } else {
-                track.mode = 'showing'; // alt yazı göster
-            }
-        }
-    </script>
+          if (track.mode === 'showing') {
+              track.mode = 'hidden';
+          } else {
+              track.mode = 'showing';
+          }
+  }
+   </script>
 @endpush
