@@ -64,7 +64,7 @@
       <div class="swiper-pagination"></div>
    </div>
 @else
-   <p class="text-white text-center text-lg md:text-xl lg:text-2xl py-4">İçerikler en kısa zamanda eklenecek.</p>
+   <p class="text-white text-center h-screen flex justify-center items-center text-lg md:text-xl lg:text-2xl py-4">İçerikler en kısa zamanda eklenecek.</p>
 @endif
 
 

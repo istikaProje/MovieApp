@@ -1,3 +1,4 @@
+@if(!$favorites->isEmpty())
 <div class="bg-third p-5 rounded-md mb-5 mt-5">
     <div class="swiper slider1">
         <div class="pb-1">
@@ -40,6 +41,7 @@
         </div>
     </div>
 </div>
+@endif
 
 
 
