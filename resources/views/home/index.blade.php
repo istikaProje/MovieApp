@@ -5,21 +5,25 @@
 
 @section('content')
     @auth
-        @include('layouts.sections.home._slideHero')
+        @if(auth()->user()->is_subscribed)
+            @include('layouts.sections.home._slideHero')
 
-        <section class="container mx-auto">
-            @include('layouts.sections.home._slideFirst', ['favorites' => $favorites])
-            @include('layouts.sections.home._slideSecond')
-            @include('layouts.sections.home._slideThird')
-        </section>
+            <section class="container mx-auto">
+                @include('layouts.sections.home._slideFirst', ['favorites' => $favorites])
+                @include('layouts.sections.home._slideSecond')
+                @include('layouts.sections.home._slideThird')
+            </section>
 
-        @push('styles')
-            @vite(['resources/css/swiper.css'])
-        @endpush
+            @push('styles')
+                @vite(['resources/css/swiper.css'])
+            @endpush
 
-        @push('scripts')
-            @vite(['resources/js/swiper.js','resources/js/toggleFavorite.js', 'resources/js/sliders.js'])
-        @endpush
+            @push('scripts')
+                @vite(['resources/js/swiper.js','resources/js/toggleFavorite.js', 'resources/js/sliders.js'])
+            @endpush
+        @else
+            <p class="text-white text-2xl flex justify-center items-center h-screen">Ödeme yapmadınız. Lütfen ödeme yapınız.</p>
+        @endif
     @endauth
 
     @guest
