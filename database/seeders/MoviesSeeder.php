@@ -200,7 +200,7 @@ class MoviesSeeder extends Seeder
 
             ],
             [
-                'title' => 'TESTEREeeeeeeeeeeeeee',
+                'title' => 'TESTERE',
                 'vote_average' => 8.7,
                 'youtube_link' => 'https://www.youtube.com/watch?v=zaANSeQ3La4',
                 'description' => 'İki adam uyandıklarında kendilerini bir cesedin zıt taraflarında bulurlar, her biri diğerini öldürmek için belirli talimatlara sahiptir, aksi takdirde sonuçlarla yüzleşeceklerdir. Bu ikisi Jigsaw Killerın son kurbanlarıdır.',
@@ -218,7 +218,7 @@ class MoviesSeeder extends Seeder
             $movie = Movie::create($movieData);
 
             // Filme rastgele kategoriler ata
-            $randomCategories = array_rand($categories, 2); // Rastgele 2 kategori seç
+            $randomCategories = array_rand($categories, 7); // Rastgele 2 kategori seç
             $movie->categories()->attach(array_intersect_key($categories, array_flip((array) $randomCategories)));
         }
     }
