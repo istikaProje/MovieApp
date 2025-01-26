@@ -11,7 +11,7 @@
                 @if($item->movie)
                 <div class="swiper-slide">
                     <div class="overflow-hidden rounded-md cursor-pointer">
-                        <a href="{{ route('movies.show', $item->movie->id) }}" class="relative group">
+                        <a href="{{ route('movies.show', ['id' => $item->movie->id, 'start' => $item->progress]) }}" class="relative group">
                             <img src="{{ asset('storage/' . $item->movie->image) }}" alt="{{ $item->movie->title }}"
                                 class="w-full h-full transition-transform duration-500 group-hover:scale-105"
                                 onerror="this.onerror=null;this.src='{{ asset('images/fallback.jpg') }}';">
@@ -36,3 +36,5 @@
     </div>
 </div>
 @endif
+
+
