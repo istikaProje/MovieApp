@@ -54,8 +54,6 @@
         <div class="inline-flex items-center">
             <input type="checkbox" id="check-with-link" class="peer h-5 w-5 cursor-pointer rounded border border-slate-300 checked:bg-slate-800 checked:border-slate-800" />
             <label class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link">
-                <label class="cursor-pointer ml-2 text-[#adadad] text-sm" for="check-with-link" >
-
                     <div x-data="{ open: false }" x-cloak>
                           <p>
 

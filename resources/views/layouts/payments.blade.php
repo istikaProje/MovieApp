@@ -45,7 +45,7 @@
 
                         <input type="hidden" name="stripeToken" id="stripe-token-id">                              
                         <br>
-                        <div id="card-element" class="w-full px-4 py-2 border rounded-lg h-[50px] pt-4"></div>
+                        <div id="card-element" class="w-full px-4 py-2 border rounded-lg mt-4 h-[50px] pt-4"></div>
                         <button 
                             id="pay-btn"
                             class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded w-full mt-4"
