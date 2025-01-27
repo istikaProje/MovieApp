@@ -19,7 +19,7 @@
                 <i class="icon-subtitle text-white text-xl cursor-pointer hover:text-gray-400" id="subtitleToggle" onclick="toggleSubtitles()"> </i>
                 <div class="dropdown relative">
                     <button onclick="toggleDropdown()" class="dropdown-toggle cursor-pointer bg-transparent-200 p-2 rounded">
-                        <i class="icon-speed text-white"></i>
+                          <i class="fas fa-gauge" style="color: white;"></i>
                     </button>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" data-speed="2">2x</div>
