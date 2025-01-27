@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <label class="time2 text-white" style="margin-top:0; margin-left 10px">0:00</label>
-                <i id="fullscreen" class="icon-expand text-xl px-2 text-white" onclick="openFullscreen();" title="Fullscreen"> </i>
+                <i id="fullscreen" class="icon-expand text-xl px-2 text-white cursor-pointer hover:text-gray-400" onclick="openFullscreen();" title="Fullscreen"> </i>
             </div>
         </div>
     </div>
