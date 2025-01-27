@@ -22,17 +22,18 @@ class MoviesSeeder extends Seeder
             [
                 'title' => 'ESARETİN BEDELİ',
                 'vote_average' => 8.8,
-                'youtube_link' => 'https://www.youtube.com/watch?v=YoHD9XEInc0',
+                'youtube_link' => 'https://www.youtube.com/watch?v=PLl99DlL6b4',
                 'description' => 'Kadın cinayetinden hüküm giymiş bir bankacı, çeyrek asırdan uzun bir süredir katılaşmış bir mahkûmla dostluk kurarken, masumiyetini korur ve basit bir şefkatle umutlu kalmaya çalışır.',
                 'image' => 'images/esaretinbedeli.jpg',
                 'video' => 'videos/esaretinbedeli.mp4',
                 'poster' => 'posters/esaretinbedeli0.jpg',
 
+
             ],
             [
                 'title' => 'BATMAN',
                 'vote_average' => 9.0,
-                'youtube_link' => 'https://www.youtube.com/watch?v=mqqft2x_Aa4&t=6s',
+                'youtube_link' => 'https://www.youtube.com/watch?v=NLOp_6uPccQ',
                 'description' => 'Sadist bir seri katil Gothamdaki önemli siyasi figürleri öldürmeye başladığında, Batman şehrin gizli yolsuzluklarını araştırmak ve ailesinin bu işteki rolünü sorgulamak zorunda kalır.',
                 'image' => 'images/batman.jpg',
                 'video' => 'videos/batman.mp4',
@@ -42,7 +43,7 @@ class MoviesSeeder extends Seeder
             [
                 'title' => 'SCHİNDLER İN LİSTESİ',
                 'vote_average' => 9.0,
-                'youtube_link' => 'https://www.youtube.com/watch?v=mqqft2x_Aa4&t=6s',
+                'youtube_link' => 'https://www.youtube.com/watch?v=mxphAlJID9U',
                 'description' => 'II. Dünya Savaşı sırasında Alman işgali altındaki Polonya da yaşayan sanayici Oskar Schindler, Naziler tarafından Yahudi işçilerin zulmüne tanık olduktan sonra, giderek Yahudi işçileri için endişelenmeye başlar.',
                 'image' => 'images/schindlers.jpg',
                 'video' => 'videos/schindlers.mp4',
@@ -52,7 +53,7 @@ class MoviesSeeder extends Seeder
             [
                 'title' => 'YEŞİL YOL',
                 'vote_average' => 9.0,
-                'youtube_link' => 'https://www.youtube.com/watch?v=mqqft2x_Aa4&t=6s',
+                'youtube_link' => 'https://www.youtube.com/watch?v=Ki4haFrqSrw',
                 'description' => '1930larda Louisianadaki bir hapishanenin baş ölüm cezası gardiyanı olan Paul Edgecomb, iki kızı öldürmekle suçlanan siyah bir adam olan John Coffey adlı bir mahkumla tanışır. Johnun özel bir yeteneği olduğunu keşfettiğinde hayatı kökten değişir.',
                 'image' => 'images/greenmile.jpg',
                 'video' => 'videos/greenmile.mp4',
@@ -218,7 +219,7 @@ class MoviesSeeder extends Seeder
             $movie = Movie::create($movieData);
 
             // Filme rastgele kategoriler ata
-            $randomCategories = array_rand($categories, 7); // Rastgele 2 kategori seç
+            $randomCategories = array_rand($categories, 7);
             $movie->categories()->attach(array_intersect_key($categories, array_flip((array) $randomCategories)));
         }
     }
