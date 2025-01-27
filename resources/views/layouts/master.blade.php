@@ -6,7 +6,7 @@
 
         <title>@yield('title', 'MovieWatch - En İyi Filmleri Online İzle')</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('images/MovieWatchLogo.ico') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
         <!-- Açıklama -->
         <meta name="description" content="@yield('description', 'MovieWatch ile en yeni filmleri, klasik başyapıtları ve popüler dizileri HD kalitede ücretsiz olarak izleyin. Film severler için tasarlanmış mükemmel bir platform.')">

@@ -1,4 +1,4 @@
-    <div class="video-player flex items-center justify-center min-h-screen bg-black" oncontextmenu="return false;">
+<div class="video-player flex items-center justify-center min-h-screen bg-black" oncontextmenu="return false;">
         <!-- Video Player -->
         <video class="video" id="myVideo" ondblclick="openFullscreen()" width="100%" height="100%" poster="{{ asset('storage/' . $movie->poster) }}">
             <source src="{{ asset('storage/' . $movie->video) }}" type="video/mp4" />
@@ -19,7 +19,7 @@
                 <i class="icon-subtitle text-white text-xl cursor-pointer hover:text-gray-400" id="subtitleToggle" onclick="toggleSubtitles()"> </i>
                 <div class="dropdown relative">
                     <button onclick="toggleDropdown()" class="dropdown-toggle cursor-pointer bg-transparent-200 p-2 rounded">
-                          <i class="fas fa-gauge" style="color: white;"></i>
+                        <i class="icon-speed text-white"></i>
                     </button>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" data-speed="2">2x</div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <label class="time2 text-white" style="margin-top:0; margin-left 10px">0:00</label>
-                <i id="fullscreen" class="icon-expand text-xl px-2 text-white cursor-pointer hover:text-gray-400" onclick="openFullscreen();" title="Fullscreen"> </i>
+                <i id="fullscreen" class="icon-expand text-xl px-2 text-white" onclick="openFullscreen();" title="Fullscreen"> </i>
             </div>
         </div>
     </div>
